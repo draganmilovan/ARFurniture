@@ -11,6 +11,8 @@ import ARKit
 
 class ARFurnitureController: UIViewController {
     
+    var itemsDataManager: ItemsDataManager?
+    
     @IBOutlet fileprivate weak var sceneView: ARSCNView!
     @IBOutlet fileprivate weak var infoLabel: UILabel!
     

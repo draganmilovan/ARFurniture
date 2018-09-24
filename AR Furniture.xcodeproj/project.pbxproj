@@ -42,6 +42,7 @@
 		08056A392155268900A8C853 = {
 			isa = PBXGroup;
 			children = (
+				08056A452155268900A8C853 /* AppDelegate.swift */,
 				08995FEE2159549B002F5A61 /* Data Model */,
 				08056A442155268900A8C853 /* AR Furniture */,
 				08056A432155268900A8C853 /* Products */,
@@ -59,7 +60,6 @@
 		08056A442155268900A8C853 /* AR Furniture */ = {
 			isa = PBXGroup;
 			children = (
-				08056A452155268900A8C853 /* AppDelegate.swift */,
 				08056A472155268900A8C853 /* ARFurnitureController.swift */,
 				08056A492155268900A8C853 /* Main.storyboard */,
 				08056A4C2155268A00A8C853 /* Assets.xcassets */,
