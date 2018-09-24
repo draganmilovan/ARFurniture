@@ -12,6 +12,8 @@
 		08056A4B2155268900A8C853 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08056A492155268900A8C853 /* Main.storyboard */; };
 		08056A4D2155268A00A8C853 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08056A4C2155268A00A8C853 /* Assets.xcassets */; };
 		08056A502155268A00A8C853 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08056A4E2155268A00A8C853 /* LaunchScreen.storyboard */; };
+		08995FF02159563F002F5A61 /* ItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08995FEF2159563F002F5A61 /* ItemDataModel.swift */; };
+		08995FF2215958BC002F5A61 /* ItemsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08995FF1215958BC002F5A61 /* ItemsDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		08056A4C2155268A00A8C853 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08056A4F2155268A00A8C853 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		08056A512155268A00A8C853 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08995FEF2159563F002F5A61 /* ItemDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataModel.swift; sourceTree = "<group>"; };
+		08995FF1215958BC002F5A61 /* ItemsDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +42,7 @@
 		08056A392155268900A8C853 = {
 			isa = PBXGroup;
 			children = (
+				08995FEE2159549B002F5A61 /* Data Model */,
 				08056A442155268900A8C853 /* AR Furniture */,
 				08056A432155268900A8C853 /* Products */,
 			);
@@ -62,6 +67,15 @@
 				08056A512155268A00A8C853 /* Info.plist */,
 			);
 			path = "AR Furniture";
+			sourceTree = "<group>";
+		};
+		08995FEE2159549B002F5A61 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				08995FF1215958BC002F5A61 /* ItemsDataManager.swift */,
+				08995FEF2159563F002F5A61 /* ItemDataModel.swift */,
+			);
+			path = "Data Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +149,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08995FF2215958BC002F5A61 /* ItemsDataManager.swift in Sources */,
 				08056A482155268900A8C853 /* ARFurnitureController.swift in Sources */,
 				08056A462155268900A8C853 /* AppDelegate.swift in Sources */,
+				08995FF02159563F002F5A61 /* ItemDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
