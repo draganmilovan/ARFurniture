@@ -45,19 +45,19 @@ class ARFurnitureController: UIViewController {
     }
     
     
-    @IBAction func addItem(_ sender: UIButton) {
+    @IBAction private func addItem(_ sender: UIButton) {
         print("ADD Button Touched!")
     }
     
-    @IBAction func removeItem(_ sender: UIButton) {
+    @IBAction private func removeItem(_ sender: UIButton) {
         print("DEL Button Touched!")
     }
     
-    @IBAction func showFavorites(_ sender: UIButton) {
+    @IBAction private func showFavorites(_ sender: UIButton) {
         print("FAV Button Touched!")
     }
     
-    @IBAction func showManifactureInfo(_ sender: UIButton) {
+    @IBAction private func showManifactureInfo(_ sender: UIButton) {
         print("INFO Button Touched!")
     }
     
