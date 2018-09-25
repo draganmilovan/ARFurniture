@@ -22,6 +22,7 @@
 		2424D3D2215A3D8A0061903A /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2424D3D1215A3D8A0061903A /* InfoViewController.swift */; };
 		2424D3D4215A3DC70061903A /* InfoDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2424D3D3215A3DC70061903A /* InfoDataModel.swift */; };
 		2424D3D6215A3F0D0061903A /* InfoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2424D3D5215A3F0D0061903A /* InfoDataManager.swift */; };
+		2498F450215A8EB900B7F491 /* StoreInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 2498F44F215A8EB900B7F491 /* StoreInfo.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		2424D3D1215A3D8A0061903A /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		2424D3D3215A3DC70061903A /* InfoDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDataModel.swift; sourceTree = "<group>"; };
 		2424D3D5215A3F0D0061903A /* InfoDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDataManager.swift; sourceTree = "<group>"; };
+		2498F44F215A8EB900B7F491 /* StoreInfo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StoreInfo.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				2424D3D1215A3D8A0061903A /* InfoViewController.swift */,
 				2424D3D3215A3DC70061903A /* InfoDataModel.swift */,
 				2424D3D5215A3F0D0061903A /* InfoDataManager.swift */,
+				2498F44F215A8EB900B7F491 /* StoreInfo.json */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 				0846AD97215A6A070054D983 /* ModelsCatalog.scnassets in Resources */,
 				08056A4B2155268900A8C853 /* Main.storyboard in Resources */,
 				0846AD9B215AA2700054D983 /* CatalogCell.xib in Resources */,
+				2498F450215A8EB900B7F491 /* StoreInfo.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
