@@ -13,12 +13,15 @@ final class ItemsDataManager {
     
     var items = [ItemDataModel]()
     
-    
+    init () {
+        populateItems()
+        }
     
     private func populateItems() {
         let url = Bundle.main.path(forResource: "ItemsData", ofType: "json")!
         do{
             let data = try Data(contentsOf: URL(fileURLWithPath: url))
+            
             self.items = try JSONDecoder().decode([ItemDataModel].self, from: data)
         }
         catch{

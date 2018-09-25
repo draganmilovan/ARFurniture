@@ -21,7 +21,7 @@ class ARFurnitureController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(itemsDataManager?.items[0].name)
         
         configuration.planeDetection = .horizontal
         
