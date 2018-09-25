@@ -22,6 +22,7 @@ class ARFurnitureController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         configuration.planeDetection = .horizontal
         
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
