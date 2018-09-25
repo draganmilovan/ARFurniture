@@ -1,0 +1,24 @@
+[
+    {
+        "name" : "Ušće",
+        "address" : "Beograd",
+        "tel" : "+381111234567",
+        "email" : "store@gmail.com",
+        "hours" : "08:00 - 20:00",
+        "coordinates" : {
+            "long" : "0000",
+            "lat" : "0001"
+        }
+    },
+    
+    {
+        "name" : "Spens",
+        "address" : "Novi Sad",
+        "tel" : "+381211234567",
+        "email" : "store@gmail.com",
+        "hours" : "08:00 - 20:00",
+        "coordinates" : {
+            "long" : "00002" ,
+            "lat" : "0003" }
+    },
+]

@@ -7,3 +7,20 @@
 //
 
 import Foundation
+
+struct StoreInfo : Decodable {
+    
+    let name : String
+    let address : String
+    let tel : String
+    let email : String
+    let hours : String
+    let coordinates : Coordinates
+    
+}
+
+struct Coordinates : Decodable {
+    let long : String
+    let lat : String
+}
+
