@@ -11,9 +11,10 @@ import Foundation
 
 struct ItemDataModel {
     
+    let catalogNumber: String
     let name: String
     let seriesTag: String
-    let categoryTag: String
+    let categoryTags: [String]
     let descriptionTags: [String]
     
 }
