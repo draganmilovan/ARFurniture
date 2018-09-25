@@ -11,14 +11,22 @@ import Foundation
 
 final class ItemsDataManager {
     
-    var items: [ItemDataModel] = []
+    var items = [ItemDataModel]()
     
-    init() {
+    init () {
         populateItems()
-    }
+        }
     
     private func populateItems() {
-        print("Items Created!")
+        let url = Bundle.main.path(forResource: "ItemsData", ofType: "json")!
+        do{
+            let data = try Data(contentsOf: URL(fileURLWithPath: url))
+            
+            self.items = try JSONDecoder().decode([ItemDataModel].self, from: data)
+        }
+        catch{
+            print("JSON error")
+        }
     }
     
 }

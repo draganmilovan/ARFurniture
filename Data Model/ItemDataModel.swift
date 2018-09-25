@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct ItemDataModel {
+struct ItemDataModel : Decodable {
     
     let catalogNumber: String
     let name: String
