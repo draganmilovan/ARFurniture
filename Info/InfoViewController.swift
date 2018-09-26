@@ -9,35 +9,36 @@
 import UIKit
 import MapKit
 
-class InfoViewController: UIViewController {
+class InfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     
     var infoDataManager = InfoDataManager()
 
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var address: UILabel!
-    @IBOutlet weak var tel: UILabel!
-    @IBOutlet weak var email: UILabel!
-    @IBOutlet weak var hours: UILabel!
+    
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        updateUI()
         // Do any additional setup after loading the view.
     }
     
-    func updateUI () {
-        name.text = infoDataManager.items[0].name
-        address.text = infoDataManager.items[0].address
-        tel.text = infoDataManager.items[0].tel
-        email.text = infoDataManager.items[0].email
-        hours.text = infoDataManager.items[0].hours
-        
-        
-    }
+   
     
     @IBAction func myLocation(_ sender: Any) {
+        tableView.reloadData()
     }
+    
+    //tableview
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return infoDataManager.items.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StoreInfoCell", for: indexPath) as! StoreInfoTableViewCell
+        cell.updateUI(storeInfo : infoDataManager.items[indexPath.row])
+        return cell
+    }
+    
     
 }

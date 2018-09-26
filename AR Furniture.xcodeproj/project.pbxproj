@@ -23,6 +23,7 @@
 		2424D3D4215A3DC70061903A /* InfoDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2424D3D3215A3DC70061903A /* InfoDataModel.swift */; };
 		2424D3D6215A3F0D0061903A /* InfoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2424D3D5215A3F0D0061903A /* InfoDataManager.swift */; };
 		2498F450215A8EB900B7F491 /* StoreInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 2498F44F215A8EB900B7F491 /* StoreInfo.json */; };
+		24BC2A7C215BCC9900066658 /* StoreInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BC2A7B215BCC9900066658 /* StoreInfoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		2424D3D3215A3DC70061903A /* InfoDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDataModel.swift; sourceTree = "<group>"; };
 		2424D3D5215A3F0D0061903A /* InfoDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDataManager.swift; sourceTree = "<group>"; };
 		2498F44F215A8EB900B7F491 /* StoreInfo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StoreInfo.json; sourceTree = "<group>"; };
+		24BC2A7B215BCC9900066658 /* StoreInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInfoTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				2424D3D3215A3DC70061903A /* InfoDataModel.swift */,
 				2424D3D5215A3F0D0061903A /* InfoDataManager.swift */,
 				2498F44F215A8EB900B7F491 /* StoreInfo.json */,
+				24BC2A7B215BCC9900066658 /* StoreInfoTableViewCell.swift */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0846AD99215A90B40054D983 /* CatalogViewController.swift in Sources */,
+				24BC2A7C215BCC9900066658 /* StoreInfoTableViewCell.swift in Sources */,
 				08995FF2215958BC002F5A61 /* ItemsDataManager.swift in Sources */,
 				2424D3D4215A3DC70061903A /* InfoDataModel.swift in Sources */,
 				08056A482155268900A8C853 /* ARFurnitureController.swift in Sources */,
@@ -341,7 +345,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8CT3E34VGG;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "AR Furniture/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -360,7 +364,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8CT3E34VGG;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "AR Furniture/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
