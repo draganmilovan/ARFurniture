@@ -9,12 +9,12 @@
 import Foundation
 
 
-struct ItemDataModel : Decodable {
+struct ItemDataModel: Decodable {
     
-    let catalogNumber: String
-    let name: String
-    let seriesTag: String
-    let categoryTags: [String]
-    let descriptionTags: [String]
+    let catalogNumber: String?
+    let name: String?
+    let seriesTag: String?
+    let categoryTags: [String]?
+    let descriptionTags: [String]?
     
 }
