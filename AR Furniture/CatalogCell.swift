@@ -22,8 +22,8 @@ class CatalogCell: UICollectionViewCell {
         }
     }
     
-    @IBOutlet fileprivate weak var catalogImage: UIImageView!
-    @IBOutlet fileprivate weak var nameLabel: UILabel!
+    @IBOutlet private weak var catalogImage: UIImageView!
+    @IBOutlet private weak var nameLabel: UILabel!
     
     
     override func awakeFromNib() {
