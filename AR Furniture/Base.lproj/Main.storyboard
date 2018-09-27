@@ -281,6 +281,10 @@
                                     <constraint firstAttribute="height" constant="100" id="M7W-hC-9Mj"/>
                                     <constraint firstAttribute="width" constant="240" id="Rjb-XI-nbR"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="g7Z-t3-Qcm" id="fc4-yD-pmx"/>
+                                    <outlet property="delegate" destination="g7Z-t3-Qcm" id="iba-xk-fXT"/>
+                                </connections>
                             </pickerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wwK-Di-5yc">
                                 <rect key="frame" x="0.0" y="300" width="414" height="462"/>
@@ -370,6 +374,7 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="zLB-rb-Z9B" id="2rn-yy-iVY"/>
+                        <outlet property="pickerView" destination="Fhv-yl-Qgi" id="j9W-TQ-OCh"/>
                         <outlet property="tableView" destination="wwK-Di-5yc" id="drD-os-hQA"/>
                     </connections>
                 </viewController>

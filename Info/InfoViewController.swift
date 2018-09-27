@@ -9,7 +9,9 @@
 import UIKit
 import MapKit
 
-class InfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class InfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    
     
     
     var infoDataManager = InfoDataManager()
@@ -17,6 +19,7 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var mapView: MKMapView!
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var pickerView: UIPickerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +42,17 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.updateUI(storeInfo : infoDataManager.items[indexPath.row])
         return cell
     }
+    //pickerview
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
     
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return infoDataManager.items.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return infoDataManager.items[row].address
+    }
     
 }
