@@ -95,9 +95,10 @@ fileprivate extension ItemsDataManager {
     // Method for populating newItems Array
     //
     func populateNewItems() {
-        
-        items!.compactMap {
-            if ($0.descriptionTags?.contains("novo"))! {
+        guard let items = items else { return }
+
+        items.compactMap {
+            if $0.descriptionTags!.contains("novo") {
                 newItems.append($0)
             }
         }
