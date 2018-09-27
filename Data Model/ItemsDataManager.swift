@@ -54,8 +54,21 @@ fileprivate extension ItemsDataManager {
     // Method for populating categories Array
     //
     func populateCategories() {
-        //guard let items = items else { return }
-
+        guard let items = items else { return }
+        var ctgs: [String] = []
+        
+        items.compactMap {
+            ctgs.append(contentsOf: $0.categoryTags!)
+        }
+        
+        ctgs.compactMap {
+            if !categories.contains($0), $0 != "" {
+                categories.append($0)
+            }
+        }
+        
+        categories.sort()
+        
     }
     
     
@@ -63,6 +76,15 @@ fileprivate extension ItemsDataManager {
     // Method for populating series Array
     //
     func populateSeries() {
+        guard let items = items else { return }
+        
+        items.compactMap {
+            if !series.contains($0.seriesTag!), $0.seriesTag != "" {
+                series.append($0.seriesTag!)
+            }
+        }
+        
+        series.sort()
         
     }
     
