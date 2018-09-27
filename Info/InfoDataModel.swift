@@ -20,7 +20,7 @@ struct StoreInfo : Decodable {
 }
 
 struct Coordinates : Decodable {
-    let long : String
-    let lat : String
+    let long : Double
+    let lat : Double
 }
 

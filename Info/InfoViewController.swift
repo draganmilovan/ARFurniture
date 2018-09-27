@@ -54,5 +54,25 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return infoDataManager.items[row].address
     }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+     
+        // picker selection
+        let addressSelected = infoDataManager.items[pickerView.selectedRow(inComponent: 0)]
+        
+        //put pin on the map
+        let pin = MKPointAnnotation()
+        pin.coordinate = CLLocationCoordinate2D(latitude: addressSelected.coordinates.lat, longitude: addressSelected.coordinates.long)
+        mapView.addAnnotation(pin)
+        
+        //center map
+        let storeLocation = CLLocation(latitude: addressSelected.coordinates.lat, longitude: addressSelected.coordinates.long)
+        let regionRadius: CLLocationDistance = 1000
+        func centerMapOnLocation(location: CLLocation) {
+            let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius, regionRadius)
+            mapView.setRegion(coordinateRegion, animated: true)
+        }
+        centerMapOnLocation(location: storeLocation)
+
+    }
     
 }
