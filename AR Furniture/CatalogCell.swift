@@ -8,9 +8,55 @@
 
 import UIKit
 
+
+typealias CellData = (imageName: String, name: String)
+
+
 class CatalogCell: UICollectionViewCell {
+    
+    // Data source
+    var cellData: CellData? {
+        didSet {
+            guard let cellData = cellData else { return }
+            populate(with: cellData)
+        }
+    }
     
     @IBOutlet fileprivate weak var catalogImage: UIImageView!
     @IBOutlet fileprivate weak var nameLabel: UILabel!
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        cleanCell()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        cleanCell()
+    }
+    
+    
+    //
+    // Method for cleaning datas for UI
+    //
+    private func cleanCell() {
+        
+        catalogImage.image = nil
+        nameLabel.text = nil
+    }
+    
+    
+    //
+    // Method for populating Cell
+    //
+    private func populate(with cellData: CellData) {
+        
+        catalogImage.image = UIImage(named: cellData.imageName)
+        nameLabel.text = cellData.name
+        
+    }
     
 }
