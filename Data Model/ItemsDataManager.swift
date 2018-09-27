@@ -15,11 +15,13 @@ final class ItemsDataManager {
         didSet {
             populateCategories()
             populateSeries()
+            populateNewItems()
         }
     }
     
     var categories: [String] = []
     var series: [String] = []
+    var newItems: [ItemDataModel] = []
     
     
     init() {
@@ -86,6 +88,19 @@ fileprivate extension ItemsDataManager {
         
         series.sort()
         
+    }
+    
+    
+    //
+    // Method for populating newItems Array
+    //
+    func populateNewItems() {
+        
+        items!.compactMap {
+            if ($0.descriptionTags?.contains("novo"))! {
+                newItems.append($0)
+            }
+        }
     }
     
 }
