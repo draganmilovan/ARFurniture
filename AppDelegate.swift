@@ -23,6 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             vc.itemsDataManager = itemsDataManager
         }
         
+//        if let nc = window?.rootViewController as? UINavigationController {
+//            if let cvc = nc.topViewController as? CatalogViewController {
+//                cvc.itemsDataManager = itemsDataManager
+//            }
+//        }
+
         
         return true
     }
