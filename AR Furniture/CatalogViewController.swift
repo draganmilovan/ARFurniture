@@ -11,7 +11,15 @@ import UIKit
 class CatalogViewController: UIViewController {
     
     // Data source
-    var itemsDataManager: ItemsDataManager?
+    var itemsDataManager: ItemsDataManager? {
+        didSet {
+            if !self.isViewLoaded { return }
+            
+            seriesCollectionView.reloadData()
+            categoriesCollectionView.reloadData()
+            newItemsCollectionView.reloadData()
+        }
+    }
 
     @IBOutlet private weak var newItemsLabel: UILabel!
     @IBOutlet private weak var categoriesLabel: UILabel!
@@ -43,32 +51,60 @@ extension CatalogViewController: UICollectionViewDataSource, UICollectionViewDel
         return 1
     }
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        
+        guard let itemsDataManager = itemsDataManager else { fatalError("Missing Data Manager!") }
+        
+        var numberOfItems = 0
+        
+        if collectionView == newItemsCollectionView {
+            numberOfItems = itemsDataManager.newItems.count
+            
+        } else if collectionView == categoriesCollectionView {
+            numberOfItems = itemsDataManager.categories.count
+            
+        } else {
+            numberOfItems = itemsDataManager.series.count
+        }
+        
+        return numberOfItems
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-//        guard let itemsDataManager = itemsDataManager else { fatalError("Missing Data Manager!") }
+        guard let itemsDataManager = itemsDataManager else { fatalError("Missing Data Manager!") }
         
         if collectionView == newItemsCollectionView {
             let newItemCell: CatalogCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatalogCell", for: indexPath) as! CatalogCell
             
-            // Set up Cell!
+            let newItemCellData = CellData(itemsDataManager.newItems[indexPath.item].catalogNumber!,
+                                           itemsDataManager.newItems[indexPath.item].name!)
+            
+            newItemCell.cellData = newItemCellData
             
             return newItemCell
             
         } else if collectionView == categoriesCollectionView {
             let categoriesCell: CatalogCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatalogCell", for: indexPath) as! CatalogCell
             
-            // Set up Cell!
+            let catCellData = CellData(itemsDataManager.categories[indexPath.item],
+                                       itemsDataManager.categories[indexPath.item])
+            
+            categoriesCell.cellData = catCellData
             
             return categoriesCell
             
         } else {
             let seriesCell: CatalogCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatalogCell", for: indexPath) as! CatalogCell
             
-            // Set up Cell!
+            let serCellData = CellData(itemsDataManager.series[indexPath.item],
+                                       itemsDataManager.series[indexPath.item])
+            
+            seriesCell.cellData = serCellData
             
             return seriesCell
             
