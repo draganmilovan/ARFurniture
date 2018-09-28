@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SupportCell" id="YAj-Eh-4X4" customClass="SupportCell" customModule="AR_Furniture" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="255" height="255"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="255" height="255"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BPf-SI-ZQZ">
+                        <rect key="frame" x="0.0" y="0.0" width="255" height="255"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prikaži sve  →" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="N97-Ef-NLL">
+                                <rect key="frame" x="66" y="115" width="123.5" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="N97-Ef-NLL" firstAttribute="centerX" secondItem="BPf-SI-ZQZ" secondAttribute="centerX" id="8JZ-C0-Nan"/>
+                            <constraint firstItem="N97-Ef-NLL" firstAttribute="centerY" secondItem="BPf-SI-ZQZ" secondAttribute="centerY" id="Us2-9m-NAW"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="BPf-SI-ZQZ" secondAttribute="trailing" id="O57-ft-ghB"/>
+                <constraint firstAttribute="bottom" secondItem="BPf-SI-ZQZ" secondAttribute="bottom" id="TSi-We-NRE"/>
+                <constraint firstItem="BPf-SI-ZQZ" firstAttribute="leading" secondItem="YAj-Eh-4X4" secondAttribute="leading" id="UpY-Np-fPX"/>
+                <constraint firstItem="BPf-SI-ZQZ" firstAttribute="top" secondItem="YAj-Eh-4X4" secondAttribute="top" id="qH7-2p-H4s"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="bVD-jd-q5t"/>
+            <size key="customSize" width="255" height="255"/>
+            <connections>
+                <outlet property="infoLabel" destination="N97-Ef-NLL" id="Xet-Lc-dMm"/>
+            </connections>
+            <point key="canvasLocation" x="52" y="134"/>
+        </collectionViewCell>
+    </objects>
+</document>

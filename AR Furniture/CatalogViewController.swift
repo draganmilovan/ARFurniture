@@ -32,11 +32,16 @@ class CatalogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Register Collection View Cell
+        // Register Collection View Cells
         let catalogNib = UINib(nibName: "CatalogCell", bundle: nil)
         newItemsCollectionView.register(catalogNib, forCellWithReuseIdentifier: "CatalogCell")
         categoriesCollectionView.register(catalogNib, forCellWithReuseIdentifier: "CatalogCell")
         seriesCollectionView.register(catalogNib, forCellWithReuseIdentifier: "CatalogCell")
+        
+        let supportNib = UINib(nibName: "SupportCell", bundle: nil)
+        newItemsCollectionView.register(supportNib, forCellWithReuseIdentifier: "SupportCell")
+        categoriesCollectionView.register(supportNib, forCellWithReuseIdentifier: "SupportCell")
+        seriesCollectionView.register(supportNib, forCellWithReuseIdentifier: "SupportCell")
         
     }
     
@@ -65,13 +70,31 @@ extension CatalogViewController: UICollectionViewDataSource, UICollectionViewDel
         var numberOfItems = 0
         
         if collectionView == newItemsCollectionView {
-            numberOfItems = itemsDataManager.newItems.count
+            
+            if itemsDataManager.newItems.count > 4 {
+                numberOfItems = 5
+                
+            } else {
+                numberOfItems = itemsDataManager.newItems.count
+            }
             
         } else if collectionView == categoriesCollectionView {
-            numberOfItems = itemsDataManager.categories.count
+            
+            if itemsDataManager.categories.count > 4 {
+                numberOfItems = 5
+                
+            } else {
+                numberOfItems = itemsDataManager.categories.count
+            }
             
         } else {
-            numberOfItems = itemsDataManager.series.count
+            
+            if itemsDataManager.series.count > 4 {
+                numberOfItems = 5
+                
+            } else {
+                numberOfItems = itemsDataManager.series.count
+            }
         }
         
         return numberOfItems
@@ -83,36 +106,66 @@ extension CatalogViewController: UICollectionViewDataSource, UICollectionViewDel
         
         guard let itemsDataManager = itemsDataManager else { fatalError("Missing Data Manager!") }
         
+        
         if collectionView == newItemsCollectionView {
             let newItemCell: CatalogCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatalogCell", for: indexPath) as! CatalogCell
+            
+            let supportCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SupportCell", for: indexPath)
             
             let newItemCellData = CellData(itemsDataManager.newItems[indexPath.item].catalogNumber!,
                                            itemsDataManager.newItems[indexPath.item].name!)
             
             newItemCell.cellData = newItemCellData
             
-            return newItemCell
+            
+            switch (indexPath.item) {
+            case 0..<4 :
+                return newItemCell
+                
+            default:
+                return supportCell
+            }
             
         } else if collectionView == categoriesCollectionView {
             let categoriesCell: CatalogCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatalogCell", for: indexPath) as! CatalogCell
+            
+            let supportCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SupportCell", for: indexPath)
             
             let catCellData = CellData(itemsDataManager.categories[indexPath.item],
                                        itemsDataManager.categories[indexPath.item])
             
             categoriesCell.cellData = catCellData
             
-            return categoriesCell
+            switch (indexPath.item) {
+            case 0..<4 :
+                return categoriesCell
+                
+            default:
+                return supportCell
+            }
             
         } else {
             let seriesCell: CatalogCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatalogCell", for: indexPath) as! CatalogCell
+            
+            let supportCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SupportCell", for: indexPath)
             
             let serCellData = CellData(itemsDataManager.series[indexPath.item],
                                        itemsDataManager.series[indexPath.item])
             
             seriesCell.cellData = serCellData
             
-            return seriesCell
-            
+            if indexPath.count > 4 {
+                switch (indexPath.item) {
+                case 0..<4 :
+                    return seriesCell
+                    
+                default:
+                    return supportCell
+                }
+                
+            } else {
+                return seriesCell
+            }
         }
         
     }
