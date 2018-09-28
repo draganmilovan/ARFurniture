@@ -39,7 +39,12 @@ class CatalogViewController: UIViewController {
         seriesCollectionView.register(catalogNib, forCellWithReuseIdentifier: "CatalogCell")
         
     }
-
+    
+    
+    @IBAction func dismissCatalog(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 

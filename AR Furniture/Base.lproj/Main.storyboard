@@ -238,7 +238,11 @@
                         <viewLayoutGuide key="safeArea" id="n95-Ro-dQr"/>
                     </view>
                     <navigationItem key="navigationItem" title="Katalog" id="515-my-4TB">
-                        <barButtonItem key="leftBarButtonItem" title="HOME" id="UdE-qJ-P8F"/>
+                        <barButtonItem key="leftBarButtonItem" title="HOME" id="UdE-qJ-P8F">
+                            <connections>
+                                <action selector="dismissCatalog:" destination="8Rt-Xx-ji6" id="fm7-7c-cqJ"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="AUJ-h8-FmL"/>
                     </navigationItem>
                     <connections>
