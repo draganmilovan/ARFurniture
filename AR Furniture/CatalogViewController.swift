@@ -106,11 +106,10 @@ extension CatalogViewController: UICollectionViewDataSource, UICollectionViewDel
         
         guard let itemsDataManager = itemsDataManager else { fatalError("Missing Data Manager!") }
         
+        let supportCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SupportCell", for: indexPath)
         
         if collectionView == newItemsCollectionView {
             let newItemCell: CatalogCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatalogCell", for: indexPath) as! CatalogCell
-            
-            let supportCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SupportCell", for: indexPath)
             
             let newItemCellData = CellData(itemsDataManager.newItems[indexPath.item].catalogNumber!,
                                            itemsDataManager.newItems[indexPath.item].name!)
@@ -129,8 +128,6 @@ extension CatalogViewController: UICollectionViewDataSource, UICollectionViewDel
         } else if collectionView == categoriesCollectionView {
             let categoriesCell: CatalogCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatalogCell", for: indexPath) as! CatalogCell
             
-            let supportCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SupportCell", for: indexPath)
-            
             let catCellData = CellData(itemsDataManager.categories[indexPath.item],
                                        itemsDataManager.categories[indexPath.item])
             
@@ -147,27 +144,19 @@ extension CatalogViewController: UICollectionViewDataSource, UICollectionViewDel
         } else {
             let seriesCell: CatalogCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatalogCell", for: indexPath) as! CatalogCell
             
-            let supportCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SupportCell", for: indexPath)
-            
             let serCellData = CellData(itemsDataManager.series[indexPath.item],
                                        itemsDataManager.series[indexPath.item])
             
             seriesCell.cellData = serCellData
             
-            if indexPath.count > 4 {
-                switch (indexPath.item) {
-                case 0..<4 :
-                    return seriesCell
-                    
-                default:
-                    return supportCell
-                }
-                
-            } else {
+            switch (indexPath.item) {
+            case 0..<4 :
                 return seriesCell
+                
+            default:
+                return supportCell
             }
         }
-        
     }
     
     
