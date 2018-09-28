@@ -400,7 +400,7 @@
         <!--Navigation Controller-->
         <scene sceneID="HiO-3E-ECI">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Axn-zd-MLJ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ARFNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Axn-zd-MLJ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cRk-05-yPt">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

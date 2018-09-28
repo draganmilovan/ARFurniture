@@ -46,7 +46,14 @@ class ARFurnitureController: UIViewController {
     
     
     @IBAction private func addItem(_ sender: UIButton) {
-        print("ADD Button Touched!")
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let nc = storyboard.instantiateViewController(withIdentifier: "ARFNavigationController") as! UINavigationController
+        let cvc = nc.topViewController as! CatalogViewController
+        
+        cvc.itemsDataManager = itemsDataManager
+        
+        show(nc, sender: self)
     }
     
     @IBAction private func removeItem(_ sender: UIButton) {
