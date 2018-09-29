@@ -150,7 +150,7 @@ fileprivate extension CatalogViewController {
     //
     func createCell<T>(for collectionView: UICollectionView, at indexPath: IndexPath, with array: [T], imageName: String, itemName: String ) -> UICollectionViewCell {
         
-        let supportCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SupportCell", for: indexPath)
+        let supportCell: SupportCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SupportCell", for: indexPath) as! SupportCell
         let cell: CatalogCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatalogCell", for: indexPath) as! CatalogCell
         
         let cellData = CellData(imageName, itemName)
