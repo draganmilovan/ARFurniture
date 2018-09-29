@@ -62,102 +62,51 @@ extension CatalogViewController: UICollectionViewDataSource, UICollectionViewDel
     }
     
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        guard let itemsDataManager = itemsDataManager else { fatalError("Missing Data Manager!") }
-        
-        var numberOfItems = 5
-        
-        if collectionView == newItemsCollectionView {
-            
-            if itemsDataManager.newItems.count < 5 {
-                numberOfItems = itemsDataManager.newItems.count
-            }
-            
-        } else if collectionView == categoriesCollectionView {
-            
-            if itemsDataManager.categories.count < 5 {
-                numberOfItems = itemsDataManager.categories.count
-            }
-            
-        } else {
-            
-            if itemsDataManager.series.count < 5 {
-                numberOfItems = itemsDataManager.series.count
-            }
+        guard let itemsDataManager = itemsDataManager else {
+            fatalError("Missing Data Manager!")
         }
         
-        return numberOfItems
+        if collectionView == newItemsCollectionView {
+            return countItems(at: itemsDataManager.newItems)
+            
+        } else if collectionView == categoriesCollectionView {
+            return countItems(at: itemsDataManager.categories)
+            
+        } else {
+            return countItems(at: itemsDataManager.series)
+        }
     }
-    
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let itemsDataManager = itemsDataManager else { fatalError("Missing Data Manager!") }
-        
-        let supportCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SupportCell", for: indexPath)
+        guard let itemsDataManager = itemsDataManager else {
+            fatalError("Missing Data Manager!")
+        }
         
         if collectionView == newItemsCollectionView {
-            let newItemCell: CatalogCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatalogCell", for: indexPath) as! CatalogCell
+            return createCell(for: collectionView,
+                              at: indexPath,
+                              with: itemsDataManager.newItems,
+                              imageName: itemsDataManager.newItems[indexPath.item].catalogNumber!,
+                              itemName: itemsDataManager.newItems[indexPath.item].name!)
             
-            let newItemCellData = CellData(itemsDataManager.newItems[indexPath.item].catalogNumber!,
-                                           itemsDataManager.newItems[indexPath.item].name!)
-            
-            newItemCell.cellData = newItemCellData
-            
-            if itemsDataManager.newItems.count != 5 {
-                switch (indexPath.item) {
-                case 0..<4 :
-                    return newItemCell
-                    
-                default:
-                    return supportCell
-                }
-            } else {
-                return newItemCell
-            }
-
         } else if collectionView == categoriesCollectionView {
-            let categoriesCell: CatalogCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatalogCell", for: indexPath) as! CatalogCell
-            
-            let catCellData = CellData(itemsDataManager.categories[indexPath.item],
-                                       itemsDataManager.categories[indexPath.item])
-            
-            categoriesCell.cellData = catCellData
-            
-            if itemsDataManager.categories.count != 5 {
-                switch (indexPath.item) {
-                case 0..<4 :
-                    return categoriesCell
-                    
-                default:
-                    return supportCell
-                }
-            } else {
-                return categoriesCell
-            }
+            return createCell(for: collectionView,
+                              at: indexPath,
+                              with: itemsDataManager.categories,
+                              imageName: itemsDataManager.categories[indexPath.item],
+                              itemName: itemsDataManager.categories[indexPath.item])
             
         } else {
-            let seriesCell: CatalogCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatalogCell", for: indexPath) as! CatalogCell
+            return createCell(for: collectionView,
+                              at: indexPath,
+                              with: itemsDataManager.series,
+                              imageName: itemsDataManager.series[indexPath.item],
+                              itemName: itemsDataManager.series[indexPath.item])
             
-            let serCellData = CellData(itemsDataManager.series[indexPath.item],
-                                       itemsDataManager.series[indexPath.item])
-            
-            seriesCell.cellData = serCellData
-            
-            if itemsDataManager.series.count != 5 {
-                switch (indexPath.item) {
-                case 0..<4 :
-                    return seriesCell
-                    
-                default:
-                    return supportCell
-                }
-            } else {
-                return seriesCell
-            }
         }
     }
     
@@ -174,4 +123,51 @@ extension CatalogViewController: UICollectionViewDataSource, UICollectionViewDel
 //
 //        return CGSize(width: itemWidth, height: itemWidth)
 //    }
+}
+
+
+
+//MARK:- Collection View private methods
+fileprivate extension CatalogViewController {
+    
+    //
+    // Method return max number five when counting array items
+    // Used in method(numberOfItemsInSection) for Collection View with max five items
+    //
+    func countItems<T>(at array: [T]) -> Int {
+        var zeroToFive = 5
+        
+        if array.count < 5 {
+            zeroToFive = array.count
+        }
+        return zeroToFive
+    }
+    
+    
+    //
+    // Method for creating Collection View Cells
+    // Collection View must have Max five items!
+    //
+    func createCell<T>(for collectionView: UICollectionView, at indexPath: IndexPath, with array: [T], imageName: String, itemName: String ) -> UICollectionViewCell {
+        
+        let supportCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SupportCell", for: indexPath)
+        let cell: CatalogCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatalogCell", for: indexPath) as! CatalogCell
+        
+        let cellData = CellData(imageName, itemName)
+        
+        cell.cellData = cellData
+        
+        if array.count != 5 {
+            switch (indexPath.item) {
+            case 0..<4 :
+                return cell
+                
+            default:
+                return supportCell
+            }
+        } else {
+            return cell
+        }
+    }
+    
 }
