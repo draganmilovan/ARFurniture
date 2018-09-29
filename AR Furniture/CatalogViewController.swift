@@ -67,32 +67,23 @@ extension CatalogViewController: UICollectionViewDataSource, UICollectionViewDel
         
         guard let itemsDataManager = itemsDataManager else { fatalError("Missing Data Manager!") }
         
-        var numberOfItems = 0
+        var numberOfItems = 5
         
         if collectionView == newItemsCollectionView {
             
-            if itemsDataManager.newItems.count > 4 {
-                numberOfItems = 5
-                
-            } else {
+            if itemsDataManager.newItems.count < 5 {
                 numberOfItems = itemsDataManager.newItems.count
             }
             
         } else if collectionView == categoriesCollectionView {
             
-            if itemsDataManager.categories.count > 4 {
-                numberOfItems = 5
-                
-            } else {
+            if itemsDataManager.categories.count < 5 {
                 numberOfItems = itemsDataManager.categories.count
             }
             
         } else {
             
-            if itemsDataManager.series.count > 4 {
-                numberOfItems = 5
-                
-            } else {
+            if itemsDataManager.series.count < 5 {
                 numberOfItems = itemsDataManager.series.count
             }
         }
