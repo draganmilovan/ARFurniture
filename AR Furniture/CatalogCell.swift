@@ -29,6 +29,9 @@ class CatalogCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.layer.masksToBounds = true
+        self.layer.cornerRadius = 16.0
+        
         cleanCell()
     }
     
