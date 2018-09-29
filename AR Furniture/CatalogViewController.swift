@@ -116,15 +116,18 @@ extension CatalogViewController: UICollectionViewDataSource, UICollectionViewDel
             
             newItemCell.cellData = newItemCellData
             
-            
-            switch (indexPath.item) {
-            case 0..<4 :
+            if itemsDataManager.newItems.count != 5 {
+                switch (indexPath.item) {
+                case 0..<4 :
+                    return newItemCell
+                    
+                default:
+                    return supportCell
+                }
+            } else {
                 return newItemCell
-                
-            default:
-                return supportCell
             }
-            
+
         } else if collectionView == categoriesCollectionView {
             let categoriesCell: CatalogCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatalogCell", for: indexPath) as! CatalogCell
             
@@ -133,12 +136,16 @@ extension CatalogViewController: UICollectionViewDataSource, UICollectionViewDel
             
             categoriesCell.cellData = catCellData
             
-            switch (indexPath.item) {
-            case 0..<4 :
+            if itemsDataManager.categories.count != 5 {
+                switch (indexPath.item) {
+                case 0..<4 :
+                    return categoriesCell
+                    
+                default:
+                    return supportCell
+                }
+            } else {
                 return categoriesCell
-                
-            default:
-                return supportCell
             }
             
         } else {
@@ -149,12 +156,16 @@ extension CatalogViewController: UICollectionViewDataSource, UICollectionViewDel
             
             seriesCell.cellData = serCellData
             
-            switch (indexPath.item) {
-            case 0..<4 :
+            if itemsDataManager.series.count != 5 {
+                switch (indexPath.item) {
+                case 0..<4 :
+                    return seriesCell
+                    
+                default:
+                    return supportCell
+                }
+            } else {
                 return seriesCell
-                
-            default:
-                return supportCell
             }
         }
     }
