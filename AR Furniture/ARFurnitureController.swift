@@ -24,7 +24,7 @@ class ARFurnitureController: UIViewController {
         
         configuration.planeDetection = .horizontal
         
-        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
+        sceneView.debugOptions = [SCNDebugOptions.showFeaturePoints]
         
         sceneView.delegate = self
         
