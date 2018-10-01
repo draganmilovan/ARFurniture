@@ -21,6 +21,7 @@
 		0867DC09215E7F78001E00B4 /* SupportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0867DC08215E7F78001E00B4 /* SupportCell.swift */; };
 		08995FF02159563F002F5A61 /* ItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08995FEF2159563F002F5A61 /* ItemDataModel.swift */; };
 		08995FF2215958BC002F5A61 /* ItemsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08995FF1215958BC002F5A61 /* ItemsDataManager.swift */; };
+		08E9BE2021627DF600393246 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E9BE1F21627DF600393246 /* SearchController.swift */; };
 		2424D3D2215A3D8A0061903A /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2424D3D1215A3D8A0061903A /* InfoViewController.swift */; };
 		2424D3D4215A3DC70061903A /* InfoDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2424D3D3215A3DC70061903A /* InfoDataModel.swift */; };
 		2424D3D6215A3F0D0061903A /* InfoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2424D3D5215A3F0D0061903A /* InfoDataManager.swift */; };
@@ -45,6 +46,7 @@
 		0867DC08215E7F78001E00B4 /* SupportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportCell.swift; sourceTree = "<group>"; };
 		08995FEF2159563F002F5A61 /* ItemDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataModel.swift; sourceTree = "<group>"; };
 		08995FF1215958BC002F5A61 /* ItemsDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsDataManager.swift; sourceTree = "<group>"; };
+		08E9BE1F21627DF600393246 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		2424D3D1215A3D8A0061903A /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		2424D3D3215A3DC70061903A /* InfoDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDataModel.swift; sourceTree = "<group>"; };
 		2424D3D5215A3F0D0061903A /* InfoDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDataManager.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				0846AD98215A90B40054D983 /* CatalogViewController.swift */,
 				0846AD9C215AA8CE0054D983 /* CatalogCell.swift */,
 				0867DC08215E7F78001E00B4 /* SupportCell.swift */,
+				08E9BE1F21627DF600393246 /* SearchController.swift */,
 				08056A492155268900A8C853 /* Main.storyboard */,
 				0846AD9A215AA2700054D983 /* CatalogCell.xib */,
 				0867DC06215E7BAB001E00B4 /* SupportCell.xib */,
@@ -206,6 +209,7 @@
 				2424D3D4215A3DC70061903A /* InfoDataModel.swift in Sources */,
 				08056A482155268900A8C853 /* ARFurnitureController.swift in Sources */,
 				08056A462155268900A8C853 /* AppDelegate.swift in Sources */,
+				08E9BE2021627DF600393246 /* SearchController.swift in Sources */,
 				2424D3D6215A3F0D0061903A /* InfoDataManager.swift in Sources */,
 				0846AD9D215AA8CE0054D983 /* CatalogCell.swift in Sources */,
 				08995FF02159563F002F5A61 /* ItemDataModel.swift in Sources */,

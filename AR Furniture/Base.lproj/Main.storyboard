@@ -243,7 +243,13 @@
                                 <action selector="dismissCatalog:" destination="8Rt-Xx-ji6" id="fm7-7c-cqJ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="AUJ-h8-FmL"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="AUJ-h8-FmL">
+                            <connections>
+                                <segue destination="JMz-lV-pa4" kind="popoverPresentation" popoverAnchorBarButtonItem="AUJ-h8-FmL" id="0Nn-rg-Wnu">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="categoriesCollectionView" destination="XQE-Nh-ztP" id="d5P-PX-FPV"/>
@@ -400,6 +406,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l5R-yf-8S4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="44.927536231884062" y="705.13392857142856"/>
+        </scene>
+        <!--SearchController-->
+        <scene sceneID="nV3-jQ-26j">
+            <objects>
+                <viewController restorationIdentifier="SearchController" storyboardIdentifier="SearchController" title="SearchController" id="JMz-lV-pa4" customClass="SearchController" customModule="AR_Furniture" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Td-VK-gzS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ng8-ZK-YvY">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="uoB-Fe-W81"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ReO-YF-Wc6">
+                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="N8y-YU-72w">
+                                    <size key="itemSize" width="175" height="157"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="1" minY="1" maxX="1" maxY="1"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="JMz-lV-pa4" id="UQT-Rh-RnZ"/>
+                                    <outlet property="delegate" destination="JMz-lV-pa4" id="ZoZ-LM-fj1"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ReO-YF-Wc6" firstAttribute="leading" secondItem="Phb-2g-1Pu" secondAttribute="leading" id="4Au-Q3-TZ9"/>
+                            <constraint firstItem="ReO-YF-Wc6" firstAttribute="bottom" secondItem="Phb-2g-1Pu" secondAttribute="bottom" id="5NE-jb-6zt"/>
+                            <constraint firstItem="ReO-YF-Wc6" firstAttribute="top" secondItem="ng8-ZK-YvY" secondAttribute="bottom" id="LBV-MI-VTa"/>
+                            <constraint firstItem="ng8-ZK-YvY" firstAttribute="leading" secondItem="Phb-2g-1Pu" secondAttribute="leading" id="RfF-sG-z8q"/>
+                            <constraint firstItem="ng8-ZK-YvY" firstAttribute="trailing" secondItem="Phb-2g-1Pu" secondAttribute="trailing" id="UGy-Hn-xUB"/>
+                            <constraint firstItem="ng8-ZK-YvY" firstAttribute="top" secondItem="Phb-2g-1Pu" secondAttribute="top" id="brv-x8-9IE"/>
+                            <constraint firstItem="Phb-2g-1Pu" firstAttribute="trailing" secondItem="ReO-YF-Wc6" secondAttribute="trailing" id="mec-8C-Vne"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Phb-2g-1Pu"/>
+                    </view>
+                    <connections>
+                        <outlet property="itemSearchBar" destination="ng8-ZK-YvY" id="8QT-vc-BHc"/>
+                        <outlet property="searchResultCollectionView" destination="ReO-YF-Wc6" id="1fE-4F-IqO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Hw-qB-oP0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2379.7101449275365" y="26.785714285714285"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HiO-3E-ECI">
