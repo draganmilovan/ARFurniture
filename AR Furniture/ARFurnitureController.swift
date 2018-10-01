@@ -66,6 +66,10 @@ class ARFurnitureController: UIViewController {
     
     @IBAction private func showManifactureInfo(_ sender: UIButton) {
         print("INFO Button Touched!")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let nc = storyboard.instantiateViewController(withIdentifier: "InfoNavigationController") as! UINavigationController
+     
+        show(nc, sender: self)
     }
     
 }

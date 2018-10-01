@@ -11,10 +11,12 @@ import MapKit
 
 class InfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    
-    
-    
     var infoDataManager = InfoDataManager()
+    
+    @IBAction func homeBtn(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 
     @IBOutlet weak var mapView: MKMapView!
     
