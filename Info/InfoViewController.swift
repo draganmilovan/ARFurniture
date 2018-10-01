@@ -53,7 +53,7 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
         let storeLocation = CLLocation(latitude: infoDataManager.items[indexPath.row].coordinates.lat , longitude: infoDataManager.items[indexPath.row].coordinates.long)
         let regionRadius: CLLocationDistance = 1000
         func centerMapOnLocation(location: CLLocation) {
-            let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius, regionRadius)
+            let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
             mapView.setRegion(coordinateRegion, animated: true)
         }
         centerMapOnLocation(location: storeLocation)
@@ -75,26 +75,6 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
      
         // picker selection
         let addressSelected = infoDataManager.items[pickerView.selectedRow(inComponent: 0)]
-<<<<<<< HEAD
-         
-       
-=======
-        
-        //put pin on the map
-        let pin = MKPointAnnotation()
-        pin.coordinate = CLLocationCoordinate2D(latitude: addressSelected.coordinates.lat, longitude: addressSelected.coordinates.long)
-        mapView.addAnnotation(pin)
-        
-        //center map
-        let storeLocation = CLLocation(latitude: addressSelected.coordinates.lat, longitude: addressSelected.coordinates.long)
-        let regionRadius: CLLocationDistance = 1000
-        func centerMapOnLocation(location: CLLocation) {
-            let coordinateRegion = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
-            mapView.setRegion(coordinateRegion, animated: true)
-        }
-        centerMapOnLocation(location: storeLocation)
-
->>>>>>> 5d48c55b4c8230cc9aaa9c2feca0ab6b72dc8cc2
     }
     
 }
