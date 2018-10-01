@@ -8,10 +8,12 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
-class InfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
+class InfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource,CLLocationManagerDelegate {
     
     var infoDataManager = InfoDataManager()
+    
     
     @IBAction func homeBtn(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
@@ -31,7 +33,29 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
    
     
     @IBAction func myLocation(_ sender: Any) {
-        tableView.reloadData()
+        // myLocation on map
+        let locationManager = CLLocationManager()
+
+        locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        }
+        
+        let myLoc = MKPointAnnotation()
+        //this should be user current location
+        myLoc.coordinate = (locationManager.location?.coordinate)!
+        
+        mapView.addAnnotation(myLoc)
+        mapView.mapType = MKMapType.standard
+        
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: myLoc.coordinate, span: span)
+        mapView.setRegion(region, animated: true)
+
+        
     }
     
     //tableview
@@ -78,5 +102,5 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
         // picker selection
         let addressSelected = infoDataManager.items[pickerView.selectedRow(inComponent: 0)]
     }
-    
+   
 }
