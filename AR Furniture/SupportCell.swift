@@ -12,4 +12,11 @@ class SupportCell: UICollectionViewCell {
     
     @IBOutlet private weak var infoLabel: UILabel!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.layer.masksToBounds = true
+        self.layer.cornerRadius = 16.0
+    }
+    
 }
