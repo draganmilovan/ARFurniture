@@ -89,23 +89,17 @@ extension CatalogViewController: UICollectionViewDataSource, UICollectionViewDel
         if collectionView == newItemsCollectionView {
             return createCell(for: collectionView,
                               at: indexPath,
-                              with: itemsDataManager.newItems,
-                              imageName: itemsDataManager.newItems[indexPath.item].catalogNumber!,
-                              itemName: itemsDataManager.newItems[indexPath.item].name!)
+                              with: itemsDataManager.newItems)
             
         } else if collectionView == categoriesCollectionView {
             return createCell(for: collectionView,
                               at: indexPath,
-                              with: itemsDataManager.categories,
-                              imageName: itemsDataManager.categories[indexPath.item],
-                              itemName: itemsDataManager.categories[indexPath.item])
+                              with: itemsDataManager.categories)
             
         } else {
             return createCell(for: collectionView,
                               at: indexPath,
-                              with: itemsDataManager.series,
-                              imageName: itemsDataManager.series[indexPath.item],
-                              itemName: itemsDataManager.series[indexPath.item])
+                              with: itemsDataManager.series)
             
         }
     }
@@ -134,7 +128,7 @@ fileprivate extension CatalogViewController {
     // Method return max number five when counting array items
     // Used in method(numberOfItemsInSection) for Collection View with max five items
     //
-    func countItems<T>(at array: [T]) -> Int {
+    func countItems<Element>(at array: [Element]) -> Int {
         var zeroToFive = 5
         
         if array.count < 5 {
@@ -148,13 +142,27 @@ fileprivate extension CatalogViewController {
     // Method for creating Collection View Cells
     // Collection View must have Max five items!
     //
-    func createCell<T>(for collectionView: UICollectionView, at indexPath: IndexPath, with array: [T], imageName: String, itemName: String ) -> UICollectionViewCell {
+    func createCell<Element>(for collectionView: UICollectionView, at indexPath: IndexPath, with array: [Element]) -> UICollectionViewCell {
+        guard let itemsDataManager = itemsDataManager else {
+            fatalError("Missing Data Manager!")
+        }
         
         let supportCell: SupportCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SupportCell", for: indexPath) as! SupportCell
         let cell: CatalogCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatalogCell", for: indexPath) as! CatalogCell
+    
+        var imageName: String
+        var itemName: String
+        
+        if collectionView == newItemsCollectionView {
+            imageName = (itemsDataManager.newItems[indexPath.item].catalogNumber)!
+            itemName = (itemsDataManager.newItems[indexPath.item].name)!
+            
+        } else {
+            imageName = array[indexPath.item] as! String
+            itemName = array[indexPath.item] as! String
+        }
         
         let cellData = CellData(imageName, itemName)
-        
         cell.cellData = cellData
         
         if array.count != 5 {
