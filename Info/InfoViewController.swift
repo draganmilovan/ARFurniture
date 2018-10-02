@@ -8,12 +8,11 @@
 
 import UIKit
 import MapKit
-import CoreLocation
 
-class InfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource,CLLocationManagerDelegate {
+class InfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,CLLocationManagerDelegate {
     
     var infoDataManager = InfoDataManager()
-    
+    var locationManager : CLLocationManager!
     
     @IBAction func homeBtn(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
@@ -23,39 +22,40 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var mapView: MKMapView!
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var pickerView: UIPickerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-    
-   
-    
-    @IBAction func myLocation(_ sender: Any) {
-        // myLocation on map
-        let locationManager = CLLocationManager()
-
+    func determineMyCurrentLocation() {
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
+            //locationManager.startUpdatingHeading()
         }
-        
-        let myLoc = MKPointAnnotation()
-        //this should be user current location
-        myLoc.coordinate = (locationManager.location?.coordinate)!
-        
-        mapView.addAnnotation(myLoc)
-        mapView.mapType = MKMapType.standard
-        
-        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        let region = MKCoordinateRegion(center: myLoc.coordinate, span: span)
-        mapView.setRegion(region, animated: true)
+    }
+    
+   
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
+    {
+        print("Error \(error)")
+    }
 
+    
+    @IBAction func myLocation(_ sender: Any) {
+       determineMyCurrentLocation()
+        locationManager.stopUpdatingLocation()
         
+        print(locationManager.location?.coordinate)
+        //
+//        let closest = coordinates.min(by:
+//        { $0.distance(from: userLocation) < $1.distance(from: userLocation) })
+        
+       
     }
     
     //tableview
@@ -85,22 +85,6 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
         centerMapOnLocation(location: storeLocation)
 
     }
-    //pickerview
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return infoDataManager.items.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return infoDataManager.items[row].address
-    }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-     
-        // picker selection
-        let addressSelected = infoDataManager.items[pickerView.selectedRow(inComponent: 0)]
-    }
    
 }
