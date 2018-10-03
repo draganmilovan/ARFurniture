@@ -83,7 +83,12 @@ extension SearchController: UICollectionViewDelegateFlowLayout {
         
         return CGSize(width: itemWidth, height: itemWidth)
     }
-
+    
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        itemSearchBar.resignFirstResponder()
+    }
+    
 }
 
 
