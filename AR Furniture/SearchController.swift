@@ -112,7 +112,7 @@ extension SearchController: UISearchBarDelegate {
         
         for item in items {
             for tag in item.descriptionTags! {
-                if predicate.evaluate(with: tag) {
+                if predicate.evaluate(with: tag), !searchedItems.contains(item) {
                     searchedItems.append(item)
                 }
             }

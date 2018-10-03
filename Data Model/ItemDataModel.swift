@@ -18,3 +18,17 @@ struct ItemDataModel: Decodable {
     let descriptionTags: [String]?
     
 }
+
+
+
+extension ItemDataModel: Hashable {
+    
+    var hashValue: Int {
+        return catalogNumber.hashValue ^ name.hashValue ^ seriesTag.hashValue ^ categoryTags!.hashValue ^ descriptionTags!.hashValue
+    }
+    
+    static func ==(i1: ItemDataModel, i2: ItemDataModel) -> Bool {
+        return i1.hashValue == i2.hashValue
+    }
+    
+}
