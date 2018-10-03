@@ -179,3 +179,18 @@ fileprivate extension CatalogViewController {
     }
     
 }
+
+
+
+extension CatalogViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "search" {
+            
+            let destinationVC = segue.destination as! SearchController
+            destinationVC.itemsDataManager = itemsDataManager
+        }
+    }
+    
+}

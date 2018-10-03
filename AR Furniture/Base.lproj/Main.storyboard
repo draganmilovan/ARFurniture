@@ -244,7 +244,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="AUJ-h8-FmL">
                             <connections>
-                                <segue destination="JMz-lV-pa4" kind="show" id="UvL-vS-bRt"/>
+                                <segue destination="JMz-lV-pa4" kind="show" identifier="search" id="UvL-vS-bRt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -393,6 +393,9 @@
                                     <constraint firstAttribute="height" constant="56" id="uoB-Fe-W81"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="JMz-lV-pa4" id="eMg-Jr-0Ce"/>
+                                </connections>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ReO-YF-Wc6">
                                 <rect key="frame" x="0.0" y="144" width="414" height="718"/>

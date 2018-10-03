@@ -19,6 +19,14 @@ class SearchController: UIViewController {
         }
     }
     
+    fileprivate var searchTerm: String? {
+        didSet {
+            searchingItems()
+        }
+    }
+    
+    fileprivate var searchedItems: [ItemDataModel] = []
+    
     @IBOutlet fileprivate weak var itemSearchBar: UISearchBar!
     @IBOutlet fileprivate weak var searchResultCollectionView: UICollectionView!
     
@@ -43,11 +51,15 @@ extension SearchController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return searchedItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: CatalogCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatalogCell", for: indexPath) as! CatalogCell
+        
+        let item = searchedItems[indexPath.item]
+        
+        cell.cellData = CellData(item.catalogNumber!, item.name!)
 
         return cell
     }
@@ -72,4 +84,46 @@ extension SearchController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: itemWidth, height: itemWidth)
     }
 
+}
+
+
+
+//MARK:- Methods for using Search Field
+extension SearchController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
+        if searchText.count == 0 {
+            searchTerm = nil
+            searchedItems.removeAll()
+            searchResultCollectionView.reloadData()
+            return
+        }
+        searchTerm = searchText
+    }
+    
+    
+    fileprivate func searchingItems() {
+        
+        guard let items = itemsDataManager?.items else { return }
+        guard let st = searchTerm else { return }
+        
+        let predicate = NSPredicate(format: "SELF contains[cd] %@", st)
+        
+        for item in items {
+            for tag in item.descriptionTags! {
+                if predicate.evaluate(with: tag) {
+                    searchedItems.append(item)
+                }
+            }
+        }
+        
+        searchResultCollectionView.reloadData()
+        
+        if searchedItems.count != 0 {
+            searchResultCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+        }
+        
+    }
+    
 }
