@@ -12,6 +12,7 @@
 		08056A4B2155268900A8C853 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08056A492155268900A8C853 /* Main.storyboard */; };
 		08056A4D2155268A00A8C853 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08056A4C2155268A00A8C853 /* Assets.xcassets */; };
 		08056A502155268A00A8C853 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08056A4E2155268A00A8C853 /* LaunchScreen.storyboard */; };
+		08250851216644FB005B4303 /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08250850216644FB005B4303 /* ItemController.swift */; };
 		0846AD95215A68C00054D983 /* ItemsData.json in Resources */ = {isa = PBXBuildFile; fileRef = 0846AD94215A68C00054D983 /* ItemsData.json */; };
 		0846AD97215A6A070054D983 /* ModelsCatalog.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 0846AD96215A6A070054D983 /* ModelsCatalog.scnassets */; };
 		0846AD99215A90B40054D983 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0846AD98215A90B40054D983 /* CatalogViewController.swift */; };
@@ -37,6 +38,7 @@
 		08056A4C2155268A00A8C853 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08056A4F2155268A00A8C853 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		08056A512155268A00A8C853 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08250850216644FB005B4303 /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
 		0846AD94215A68C00054D983 /* ItemsData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ItemsData.json; sourceTree = "<group>"; };
 		0846AD96215A6A070054D983 /* ModelsCatalog.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = ModelsCatalog.scnassets; sourceTree = "<group>"; };
 		0846AD98215A90B40054D983 /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				0846AD9C215AA8CE0054D983 /* CatalogCell.swift */,
 				0867DC08215E7F78001E00B4 /* SupportCell.swift */,
 				08E9BE1F21627DF600393246 /* SearchController.swift */,
+				08250850216644FB005B4303 /* ItemController.swift */,
 				08056A492155268900A8C853 /* Main.storyboard */,
 				0846AD9A215AA2700054D983 /* CatalogCell.xib */,
 				0867DC06215E7BAB001E00B4 /* SupportCell.xib */,
@@ -210,6 +213,7 @@
 				08056A482155268900A8C853 /* ARFurnitureController.swift in Sources */,
 				08056A462155268900A8C853 /* AppDelegate.swift in Sources */,
 				08E9BE2021627DF600393246 /* SearchController.swift in Sources */,
+				08250851216644FB005B4303 /* ItemController.swift in Sources */,
 				2424D3D6215A3F0D0061903A /* InfoDataManager.swift in Sources */,
 				0846AD9D215AA8CE0054D983 /* CatalogCell.swift in Sources */,
 				08995FF02159563F002F5A61 /* ItemDataModel.swift in Sources */,

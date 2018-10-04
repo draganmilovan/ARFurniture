@@ -261,6 +261,21 @@
             </objects>
             <point key="canvasLocation" x="1628" y="25.862068965517242"/>
         </scene>
+        <!--ItemController-->
+        <scene sceneID="4Wt-t2-lsW">
+            <objects>
+                <viewController title="ItemController" id="wgh-k2-n03" customClass="ItemController" customModule="AR_Furniture" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="g1R-ob-8ji">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="kR2-9X-cbC"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rp0-lr-WzS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2680" y="363"/>
+        </scene>
         <!--Info View Controller-->
         <scene sceneID="Y0I-cu-2yF">
             <objects>
