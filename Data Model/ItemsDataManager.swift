@@ -31,9 +31,10 @@ final class ItemsDataManager {
 }
 
 
+
 // MARK:- Items Data Manager private methods
 fileprivate extension ItemsDataManager {
-    
+
     //
     // Method for populating items Array
     //
@@ -41,45 +42,46 @@ fileprivate extension ItemsDataManager {
         guard let url = Bundle.main.path(forResource: "ItemsData", ofType: "json") else {
             fatalError("Missing ItemsData JSON!")
         }
+        
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: url))
-            
-            self.items = try JSONDecoder().decode([ItemDataModel].self, from: data)
+
+            items = try JSONDecoder().decode([ItemDataModel].self, from: data)
         }
         catch {
             print("JSON error")
         }
     }
-    
-    
+
+
     //
     // Method for populating categories Array
     //
     func populateCategories() {
         guard let items = items else { return }
         var ctgs: [String] = []
-        
-        items.compactMap {
-            ctgs.append(contentsOf: $0.categoryTags!)
+
+        ctgs = items.flatMap {
+            $0.categoryTags!
         }
-        
+
         ctgs.compactMap {
             if !categories.contains($0), $0 != "" {
                 categories.append($0)
             }
         }
-        
+
         categories.sort()
-        
+
     }
-    
-    
+
+
     //
     // Method for populating series Array
     //
     func populateSeries() {
         guard let items = items else { return }
-        
+
         items.compactMap {
             if !series.contains($0.seriesTag!), $0.seriesTag != "" {
                 series.append($0.seriesTag!)
@@ -87,16 +89,15 @@ fileprivate extension ItemsDataManager {
         }
         
         series.sort()
-        
     }
-    
-    
+
+
     //
     // Method for populating newItems Array
     //
     func populateNewItems() {
         guard let items = items else { return }
-        
+
         newItems = items.filter {
             $0.descriptionTags!.contains("novo")
         }
