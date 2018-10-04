@@ -22,4 +22,15 @@
             "long" : 19.843598
              }
     },
+    {
+        "name" : "Čair",
+        "address" : "Niš",
+        "tel" : "+381181234567",
+        "email" : "cair@gmail.com",
+        "hours" : "08:00 - 20:00",
+        "coordinates" : {
+            "lat" : 43.314812,
+            "long" : 21.906664
+        }
+    }
 ]

@@ -39,9 +39,9 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
         if location.horizontalAccuracy > 0 {
            
             locationManager.stopUpdatingLocation()
+            closestDestination()
             
         }
-        print(location.coordinate)
     }
    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
@@ -51,17 +51,42 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     
+        
+
     @IBAction func myLocation(_ sender: Any) {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
-        if CLLocationManager.locationServicesEnabled() {
+       if CLLocationManager.locationServicesEnabled() {
         locationManager.startUpdatingLocation()
         }
         
-//        let closest = coordinates.min(by:
-//        { $0.distance(from: userLocation) < $1.distance(from: userLocation) })
-       
+        
+    }
+    func closestDestination (){
+        
+        let storeCoordinates = infoDataManager.items.map{$0.coordinates}
+        
+        let new = locationManager.location 
+    
+    
+        
+        let loc = storeCoordinates.map{CLLocation(latitude: $0.lat, longitude: $0.long)}
+        
+        
+        
+        let closest = loc.min(by:
+        { $0.distance(from: new! ) < $1.distance(from:new!) })
+        print(closest)
+        
+        let storeLocation = closest
+        let regionRadius: CLLocationDistance = 1000
+        func centerMapOnLocation(location: CLLocation) {
+            let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+            mapView.setRegion(coordinateRegion, animated: true)
+        }
+        centerMapOnLocation(location: storeLocation!)
+
     }
     
     //tableview
@@ -77,9 +102,7 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //put pin on the map
-        let pin = MKPointAnnotation()
-        pin.coordinate = CLLocationCoordinate2D(latitude: infoDataManager.items[indexPath.row].coordinates.lat , longitude: infoDataManager.items[indexPath.row].coordinates.long)
-        mapView.addAnnotation(pin)
+        
         
         //center map
         let storeLocation = CLLocation(latitude: infoDataManager.items[indexPath.row].coordinates.lat , longitude: infoDataManager.items[indexPath.row].coordinates.long)
@@ -91,6 +114,12 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
         centerMapOnLocation(location: storeLocation)
 
     }
-    
+//    func putPinsOnTheMap() {
+//        let storeCoordinates = infoDataManager.items.map{$0.coordinates}
+//        let loc = storeCoordinates.map{CLLocationCoordinate2D(latitude: $0.lat, longitude: $0.long)}
+//        let pin = [MKPointAnnotation]()
+//      let  pins = pin.map {MKPointAnnotation(   }
+//        mapView.addAnnotation(pin)
+//    }
    
 }
