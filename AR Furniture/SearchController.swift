@@ -90,6 +90,17 @@ extension SearchController: UICollectionViewDelegateFlowLayout {
     }
     
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let ic = storyboard.instantiateViewController(withIdentifier: "ItemController") as! ItemController
+        
+        ic.item = searchedItems[indexPath.item]
+
+        show(ic, sender: self)
+    }
+    
+    
     //
     // Method for jump on top of Collection View
     //

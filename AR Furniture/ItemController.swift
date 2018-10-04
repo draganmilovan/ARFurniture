@@ -9,22 +9,54 @@
 import UIKit
 
 class ItemController: UIViewController {
+    
+    var item: ItemDataModel? {
+        didSet {
+            if !self.isViewLoaded { return }
 
+            populateUI()
+        }
+    }
+
+    @IBOutlet fileprivate weak var itemImageView: UIImageView!
+    @IBOutlet weak var itemInfoLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        populateUI()
+    }
 
-        // Do any additional setup after loading the view.
+    
+    @IBAction private func addToFavorites(_ sender: UIButton) {
+        print("Add/remove to/from Favories!")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction private func tryItem(_ sender: UIButton) {
+        
     }
-    */
+    
+}
 
+
+
+//Mark:- Item Controller private methods
+fileprivate extension ItemController {
+    
+    //
+    // Method for populating UI
+    //
+    func populateUI() {
+        guard let item = item else { return }
+        
+        if let imageName = item.catalogNumber {
+            itemImageView.image = UIImage(named: imageName)
+        }
+        
+        if let name = item.name {
+            itemInfoLabel.text = name
+        }
+    }
+    
 }

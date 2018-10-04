@@ -261,16 +261,72 @@
             </objects>
             <point key="canvasLocation" x="1628" y="25.862068965517242"/>
         </scene>
-        <!--ItemController-->
+        <!--Item Controller-->
         <scene sceneID="4Wt-t2-lsW">
             <objects>
-                <viewController title="ItemController" id="wgh-k2-n03" customClass="ItemController" customModule="AR_Furniture" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItemController" id="wgh-k2-n03" customClass="ItemController" customModule="AR_Furniture" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g1R-ob-8ji">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="CM8-0C-DIJ">
+                                <rect key="frame" x="0.0" y="88" width="414" height="414"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="CM8-0C-DIJ" secondAttribute="height" multiplier="1:1" id="7hs-W9-g1o"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JLS-HV-6ef">
+                                <rect key="frame" x="182" y="556.5" width="50" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.80194722170427124" blue="0.0483412261882048" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="df2-rj-lm6"/>
+                                    <constraint firstAttribute="width" constant="50" id="uKl-aZ-89Y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="FAV">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="addToFavorites:" destination="wgh-k2-n03" eventType="touchUpInside" id="fKK-hh-VKC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eq5-kn-VfV">
+                                <rect key="frame" x="167.5" y="642.5" width="79" height="38"/>
+                                <color key="backgroundColor" red="0.21652558299800928" green="0.55001623263875921" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="PROBAJ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="tryItem:" destination="wgh-k2-n03" eventType="touchUpInside" id="Kdl-hv-waF"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100000$" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="940-bs-3UX">
+                                <rect key="frame" x="8" y="510" width="398" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kR2-9X-cbC" firstAttribute="trailing" secondItem="CM8-0C-DIJ" secondAttribute="trailing" id="7WI-O5-dwm"/>
+                            <constraint firstItem="CM8-0C-DIJ" firstAttribute="top" secondItem="kR2-9X-cbC" secondAttribute="top" id="F4L-rk-Elw"/>
+                            <constraint firstItem="CM8-0C-DIJ" firstAttribute="leading" secondItem="kR2-9X-cbC" secondAttribute="leading" id="Lt5-p7-L7f"/>
+                            <constraint firstItem="eq5-kn-VfV" firstAttribute="top" secondItem="JLS-HV-6ef" secondAttribute="bottom" constant="36" id="Sn8-IM-MF7"/>
+                            <constraint firstItem="940-bs-3UX" firstAttribute="leading" secondItem="kR2-9X-cbC" secondAttribute="leading" constant="8" id="Vi0-s1-aNn"/>
+                            <constraint firstItem="kR2-9X-cbC" firstAttribute="trailing" secondItem="940-bs-3UX" secondAttribute="trailing" constant="8" id="aWP-m3-PNc"/>
+                            <constraint firstItem="JLS-HV-6ef" firstAttribute="top" secondItem="940-bs-3UX" secondAttribute="bottom" constant="21" id="imi-BL-ldc"/>
+                            <constraint firstItem="eq5-kn-VfV" firstAttribute="centerX" secondItem="g1R-ob-8ji" secondAttribute="centerX" id="jgG-4y-Zlz"/>
+                            <constraint firstItem="JLS-HV-6ef" firstAttribute="centerX" secondItem="g1R-ob-8ji" secondAttribute="centerX" id="nBL-hj-wGj"/>
+                            <constraint firstItem="940-bs-3UX" firstAttribute="top" secondItem="CM8-0C-DIJ" secondAttribute="bottom" constant="8" id="rOE-k4-C8a"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="kR2-9X-cbC"/>
                     </view>
+                    <connections>
+                        <outlet property="itemImageView" destination="CM8-0C-DIJ" id="C2Q-Jm-gyO"/>
+                        <outlet property="itemInfoLabel" destination="940-bs-3UX" id="ivC-bm-2Qs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rp0-lr-WzS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -443,6 +499,7 @@
                     <connections>
                         <outlet property="itemSearchBar" destination="ng8-ZK-YvY" id="8QT-vc-BHc"/>
                         <outlet property="searchResultCollectionView" destination="ReO-YF-Wc6" id="1fE-4F-IqO"/>
+                        <segue destination="wgh-k2-n03" kind="show" id="Slb-EW-gFx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Hw-qB-oP0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -487,4 +544,7 @@
             <point key="canvasLocation" x="25" y="704"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="1" width="848" height="848"/>
+    </resources>
 </document>
