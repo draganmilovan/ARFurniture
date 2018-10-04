@@ -418,6 +418,12 @@
                                     <action selector="myLocation:" destination="g7Z-t3-Qcm" eventType="touchUpInside" id="94J-Zy-5I9"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4O-dq-cAU">
+                                <rect key="frame" x="280" y="475" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -430,7 +436,9 @@
                             <constraint firstItem="hlx-Rf-DeI" firstAttribute="trailing" secondItem="zLB-rb-Z9B" secondAttribute="trailing" id="TLO-Zw-EuI"/>
                             <constraint firstItem="zLB-rb-Z9B" firstAttribute="top" secondItem="X0U-9p-Xog" secondAttribute="top" id="aqf-Mn-JmH"/>
                             <constraint firstItem="X0U-9p-Xog" firstAttribute="bottom" secondItem="wwK-Di-5yc" secondAttribute="bottom" id="btE-Um-8mf"/>
+                            <constraint firstItem="hlx-Rf-DeI" firstAttribute="leading" secondItem="D4O-dq-cAU" secondAttribute="trailing" id="qxX-8c-COK"/>
                             <constraint firstItem="wwK-Di-5yc" firstAttribute="trailing" secondItem="X0U-9p-Xog" secondAttribute="trailing" id="sfm-aH-iC6"/>
+                            <constraint firstItem="wwK-Di-5yc" firstAttribute="top" secondItem="D4O-dq-cAU" secondAttribute="bottom" id="zoH-Fw-ffv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="X0U-9p-Xog"/>
                     </view>
@@ -442,6 +450,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="locationStatusLbl" destination="D4O-dq-cAU" id="D3f-qo-v8b"/>
                         <outlet property="mapView" destination="zLB-rb-Z9B" id="2rn-yy-iVY"/>
                         <outlet property="tableView" destination="wwK-Di-5yc" id="drD-os-hQA"/>
                     </connections>
@@ -545,6 +554,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1" width="848" height="848"/>
+        <image name="1" width="424" height="424"/>
     </resources>
 </document>

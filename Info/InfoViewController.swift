@@ -8,11 +8,13 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class InfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,CLLocationManagerDelegate {
     
     var infoDataManager = InfoDataManager()
-    var locationManager : CLLocationManager!
+    var locationManager = CLLocationManager()
+    @IBOutlet weak var locationStatusLbl: UILabel!
     
     @IBAction func homeBtn(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
@@ -26,35 +28,39 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-    }
-    func determineMyCurrentLocation() {
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
+    
         
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
-            //locationManager.startUpdatingHeading()
-        }
+    
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations[locations.count-1]
+       
+        if location.horizontalAccuracy > 0 {
+           
+            locationManager.stopUpdatingLocation()
+            
+        }
+        print(location.coordinate)
+    }
    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
     {
         print("Error \(error)")
+        locationStatusLbl.text = "Nije moguće utvrditi lokaciju"
     }
 
     
     @IBAction func myLocation(_ sender: Any) {
-       determineMyCurrentLocation()
-        locationManager.stopUpdatingLocation()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+        locationManager.startUpdatingLocation()
+        }
         
-        print(locationManager.location?.coordinate)
-        //
 //        let closest = coordinates.min(by:
 //        { $0.distance(from: userLocation) < $1.distance(from: userLocation) })
-        
        
     }
     
