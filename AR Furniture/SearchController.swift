@@ -21,7 +21,7 @@ class SearchController: UIViewController {
     
     fileprivate var searchTerm: String? {
         didSet {
-            searchingItems()
+            searchingForItems()
         }
     }
     
@@ -89,6 +89,17 @@ extension SearchController: UICollectionViewDelegateFlowLayout {
         itemSearchBar.resignFirstResponder()
     }
     
+    
+    //
+    // Method for jump on top of Collection View
+    //
+    fileprivate func scrollToTop() {
+        let indexPath = IndexPath(item: 0, section: 0)
+        searchResultCollectionView.scrollToItem(at: indexPath,
+                                                at: .top,
+                                                animated: true)
+    }
+    
 }
 
 
@@ -98,9 +109,11 @@ extension SearchController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 
+        searchedItems.removeAll()
+        
         if searchText.count == 0 {
             searchTerm = nil
-            searchedItems.removeAll()
+            //searchedItems.removeAll()
             searchResultCollectionView.reloadData()
             return
         }
@@ -108,7 +121,10 @@ extension SearchController: UISearchBarDelegate {
     }
     
     
-    fileprivate func searchingItems() {
+    //
+    // Method for search
+    //
+    fileprivate func searchingForItems() {
         
         guard let items = itemsDataManager?.items else { return }
         guard let st = searchTerm else { return }
@@ -117,7 +133,7 @@ extension SearchController: UISearchBarDelegate {
         
         for item in items {
             for tag in item.descriptionTags! {
-                if predicate.evaluate(with: tag), !searchedItems.contains(item) {
+                if !searchedItems.contains(item), predicate.evaluate(with: tag) {
                     searchedItems.append(item)
                 }
             }
@@ -126,9 +142,8 @@ extension SearchController: UISearchBarDelegate {
         searchResultCollectionView.reloadData()
         
         if searchedItems.count != 0 {
-            searchResultCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+            scrollToTop()
         }
-        
     }
     
 }
