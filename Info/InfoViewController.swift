@@ -29,8 +29,7 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     
-        
-    
+addAnnotations()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -114,12 +113,29 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
         centerMapOnLocation(location: storeLocation)
 
     }
-//    func putPinsOnTheMap() {
-//        let storeCoordinates = infoDataManager.items.map{$0.coordinates}
-//        let loc = storeCoordinates.map{CLLocationCoordinate2D(latitude: $0.lat, longitude: $0.long)}
-//        let pin = [MKPointAnnotation]()
-//      let  pins = pin.map {MKPointAnnotation(   }
-//        mapView.addAnnotation(pin)
-//    }
+    
+        
+        
+        
+        func addAnnotations(){
+            let storeCoordinates = infoDataManager.items.map{$0.coordinates}
+            let coords = storeCoordinates.map{CLLocation(latitude: $0.lat, longitude: $0.long)}
+            for coord in coords{
+                let CLLCoordType = CLLocationCoordinate2D(latitude: coord.coordinate.latitude,
+                                                          longitude: coord.coordinate.longitude);
+                let anno = MKPointAnnotation()
+                anno.coordinate = CLLCoordType
+                mapView.addAnnotation(anno)
+            }
+            let regionRadius: CLLocationDistance = 500000
+            let locMap = CLLocationCoordinate2D(latitude: 44.809909, longitude: 20.433341)
+                let coordinateRegion = MKCoordinateRegion(center: locMap , latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+                mapView.setRegion(coordinateRegion, animated: false)
+            
+        }
+        
+        
+        
+    
    
 }
