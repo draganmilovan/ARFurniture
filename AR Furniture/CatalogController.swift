@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CatalogViewController: UIViewController {
+class CatalogController: UIViewController {
     
     // Data source
     var itemsDataManager: ItemsDataManager? {
@@ -54,8 +54,8 @@ class CatalogViewController: UIViewController {
 
 
 
-//MARK:- Collection View Protocol Methods
-extension CatalogViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+//MARK:- Collection View Data Source Protocol Methods
+extension CatalogController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -104,25 +104,74 @@ extension CatalogViewController: UICollectionViewDataSource, UICollectionViewDel
         }
     }
     
+}
+
+
+
+//Mark:- Collection View Flow Layout Protocol Methods
+extension CatalogController: UICollectionViewDelegateFlowLayout {
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-//        let availableWidth = collectionView.bounds.size.width
-//        let columns: CGFloat = 3
-//
-//        let availableItemWidth = availableWidth - (columns - 1) * flowLayout.minimumInteritemSpacing - flowLayout.sectionInset.left - flowLayout.sectionInset.right
-//
-//        let itemWidth = availableItemWidth / columns
-//
-//        return CGSize(width: itemWidth, height: itemWidth)
-//    }
+    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    //
+    //        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+    //        let availableWidth = collectionView.bounds.size.width
+    //        let columns: CGFloat = 3
+    //
+    //        let availableItemWidth = availableWidth - (columns - 1) * flowLayout.minimumInteritemSpacing - flowLayout.sectionInset.left - flowLayout.sectionInset.right
+    //
+    //        let itemWidth = availableItemWidth / columns
+    //
+    //        return CGSize(width: itemWidth, height: itemWidth)
+    //    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let itemsDataManager = itemsDataManager else {
+            fatalError("Missing Data Manager!")
+        }
+        
+        if collectionView == newItemsCollectionView {
+            
+            if let cell = collectionView.cellForItem(at: indexPath) as? CatalogCell {
+                
+                print("Prikazi artikal \(cell.cellData!.name)")
+                
+            } else { print("Prikazi sve nove artikle")}
+            
+        } else if collectionView == categoriesCollectionView {
+            
+            if let cell = collectionView.cellForItem(at: indexPath) as? CatalogCell {
+                
+                print("Prikazi kategoriju: \(cell.cellData!.name)")
+                
+            } else {
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let ctvc = storyboard.instantiateViewController(withIdentifier: "CatalogTableViewController") as! CatalogTableViewController
+                let data = itemsDataManager
+                
+                ctvc.tableViewRawDatas = data
+                ctvc.title = "Kategorije"
+                
+                show(ctvc, sender: self)
+                
+                print("Prikazi sve kategorije")}
+            
+        } else {
+            
+            if let cell = collectionView.cellForItem(at: indexPath) as? CatalogCell {
+                
+                print("Prikazi seriju: \(cell.cellData!.name)")
+                
+            } else { print("Prikazi sve serije")}
+        }
+    }
+    
 }
 
 
 
 //MARK:- Collection View private methods
-fileprivate extension CatalogViewController {
+fileprivate extension CatalogController {
     
     //
     // Method return max number five when counting array items
@@ -178,11 +227,19 @@ fileprivate extension CatalogViewController {
         }
     }
     
+    
+    //
+    //
+    //
+    func showController(for data: UICollectionView) {
+        
+    }
+    
 }
 
 
 
-extension CatalogViewController {
+extension CatalogController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

@@ -49,7 +49,7 @@ class ARFurnitureController: UIViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nc = storyboard.instantiateViewController(withIdentifier: "ARFNavigationController") as! UINavigationController
-        let cvc = nc.topViewController as! CatalogViewController
+        let cvc = nc.topViewController as! CatalogController
         
         cvc.itemsDataManager = itemsDataManager
         

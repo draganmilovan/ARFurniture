@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		080349F42167AD4500CEABA5 /* CatalogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080349F32167AD4500CEABA5 /* CatalogTableViewController.swift */; };
+		080349F62167AFA200CEABA5 /* CatalogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080349F52167AFA200CEABA5 /* CatalogTableViewCell.swift */; };
 		08056A462155268900A8C853 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08056A452155268900A8C853 /* AppDelegate.swift */; };
 		08056A482155268900A8C853 /* ARFurnitureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08056A472155268900A8C853 /* ARFurnitureController.swift */; };
 		08056A4B2155268900A8C853 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08056A492155268900A8C853 /* Main.storyboard */; };
@@ -16,7 +17,7 @@
 		08250851216644FB005B4303 /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08250850216644FB005B4303 /* ItemController.swift */; };
 		0846AD95215A68C00054D983 /* ItemsData.json in Resources */ = {isa = PBXBuildFile; fileRef = 0846AD94215A68C00054D983 /* ItemsData.json */; };
 		0846AD97215A6A070054D983 /* ModelsCatalog.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 0846AD96215A6A070054D983 /* ModelsCatalog.scnassets */; };
-		0846AD99215A90B40054D983 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0846AD98215A90B40054D983 /* CatalogViewController.swift */; };
+		0846AD99215A90B40054D983 /* CatalogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0846AD98215A90B40054D983 /* CatalogController.swift */; };
 		0846AD9B215AA2700054D983 /* CatalogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0846AD9A215AA2700054D983 /* CatalogCell.xib */; };
 		0846AD9D215AA8CE0054D983 /* CatalogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0846AD9C215AA8CE0054D983 /* CatalogCell.swift */; };
 		0867DC07215E7BAB001E00B4 /* SupportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0867DC06215E7BAB001E00B4 /* SupportCell.xib */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		080349F32167AD4500CEABA5 /* CatalogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTableViewController.swift; sourceTree = "<group>"; };
+		080349F52167AFA200CEABA5 /* CatalogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTableViewCell.swift; sourceTree = "<group>"; };
 		08056A422155268900A8C853 /* AR Furniture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AR Furniture.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		08056A452155268900A8C853 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08056A472155268900A8C853 /* ARFurnitureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARFurnitureController.swift; sourceTree = "<group>"; };
@@ -43,7 +45,7 @@
 		08250850216644FB005B4303 /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
 		0846AD94215A68C00054D983 /* ItemsData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ItemsData.json; sourceTree = "<group>"; };
 		0846AD96215A6A070054D983 /* ModelsCatalog.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = ModelsCatalog.scnassets; sourceTree = "<group>"; };
-		0846AD98215A90B40054D983 /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
+		0846AD98215A90B40054D983 /* CatalogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogController.swift; sourceTree = "<group>"; };
 		0846AD9A215AA2700054D983 /* CatalogCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CatalogCell.xib; sourceTree = "<group>"; };
 		0846AD9C215AA8CE0054D983 /* CatalogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogCell.swift; sourceTree = "<group>"; };
 		0867DC06215E7BAB001E00B4 /* SupportCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SupportCell.xib; sourceTree = "<group>"; };
@@ -92,12 +94,13 @@
 			isa = PBXGroup;
 			children = (
 				08056A472155268900A8C853 /* ARFurnitureController.swift */,
-				0846AD98215A90B40054D983 /* CatalogViewController.swift */,
+				0846AD98215A90B40054D983 /* CatalogController.swift */,
 				0846AD9C215AA8CE0054D983 /* CatalogCell.swift */,
 				0867DC08215E7F78001E00B4 /* SupportCell.swift */,
 				08E9BE1F21627DF600393246 /* SearchController.swift */,
 				08250850216644FB005B4303 /* ItemController.swift */,
 				080349F32167AD4500CEABA5 /* CatalogTableViewController.swift */,
+				080349F52167AFA200CEABA5 /* CatalogTableViewCell.swift */,
 				08056A492155268900A8C853 /* Main.storyboard */,
 				0846AD9A215AA2700054D983 /* CatalogCell.xib */,
 				0867DC06215E7BAB001E00B4 /* SupportCell.xib */,
@@ -208,7 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0846AD99215A90B40054D983 /* CatalogViewController.swift in Sources */,
+				0846AD99215A90B40054D983 /* CatalogController.swift in Sources */,
 				0867DC09215E7F78001E00B4 /* SupportCell.swift in Sources */,
 				24BC2A7C215BCC9900066658 /* StoreInfoTableViewCell.swift in Sources */,
 				08995FF2215958BC002F5A61 /* ItemsDataManager.swift in Sources */,
@@ -217,6 +220,7 @@
 				08056A462155268900A8C853 /* AppDelegate.swift in Sources */,
 				08E9BE2021627DF600393246 /* SearchController.swift in Sources */,
 				080349F42167AD4500CEABA5 /* CatalogTableViewController.swift in Sources */,
+				080349F62167AFA200CEABA5 /* CatalogTableViewCell.swift in Sources */,
 				08250851216644FB005B4303 /* ItemController.swift in Sources */,
 				2424D3D6215A3F0D0061903A /* InfoDataManager.swift in Sources */,
 				0846AD9D215AA8CE0054D983 /* CatalogCell.swift in Sources */,

@@ -103,7 +103,7 @@
         <!--Katalog-->
         <scene sceneID="tLb-Yg-Tye">
             <objects>
-                <viewController storyboardIdentifier="CatalogViewController" id="8Rt-Xx-ji6" customClass="CatalogViewController" customModule="AR_Furniture" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CatalogController" id="8Rt-Xx-ji6" customClass="CatalogController" customModule="AR_Furniture" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cOF-yx-f1n">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -264,7 +264,7 @@
         <!--Catalog Table View Controller-->
         <scene sceneID="iec-U6-ySL">
             <objects>
-                <viewController id="ni4-c5-XK3" customClass="CatalogTableViewController" customModule="AR_Furniture" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CatalogTableViewController" id="ni4-c5-XK3" customClass="CatalogTableViewController" customModule="AR_Furniture" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NrY-3b-HgC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -273,7 +273,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="114" id="f7p-pw-92T">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CatalogTableViewCell" rowHeight="114" id="f7p-pw-92T" customClass="CatalogTableViewCell" customModule="AR_Furniture" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="114"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="f7p-pw-92T" id="ak4-LJ-vim">
@@ -306,8 +306,15 @@
                                                 <constraint firstItem="KEE-io-CpL" firstAttribute="top" secondItem="ak4-LJ-vim" secondAttribute="top" id="tJf-2q-TqR"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="rowNameLabel" destination="3rh-zY-xmq" id="k8v-1X-9LX"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ni4-c5-XK3" id="Gly-h9-ldA"/>
+                                    <outlet property="delegate" destination="ni4-c5-XK3" id="tb5-8W-WQt"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
