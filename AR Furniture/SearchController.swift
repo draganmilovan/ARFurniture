@@ -91,11 +91,12 @@ extension SearchController: UICollectionViewDelegateFlowLayout {
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let ic = storyboard.instantiateViewController(withIdentifier: "ItemController") as! ItemController
+        let item = searchedItems[indexPath.item]
         
-        ic.item = searchedItems[indexPath.item]
+        ic.item = item
+        ic.title = item.name
 
         show(ic, sender: self)
     }

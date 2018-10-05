@@ -10,6 +10,7 @@ import UIKit
 
 class ItemController: UIViewController {
     
+    // Data source
     var item: ItemDataModel? {
         didSet {
             if !self.isViewLoaded { return }
