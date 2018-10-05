@@ -10,6 +10,17 @@
             "long" : 20.433341
         }
     },
+    {
+        "name" : "Pinki",
+        "address" : "Zemun",
+        "tel" : "+381111234577",
+        "email" : "pinki@gmail.com",
+        "hours" : "08:00 - 20:00",
+        "coordinates" : {
+            "lat" : 44.840352,
+            "long" : 20.411133
+        }
+    },
     
     {
         "name" : "Spens",
