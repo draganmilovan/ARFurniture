@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		080349F42167AD4500CEABA5 /* CatalogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080349F32167AD4500CEABA5 /* CatalogTableViewController.swift */; };
 		08056A462155268900A8C853 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08056A452155268900A8C853 /* AppDelegate.swift */; };
 		08056A482155268900A8C853 /* ARFurnitureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08056A472155268900A8C853 /* ARFurnitureController.swift */; };
 		08056A4B2155268900A8C853 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08056A492155268900A8C853 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		080349F32167AD4500CEABA5 /* CatalogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTableViewController.swift; sourceTree = "<group>"; };
 		08056A422155268900A8C853 /* AR Furniture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AR Furniture.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		08056A452155268900A8C853 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08056A472155268900A8C853 /* ARFurnitureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARFurnitureController.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				0867DC08215E7F78001E00B4 /* SupportCell.swift */,
 				08E9BE1F21627DF600393246 /* SearchController.swift */,
 				08250850216644FB005B4303 /* ItemController.swift */,
+				080349F32167AD4500CEABA5 /* CatalogTableViewController.swift */,
 				08056A492155268900A8C853 /* Main.storyboard */,
 				0846AD9A215AA2700054D983 /* CatalogCell.xib */,
 				0867DC06215E7BAB001E00B4 /* SupportCell.xib */,
@@ -213,6 +216,7 @@
 				08056A482155268900A8C853 /* ARFurnitureController.swift in Sources */,
 				08056A462155268900A8C853 /* AppDelegate.swift in Sources */,
 				08E9BE2021627DF600393246 /* SearchController.swift in Sources */,
+				080349F42167AD4500CEABA5 /* CatalogTableViewController.swift in Sources */,
 				08250851216644FB005B4303 /* ItemController.swift in Sources */,
 				2424D3D6215A3F0D0061903A /* InfoDataManager.swift in Sources */,
 				0846AD9D215AA8CE0054D983 /* CatalogCell.swift in Sources */,
