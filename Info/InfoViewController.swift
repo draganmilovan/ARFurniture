@@ -47,8 +47,7 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
     {
         print("Error \(error)")
-        locationStatusLbl.text = "Nije moguće utvrditi lokaciju"
-
+        
     }
     
     func openSettings() {
@@ -61,21 +60,25 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
-       
+        
         if CLLocationManager.locationServicesEnabled() {
             switch CLLocationManager.authorizationStatus() {
             case .notDetermined, .restricted :
                 print("No access")
-
+                
             case .authorizedAlways, .authorizedWhenInUse:
                 print("Access")
+                locationStatusLbl.isHidden = true
                 locationManager.startUpdatingLocation()
-
+                
             case .denied:
                 print("Location services are not enabled")
+                
                 openSettings()
+                
+                locationStatusLbl.text = "Nije moguće utvrditi lokaciju"
             }
-       
+            
         }
         
         
@@ -92,8 +95,8 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         
-     guard   let closestStoreLocation = loc.min(by:
-        { $0.distance(from: new ) < $1.distance(from:new) }) else {return}
+        guard   let closestStoreLocation = loc.min(by:
+            { $0.distance(from: new ) < $1.distance(from:new) }) else {return}
         print(closestStoreLocation)
         
         let regionRadius: CLLocationDistance = 1000
@@ -156,4 +159,5 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
 }
+
 
