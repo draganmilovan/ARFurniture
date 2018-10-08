@@ -149,12 +149,11 @@ extension CatalogController: UICollectionViewDelegateFlowLayout {
                 let ctvc = storyboard.instantiateViewController(withIdentifier: "CatalogTableViewController") as! CatalogTableViewController
                 let data = itemsDataManager
                 
-                ctvc.tableViewRawDatas = data
+                ctvc.itemsDataManager = data
                 ctvc.title = "Kategorije"
                 
                 show(ctvc, sender: self)
-                
-                print("Prikazi sve kategorije")}
+            }
             
         } else {
             
@@ -162,7 +161,17 @@ extension CatalogController: UICollectionViewDelegateFlowLayout {
                 
                 print("Prikazi seriju: \(cell.cellData!.name)")
                 
-            } else { print("Prikazi sve serije")}
+            } else {
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let ctvc = storyboard.instantiateViewController(withIdentifier: "CatalogTableViewController") as! CatalogTableViewController
+                let data = itemsDataManager
+                
+                ctvc.itemsDataManager = data
+                ctvc.title = "Serije"
+                
+                show(ctvc, sender: self)
+            }
         }
     }
     
