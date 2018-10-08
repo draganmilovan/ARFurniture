@@ -337,7 +337,7 @@
         <!--Items Collection Controller-->
         <scene sceneID="2w1-Kz-CBn">
             <objects>
-                <viewController id="dud-xF-1uj" customClass="ItemsCollectionController" customModule="AR_Furniture" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItemsCollectionController" id="dud-xF-1uj" customClass="ItemsCollectionController" customModule="AR_Furniture" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hy0-4W-2h5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

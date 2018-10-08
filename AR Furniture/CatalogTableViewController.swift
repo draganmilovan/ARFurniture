@@ -70,6 +70,24 @@ extension CatalogTableViewController: UITableViewDataSource {
 //Mark:- Table View Delegate Methods
 extension CatalogTableViewController: UITableViewDelegate {
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let itemsDataManager = itemsDataManager else {
+            fatalError("Missing Items Data Manager!")
+        }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let icc = storyboard.instantiateViewController(withIdentifier: "ItemsCollectionController") as! ItemsCollectionController
+        
+        if self.title == "Kategorije" {
+            let category = itemsDataManager.categories[indexPath.row]
+            icc.items = itemsDataManager.searchForItemsBy(category: category)
+            icc.title = category
+        } else {
+            let serie = itemsDataManager.series[indexPath.row]
+            icc.items = itemsDataManager.searchItemsBy(serie: serie)
+            icc.title = serie
+        }
+        
+        show(icc, sender: self)
+    }
     
 }

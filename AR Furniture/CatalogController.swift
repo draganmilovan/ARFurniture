@@ -131,18 +131,38 @@ extension CatalogController: UICollectionViewDelegateFlowLayout {
         
         if collectionView == newItemsCollectionView {
             
-            if let cell = collectionView.cellForItem(at: indexPath) as? CatalogCell {
+            if (collectionView.cellForItem(at: indexPath) as? CatalogCell) != nil {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let ic = storyboard.instantiateViewController(withIdentifier: "ItemController") as! ItemController
+                let item = itemsDataManager.newItems[indexPath.item]
                 
-                print("Prikazi artikal \(cell.cellData!.name)")
+                ic.item = item
+                ic.title = item.name
                 
-            } else { print("Prikazi sve nove artikle")}
+                show(ic, sender: self)
+                
+            } else {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let icc = storyboard.instantiateViewController(withIdentifier: "ItemsCollectionController") as! ItemsCollectionController
+                
+                icc.items = itemsDataManager.newItems
+                icc.title = "Novo"
+                
+                show(icc, sender: self)
+            }
             
         } else if collectionView == categoriesCollectionView {
             
             if let cell = collectionView.cellForItem(at: indexPath) as? CatalogCell {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let icc = storyboard.instantiateViewController(withIdentifier: "ItemsCollectionController") as! ItemsCollectionController
+                let category = cell.cellData!.name
                 
-                print("Prikazi kategoriju: \(cell.cellData!.name)")
+                icc.items = itemsDataManager.searchForItemsBy(category: category)
+                icc.title = category
                 
+                show(icc, sender: self)
+
             } else {
                 
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -158,8 +178,13 @@ extension CatalogController: UICollectionViewDelegateFlowLayout {
         } else {
             
             if let cell = collectionView.cellForItem(at: indexPath) as? CatalogCell {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let icc = storyboard.instantiateViewController(withIdentifier: "ItemsCollectionController") as! ItemsCollectionController
+                let serie = cell.cellData!.name
+                icc.items = itemsDataManager.searchItemsBy(serie: serie)
+                icc.title = serie
                 
-                print("Prikazi seriju: \(cell.cellData!.name)")
+                show(icc, sender: self)
                 
             } else {
                 

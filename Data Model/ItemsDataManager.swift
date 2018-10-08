@@ -104,3 +104,33 @@ fileprivate extension ItemsDataManager {
     }
     
 }
+
+
+
+//Mark:- Items Data Manager methods
+extension ItemsDataManager {
+    
+    //
+    // Method
+    //
+    func searchForItemsBy(category: String) -> [ItemDataModel] {
+        guard let items = items else { return [] }
+        
+        return items.filter {
+            ($0.categoryTags?.contains(category))!
+        }
+    }
+    
+    
+    //
+    // Method
+    //
+    func searchItemsBy(serie: String) -> [ItemDataModel] {
+        guard let items = items else { return [] }
+        
+        return items.filter {
+            ($0.seriesTag?.contains(serie))!
+        }
+    }
+    
+}
