@@ -40,6 +40,7 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
             locationManager.stopUpdatingLocation()
             closestDestination()
             
+            
         }
     }
     
@@ -47,17 +48,34 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
     {
         print("Error \(error)")
         locationStatusLbl.text = "Nije moguće utvrditi lokaciju"
+
     }
     
-    
+    func openSettings() {
+        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, completionHandler: nil)
+        
+    }
     
     
     @IBAction func myLocation(_ sender: Any) {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
+       
         if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
+            switch CLLocationManager.authorizationStatus() {
+            case .notDetermined, .restricted :
+                print("No access")
+
+            case .authorizedAlways, .authorizedWhenInUse:
+                print("Access")
+                locationManager.startUpdatingLocation()
+
+            case .denied:
+                print("Location services are not enabled")
+                openSettings()
+            }
+       
         }
         
         
@@ -66,7 +84,7 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let storeCoordinates = infoDataManager.items.map{$0.coordinates}
         
-        let new = locationManager.location
+        guard  let new = locationManager.location else {return}
         
         
         
@@ -75,7 +93,7 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         let closest = loc.min(by:
-        { $0.distance(from: new! ) < $1.distance(from:new!) })
+        { $0.distance(from: new ) < $1.distance(from:new) })
         print(closest)
         
         let storeLocation = closest
