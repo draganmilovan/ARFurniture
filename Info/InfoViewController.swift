@@ -92,17 +92,16 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         
-        let closest = loc.min(by:
-        { $0.distance(from: new ) < $1.distance(from:new) })
-        print(closest)
+     guard   let closestStoreLocation = loc.min(by:
+        { $0.distance(from: new ) < $1.distance(from:new) }) else {return}
+        print(closestStoreLocation)
         
-        let storeLocation = closest
         let regionRadius: CLLocationDistance = 1000
         func centerMapOnLocation(location: CLLocation) {
             let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
             mapView.setRegion(coordinateRegion, animated: true)
         }
-        centerMapOnLocation(location: storeLocation!)
+        centerMapOnLocation(location: closestStoreLocation)
         
     }
     
