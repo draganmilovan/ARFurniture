@@ -334,6 +334,47 @@
             </objects>
             <point key="canvasLocation" x="2515.9420289855075" y="382.36607142857139"/>
         </scene>
+        <!--Items Collection Controller-->
+        <scene sceneID="2w1-Kz-CBn">
+            <objects>
+                <viewController id="dud-xF-1uj" customClass="ItemsCollectionController" customModule="AR_Furniture" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hy0-4W-2h5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tE2-Fq-bWP">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="v3s-SM-OgR">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="dud-xF-1uj" id="RMM-0W-0Iy"/>
+                                    <outlet property="delegate" destination="dud-xF-1uj" id="JIc-XR-jaw"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tE2-Fq-bWP" firstAttribute="top" secondItem="A0I-hJ-B2t" secondAttribute="top" id="8C2-rh-ulG"/>
+                            <constraint firstItem="A0I-hJ-B2t" firstAttribute="trailing" secondItem="tE2-Fq-bWP" secondAttribute="trailing" id="H32-CF-E9l"/>
+                            <constraint firstItem="tE2-Fq-bWP" firstAttribute="leading" secondItem="A0I-hJ-B2t" secondAttribute="leading" id="PnF-6C-2SP"/>
+                            <constraint firstItem="A0I-hJ-B2t" firstAttribute="bottom" secondItem="tE2-Fq-bWP" secondAttribute="bottom" id="r6o-Zb-KP0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="A0I-hJ-B2t"/>
+                    </view>
+                    <connections>
+                        <outlet property="itemsCollectionViewController" destination="tE2-Fq-bWP" id="gio-qU-XZ5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JI6-5K-FX4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3355" y="382"/>
+        </scene>
         <!--Item Controller-->
         <scene sceneID="4Wt-t2-lsW">
             <objects>
