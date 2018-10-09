@@ -22,10 +22,12 @@ final class ItemsDataManager {
     var categories: [String] = []
     var series: [String] = []
     var newItems: [ItemDataModel] = []
+    var favorites: [ItemDataModel] = []
     
     
     init() {
         populateItems()
+        populateFavorites()
     }
     
 }
@@ -103,6 +105,14 @@ fileprivate extension ItemsDataManager {
         }
     }
     
+    
+    //
+    // Method for populating favorites Array
+    //
+    func populateFavorites() {
+        
+    }
+    
 }
 
 
@@ -117,7 +127,7 @@ extension ItemsDataManager {
         guard let items = items else { return [] }
         
         return items.filter {
-            ($0.categoryTags?.contains(category))!
+            $0.categoryTags!.contains(category)
         }
     }
     
@@ -129,7 +139,7 @@ extension ItemsDataManager {
         guard let items = items else { return [] }
         
         return items.filter {
-            ($0.seriesTag?.contains(serie))!
+            $0.seriesTag!.contains(serie)
         }
     }
     
