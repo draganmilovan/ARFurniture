@@ -11,7 +11,7 @@ import UIKit
 class CatalogTableViewController: UIViewController {
     
     // Data source
-    var tableViewRawDatas: ItemsDataManager? {
+    var itemsDataManager: ItemsDataManager? {
         didSet {
             if !self.isViewLoaded { return }
 
@@ -22,13 +22,10 @@ class CatalogTableViewController: UIViewController {
     @IBOutlet weak var catalogTableView: UITableView!
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
-
 
 }
 
@@ -38,13 +35,30 @@ class CatalogTableViewController: UIViewController {
 extension CatalogTableViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        guard let itemsDataManager = itemsDataManager else {
+            fatalError("Missing Items Data Manager!")
+        }
+        
+        if self.title == "Kategorije" {
+            return itemsDataManager.categories.count
+            
+        } else {
+            return itemsDataManager.series.count
+        }
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = catalogTableView.dequeueReusableCell(withIdentifier: "CatalogTableViewCell", for: indexPath)
+        guard let itemsDataManager = itemsDataManager else {
+            fatalError("Missing Items Data Manager!")
+        }
+        let cell = catalogTableView.dequeueReusableCell(withIdentifier: "CatalogTableViewCell", for: indexPath) as! CatalogTableViewCell
         
-        
+        if self.title == "Kategorije" {
+            cell.rowLabelText = itemsDataManager.categories[indexPath.row]
+        } else {
+            cell.rowLabelText = itemsDataManager.series[indexPath.row]
+        }
         
         return cell
     }
@@ -56,6 +70,24 @@ extension CatalogTableViewController: UITableViewDataSource {
 //Mark:- Table View Delegate Methods
 extension CatalogTableViewController: UITableViewDelegate {
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let itemsDataManager = itemsDataManager else {
+            fatalError("Missing Items Data Manager!")
+        }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let icc = storyboard.instantiateViewController(withIdentifier: "ItemsCollectionController") as! ItemsCollectionController
+        
+        if self.title == "Kategorije" {
+            let category = itemsDataManager.categories[indexPath.row]
+            icc.items = itemsDataManager.searchForItemsBy(category: category)
+            icc.title = category
+        } else {
+            let serie = itemsDataManager.series[indexPath.row]
+            icc.items = itemsDataManager.searchItemsBy(serie: serie)
+            icc.title = serie
+        }
+        
+        show(icc, sender: self)
+    }
     
 }

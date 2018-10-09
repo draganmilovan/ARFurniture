@@ -9,18 +9,24 @@
 import UIKit
 
 class CatalogTableViewCell: UITableViewCell {
+    
+    var rowLabelText: String? {
+        didSet {
+            guard let rowLabelText = rowLabelText else { return }
 
-    @IBOutlet weak var rowNameLabel: UILabel!
+            rowNameLabel.text = rowLabelText
+        }
+    }
+
+    
+    @IBOutlet private weak var rowNameLabel: UILabel!
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        rowNameLabel.text = nil
     }
 
 }
