@@ -128,21 +128,20 @@ extension CatalogController: UICollectionViewDelegateFlowLayout {
         guard let itemsDataManager = itemsDataManager else {
             fatalError("Missing Data Manager!")
         }
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
         if collectionView == newItemsCollectionView {
             
-            if (collectionView.cellForItem(at: indexPath) as? CatalogCell) != nil {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let cell = collectionView.cellForItem(at: indexPath) as? CatalogCell {
                 let ic = storyboard.instantiateViewController(withIdentifier: "ItemController") as! ItemController
                 let item = itemsDataManager.newItems[indexPath.item]
                 
                 ic.item = item
-                ic.title = item.name
+                ic.title = cell.cellData!.name
                 
                 show(ic, sender: self)
                 
             } else {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let icc = storyboard.instantiateViewController(withIdentifier: "ItemsCollectionController") as! ItemsCollectionController
                 
                 icc.items = itemsDataManager.newItems
@@ -154,7 +153,6 @@ extension CatalogController: UICollectionViewDelegateFlowLayout {
         } else if collectionView == categoriesCollectionView {
             
             if let cell = collectionView.cellForItem(at: indexPath) as? CatalogCell {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let icc = storyboard.instantiateViewController(withIdentifier: "ItemsCollectionController") as! ItemsCollectionController
                 let category = cell.cellData!.name
                 
@@ -165,7 +163,6 @@ extension CatalogController: UICollectionViewDelegateFlowLayout {
 
             } else {
                 
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let ctvc = storyboard.instantiateViewController(withIdentifier: "CatalogTableViewController") as! CatalogTableViewController
                 let data = itemsDataManager
                 
@@ -178,9 +175,9 @@ extension CatalogController: UICollectionViewDelegateFlowLayout {
         } else {
             
             if let cell = collectionView.cellForItem(at: indexPath) as? CatalogCell {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let icc = storyboard.instantiateViewController(withIdentifier: "ItemsCollectionController") as! ItemsCollectionController
                 let serie = cell.cellData!.name
+                
                 icc.items = itemsDataManager.searchItemsBy(serie: serie)
                 icc.title = serie
                 
@@ -188,7 +185,6 @@ extension CatalogController: UICollectionViewDelegateFlowLayout {
                 
             } else {
                 
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let ctvc = storyboard.instantiateViewController(withIdentifier: "CatalogTableViewController") as! CatalogTableViewController
                 let data = itemsDataManager
                 
@@ -262,12 +258,14 @@ fileprivate extension CatalogController {
     }
     
     
-    //
-    //
-    //
-    func showController(for data: UICollectionView) {
-        
-    }
+//    //
+//    //
+//    //
+//    func showController(for data: UICollectionView) {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let controller = storyboard.instantiateViewController(withIdentifier: "XXX")
+//
+//    }
     
 }
 

@@ -88,7 +88,6 @@ fileprivate extension ARFurnitureController {
     // Method for gesture recognition
     //
     func registerGestureRecognzers() {
-        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
         let rotationGestureRecognizer = UIRotationGestureRecognizer(target: self, action: #selector(rotate))
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(pan))
@@ -109,7 +108,7 @@ fileprivate extension ARFurnitureController {
         
         if !hitTest.isEmpty {
             showItem(hitTestResult: hitTest.first!)
-        } else { print("Fali hitTest!") }
+        } else { print("Missing hitTest!") }
     }
     
     
@@ -163,15 +162,14 @@ fileprivate extension ARFurnitureController {
     // Method for adding Models to the Scene
     //
     func showItem(hitTestResult: ARHitTestResult) {
-        
         guard let itemMark = selectedItem?.catalogNumber else {
-            print("Fali selectedItem!")
+            print("Missing selectedItem!")
             return }
         guard let scene = SCNScene(named: "ModelsCatalog.scnassets/\(itemMark).scn") else {
-            print("Fali scene!")
+            print("Missing scene!")
             return }
         guard let node = scene.rootNode.childNode(withName: itemMark, recursively: false) else {
-            print("Fali node!")
+            print("Missing node!")
             return }
         
         let transform = hitTestResult.worldTransform
@@ -199,7 +197,6 @@ fileprivate extension ARFurnitureController {
             min.x + (max.x - min.x)/2,
             min.y + (max.y - min.y)/2,
             min.z + (max.z - min.z)/2)
-        
     }
     
 }

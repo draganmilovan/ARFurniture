@@ -50,7 +50,6 @@ fileprivate extension ItemController {
     // Method for posting Notification after Try Item Button is Pressed
     //
     func postNotification() {
-        
         guard let item = item else { return }
         let itemData: [String : ItemDataModel] = ["Item" : item]
 
