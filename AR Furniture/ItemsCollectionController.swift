@@ -25,7 +25,7 @@ class ItemsCollectionController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Register Collection View Cells
+        // Register Collection View Cell
         let itemNib = UINib(nibName: "CatalogCell", bundle: nil)
         itemsCollectionViewController.register(itemNib, forCellWithReuseIdentifier: "CatalogCell")
         

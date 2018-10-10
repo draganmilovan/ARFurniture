@@ -35,7 +35,8 @@ class ItemController: UIViewController {
     }
     
     @IBAction private func tryItem(_ sender: UIButton) {
-        
+        postNotification()
+        self.parent?.dismiss(animated: true, completion: nil)
     }
     
 }
@@ -44,6 +45,18 @@ class ItemController: UIViewController {
 
 //Mark:- Item Controller private methods
 fileprivate extension ItemController {
+    
+    //
+    // Method for posting Notification after Try Item Button is Pressed
+    //
+    func postNotification() {
+        
+        guard let item = item else { return }
+        let itemData: [String : ItemDataModel] = ["Item" : item]
+
+        NotificationCenter.default.post(name: Notification.Name("tryItem"), object: nil, userInfo: itemData)
+    }
+    
     
     //
     // Method for populating UI

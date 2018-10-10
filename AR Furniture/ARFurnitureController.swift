@@ -12,6 +12,7 @@ import ARKit
 class ARFurnitureController: UIViewController {
     
     var itemsDataManager: ItemsDataManager?
+    fileprivate var selectedItem: ItemDataModel?
     
     @IBOutlet fileprivate weak var sceneView: ARSCNView!
     @IBOutlet fileprivate weak var infoLabel: UILabel!
@@ -27,6 +28,10 @@ class ARFurnitureController: UIViewController {
         sceneView.debugOptions = [SCNDebugOptions.showFeaturePoints]
         
         sceneView.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(notification:)),
+                                               name: Notification.Name("tryItem"),
+                                               object: nil)
         
     }
     
@@ -46,7 +51,6 @@ class ARFurnitureController: UIViewController {
     
     
     @IBAction private func addItem(_ sender: UIButton) {
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nc = storyboard.instantiateViewController(withIdentifier: "ARFNavigationController") as! UINavigationController
         let cvc = nc.topViewController as! CatalogController
@@ -65,7 +69,6 @@ class ARFurnitureController: UIViewController {
     }
     
     @IBAction private func showManifactureInfo(_ sender: UIButton) {
-        print("INFO Button Touched!")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nc = storyboard.instantiateViewController(withIdentifier: "InfoNavigationController") as! UINavigationController
      
@@ -82,6 +85,7 @@ extension ARFurnitureController {
     
     
 }
+
 
 
 // MARK:- ARSCNViewDelegate Methods
@@ -101,6 +105,25 @@ extension ARFurnitureController: ARSCNViewDelegate {
                 self.infoLabel.isHidden = true
             })
         }
+    }
+    
+}
+
+
+
+// MARK:- Method for handling received Notification
+fileprivate extension ARFurnitureController {
+    
+    //
+    // Method set Selected Item for use in Scene
+    //
+    @objc func notificationReceived(notification: NSNotification){
+        guard let itemData = notification.userInfo as NSDictionary? else { return }
+        guard let item = itemData["Item"] as? ItemDataModel else { return }
+        
+        selectedItem = item
+        
+        // Inform user to place item in scene
     }
     
 }
