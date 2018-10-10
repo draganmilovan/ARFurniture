@@ -24,14 +24,16 @@ class ARFurnitureController: UIViewController {
         super.viewDidLoad()
         
         configuration.planeDetection = .horizontal
-        
-        sceneView.debugOptions = [SCNDebugOptions.showFeaturePoints]
-        
+        sceneView.session.run(configuration)
         sceneView.delegate = self
+        sceneView.autoenablesDefaultLighting = true
+        sceneView.debugOptions = [SCNDebugOptions.showFeaturePoints]
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(notification:)),
                                                name: Notification.Name("tryItem"),
                                                object: nil)
+        
+        registerGestureRecognzers()
         
     }
     
@@ -79,10 +81,126 @@ class ARFurnitureController: UIViewController {
 
 
 
-// MARK:-
-extension ARFurnitureController {
+//MARK:- AR SCNView custom methods
+fileprivate extension ARFurnitureController {
+    
+    //
+    // Method for gesture recognition
+    //
+    func registerGestureRecognzers() {
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
+        let rotationGestureRecognizer = UIRotationGestureRecognizer(target: self, action: #selector(rotate))
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(pan))
+        
+        sceneView.addGestureRecognizer(tapGestureRecognizer)
+        sceneView.addGestureRecognizer(rotationGestureRecognizer)
+        sceneView.addGestureRecognizer(panGestureRecognizer)
+    }
     
     
+    //
+    // Method for handle tap gesture
+    //
+    @objc func tapped(sender: UITapGestureRecognizer) {
+        guard let sceneView = sender.view as? ARSCNView else { return }
+        let tapLocation = sender.location(in: sceneView)
+        let hitTest = sceneView.hitTest(tapLocation, types: .existingPlaneUsingExtent)
+        
+        if !hitTest.isEmpty {
+            showItem(hitTestResult: hitTest.first!)
+        } else { print("Fali hitTest!") }
+    }
+    
+    
+    //
+    // Method for handle rotation gesture
+    //
+    @objc func rotate(sender: UIRotationGestureRecognizer) {
+        guard let sceneView = sender.view as? ARSCNView else { return }
+        let rotationLocation = sender.location(in: sceneView)
+        let hitTest = sceneView.hitTest(rotationLocation)
+        
+        if !hitTest.isEmpty {
+            guard let result = hitTest.first else { return }
+            let node = result.node
+            
+            if sender.state == .changed {
+                let rotation = SCNAction.rotateBy(x: 0, y: -sender.rotation, z: 0, duration: 0)
+                node.runAction(rotation)
+                sender.rotation = 0
+            }
+        }
+    }
+    
+    
+    //
+    // Method for handle pan gesture
+    //
+    @objc func pan(sender: UIPanGestureRecognizer) {
+        guard let sceneView = sender.view as? ARSCNView else { return }
+        let panLocation = sender.location(in: sceneView)
+        let nodeHitTest = sceneView.hitTest(panLocation)
+        
+        if !nodeHitTest.isEmpty {
+            guard let result = nodeHitTest.first else { return }
+            let node = result.node
+            
+            guard let planeHitTest = sceneView.hitTest(panLocation, types: .existingPlane).first else { return }
+            let worldTransform = planeHitTest.worldTransform
+            let x = worldTransform.columns.3.x
+            let y = worldTransform.columns.3.y
+            let z = worldTransform.columns.3.z
+            
+            if sender.state == .changed {
+                node.position = SCNVector3(x, y, z)
+            }
+        }
+    }
+    
+    
+    //
+    // Method for adding Models to the Scene
+    //
+    func showItem(hitTestResult: ARHitTestResult) {
+        
+        guard let itemMark = selectedItem?.catalogNumber else {
+            print("Fali selectedItem!")
+            return }
+        guard let scene = SCNScene(named: "ModelsCatalog.scnassets/\(itemMark).scn") else {
+            print("Fali scene!")
+            return }
+        guard let node = scene.rootNode.childNode(withName: itemMark, recursively: false) else {
+            print("Fali node!")
+            return }
+        
+        let transform = hitTestResult.worldTransform
+        let thirdColumn = transform.columns.3
+        
+        node.position = SCNVector3(x: thirdColumn.x, y: thirdColumn.y, z: thirdColumn.z)
+        
+        if itemMark == "4" {
+            centerPivot(for: node)
+        }
+        
+        sceneView.scene.rootNode.addChildNode(node)
+        
+    }
+    
+    
+    //
+    // Method for adding center of coordinate sistem in center of Node
+    //
+    func centerPivot(for node: SCNNode) {
+        let min = node.boundingBox.min
+        let max = node.boundingBox.max
+        
+        node.pivot = SCNMatrix4MakeTranslation(
+            min.x + (max.x - min.x)/2,
+            min.y + (max.y - min.y)/2,
+            min.z + (max.z - min.z)/2)
+        
+    }
     
 }
 
@@ -137,4 +255,11 @@ fileprivate extension ARFurnitureController {
         }
     }
     
+}
+
+
+
+extension Int {
+    
+    var degreesToRadiants: Double { return Double(self) * .pi/180 }
 }
