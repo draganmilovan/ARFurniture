@@ -98,11 +98,11 @@ extension ARFurnitureController: ARSCNViewDelegate {
             [unowned self] in
             
             // Show Info Label
-            self.infoLabel.isHidden = false
+            self.infoLabel.text = "Spremno Za Proširenu Stvarnost!"
             
             // Hide Info Label after three seconds
             DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-                self.infoLabel.isHidden = true
+                self.infoLabel.text = nil
             })
         }
     }
@@ -124,6 +124,17 @@ fileprivate extension ARFurnitureController {
         selectedItem = item
         
         // Inform user to place item in scene
+        DispatchQueue.main.async {
+            [unowned self] in
+            
+            // Show Info Label
+            self.infoLabel.text = "Označi mesto gde želiš da se prikaže \(item.name!)"
+            
+            // Hide Info Label after three seconds
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+                self.infoLabel.text = nil
+            })
+        }
     }
     
 }
