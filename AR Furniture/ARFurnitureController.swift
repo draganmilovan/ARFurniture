@@ -13,6 +13,7 @@ class ARFurnitureController: UIViewController {
     
     var itemsDataManager: ItemsDataManager?
     fileprivate var selectedItem: ItemDataModel?
+    fileprivate var isPlaneDetected = false
     
     @IBOutlet fileprivate weak var sceneView: ARSCNView!
     @IBOutlet fileprivate weak var infoLabel: UILabel!
@@ -125,7 +126,10 @@ fileprivate extension ARFurnitureController {
             let node = result.node
             
             if sender.state == .changed {
-                let rotation = SCNAction.rotateBy(x: 0, y: -sender.rotation, z: 0, duration: 0)
+                let rotation = SCNAction.rotateBy(x: 0,
+                                                  y: -sender.rotation,
+                                                  z: 0,
+                                                  duration: 0)
                 node.runAction(rotation)
                 sender.rotation = 0
             }
@@ -175,7 +179,9 @@ fileprivate extension ARFurnitureController {
         let transform = hitTestResult.worldTransform
         let thirdColumn = transform.columns.3
         
-        node.position = SCNVector3(x: thirdColumn.x, y: thirdColumn.y, z: thirdColumn.z)
+        node.position = SCNVector3(x: thirdColumn.x,
+                                   y: thirdColumn.y,
+                                   z: thirdColumn.z)
         
         if itemMark == "4" {
             centerPivot(for: node)
@@ -209,16 +215,24 @@ extension ARFurnitureController: ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         guard anchor is ARPlaneAnchor else { return }
         
+        isPlaneDetected = true
+        
         DispatchQueue.main.async {
             [unowned self] in
             
-            // Show Info Label
-            self.infoLabel.text = "Spremno Za Proširenu Stvarnost!"
-            
-            // Hide Info Label after three seconds
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-                self.infoLabel.text = nil
-            })
+            if self.selectedItem != nil {
+                self.infoLabel.text = "Označi mesto gde želiš da se prikaže \(self.selectedItem!.name!)"
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+                    self.infoLabel.text = nil
+                })
+            } else {
+                self.infoLabel.text = "Spremno Za Proširenu Stvarnost!"
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+                    self.infoLabel.text = nil
+                })
+            }
         }
     }
     
@@ -238,18 +252,32 @@ fileprivate extension ARFurnitureController {
         
         selectedItem = item
         
-        // Inform user to place item in scene
-        DispatchQueue.main.async {
-            [unowned self] in
+        if isPlaneDetected {
             
-            // Show Info Label
-            self.infoLabel.text = "Označi mesto gde želiš da se prikaže \(item.name!)"
+            // Inform user to place item in scene
+            DispatchQueue.main.async {
+                [unowned self] in
+                
+                self.infoLabel.text = "Označi mesto gde želiš da se prikaže \(item.name!)"
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+                    self.infoLabel.text = nil
+                })
+            }
+        } else {
             
-            // Hide Info Label after three seconds
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-                self.infoLabel.text = nil
-            })
+            // Inform user to move device to detect plane for AR
+            DispatchQueue.main.async {
+                [unowned self] in
+                
+                self.infoLabel.text = "Sačekajte da se detektuje površina."
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+                    self.infoLabel.text = nil
+                })
+            }
         }
+
     }
     
 }
