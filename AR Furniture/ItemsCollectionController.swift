@@ -31,6 +31,7 @@ class ItemsCollectionController: UIViewController {
         let itemNib = UINib(nibName: "CatalogCell", bundle: nil)
         itemsCollectionViewController.register(itemNib, forCellWithReuseIdentifier: "CatalogCell")
         
+        configureBarButtonItems()
     }
 
 }
@@ -98,6 +99,43 @@ extension ItemsCollectionController: UICollectionViewDelegateFlowLayout {
         ic.title = item.name
         
         show(ic, sender: self)
+    }
+    
+}
+
+
+
+//MARK:- Navigation Controller Bar Button Item Methods
+fileprivate extension ItemsCollectionController {
+    
+    //
+    // Method for adding Bar Button Items to Navigation Controller
+    //
+    func configureBarButtonItems() {
+        if self.title == "Favoriti" {
+            let home = UIBarButtonItem(title: "HOME", style: .done, target: self, action: #selector(dismissController))
+            let clean = UIBarButtonItem(title: "Delete All", style: .done, target: self, action: #selector(deleteAll))
+            
+            navigationItem.leftBarButtonItems = [home]
+            navigationItem.rightBarButtonItems = [clean]
+        }
+    }
+    
+    
+    //
+    // Method for dismiss Items Collection Controller
+    //
+    @objc func dismissController() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    //
+    // Method for delete all Items from favorites
+    //
+    @objc func deleteAll() {
+        itemsDataManager?.favorites.removeAll()
+        items?.removeAll()
     }
     
 }
