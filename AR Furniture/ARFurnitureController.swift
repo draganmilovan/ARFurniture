@@ -69,7 +69,15 @@ class ARFurnitureController: UIViewController {
     }
     
     @IBAction private func showFavorites(_ sender: UIButton) {
-        print("FAV Button Touched!")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let icc = storyboard.instantiateViewController(withIdentifier: "ItemsCollectionController") as! ItemsCollectionController
+        let nc = UINavigationController(rootViewController: icc)
+        
+        icc.itemsDataManager = itemsDataManager
+        icc.items = itemsDataManager?.favorites
+        icc.title = "Favoriti"
+        
+        show(nc, sender: self)
     }
     
     @IBAction private func showManifactureInfo(_ sender: UIButton) {
