@@ -59,6 +59,7 @@ class ARFurnitureController: UIViewController {
         let nc = UINavigationController(rootViewController: cvc)
         
         cvc.itemsDataManager = itemsDataManager
+        cvc.title = "Katalog"
         
         show(nc, sender: self)
     }
