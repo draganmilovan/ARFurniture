@@ -132,6 +132,10 @@ extension CatalogController: UICollectionViewDelegateFlowLayout {
         let ic = storyboard.instantiateViewController(withIdentifier: "ItemController") as! ItemController
         let icc = storyboard.instantiateViewController(withIdentifier: "ItemsCollectionController") as! ItemsCollectionController
         let ctvc = storyboard.instantiateViewController(withIdentifier: "CatalogTableViewController") as! CatalogTableViewController
+        
+        ic.itemsDataManager = itemsDataManager
+        icc.itemsDataManager = itemsDataManager
+        ctvc.itemsDataManager = itemsDataManager
 
         if collectionView == newItemsCollectionView {
             

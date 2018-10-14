@@ -10,6 +10,8 @@ import UIKit
 
 class ItemController: UIViewController {
     
+    var itemsDataManager: ItemsDataManager?
+    
     // Data source
     var item: ItemDataModel? {
         didSet {
