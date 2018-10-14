@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct ItemDataModel: Decodable {
+struct ItemDataModel: Codable {
     
     let catalogNumber: String?
     let name: String?

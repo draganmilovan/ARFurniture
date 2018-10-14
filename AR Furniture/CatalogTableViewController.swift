@@ -87,6 +87,8 @@ extension CatalogTableViewController: UITableViewDelegate {
             icc.title = serie
         }
         
+        icc.itemsDataManager = itemsDataManager
+        
         show(icc, sender: self)
     }
     

@@ -22,7 +22,14 @@ final class ItemsDataManager {
     var categories: [String] = []
     var series: [String] = []
     var newItems: [ItemDataModel] = []
-    var favorites: [ItemDataModel] = []
+    var favorites: [ItemDataModel] = [] {
+        didSet {
+            saveFavorites()
+            print(favorites)
+        }
+    }
+    
+    fileprivate let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
     
     
     init() {
@@ -110,7 +117,14 @@ fileprivate extension ItemsDataManager {
     // Method for populating favorites Array
     //
     func populateFavorites() {
-        
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            let decoder = PropertyListDecoder()
+            do {
+                favorites = try decoder.decode([ItemDataModel].self, from: data)
+            } catch {
+                print("Error decoding item array, \(error)")
+            }
+        }
     }
     
 }
@@ -121,7 +135,7 @@ fileprivate extension ItemsDataManager {
 extension ItemsDataManager {
     
     //
-    // Method
+    // Method returns all items for requested category
     //
     func searchForItemsBy(category: String) -> [ItemDataModel] {
         guard let items = items else { return [] }
@@ -133,13 +147,29 @@ extension ItemsDataManager {
     
     
     //
-    // Method
+    // Method returns all items for requested serie
     //
     func searchItemsBy(serie: String) -> [ItemDataModel] {
         guard let items = items else { return [] }
         
         return items.filter {
             $0.seriesTag!.contains(serie)
+        }
+    }
+    
+    
+    //
+    // Method for saving Favorites
+    //
+    fileprivate func saveFavorites() {
+        let encoder = PropertyListEncoder()
+        
+        do {
+            let data = try encoder.encode(favorites)
+            try data.write(to: dataFilePath!)
+            
+        } catch {
+            print("Error encoding item array, \(error)")
         }
     }
     

@@ -93,6 +93,7 @@ extension ItemsCollectionController: UICollectionViewDelegateFlowLayout {
         let ic = storyboard.instantiateViewController(withIdentifier: "ItemController") as! ItemController
         let item = items[indexPath.item]
         
+        ic.itemsDataManager = itemsDataManager
         ic.item = item
         ic.title = item.name
         

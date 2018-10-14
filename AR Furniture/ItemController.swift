@@ -33,7 +33,21 @@ class ItemController: UIViewController {
 
     
     @IBAction private func addToFavorites(_ sender: UIButton) {
-        print("Add/remove to/from Favories!")
+        guard let itemsDataManager = itemsDataManager else {
+            fatalError("Missing Items Data Manager")
+        }
+        
+        if !itemsDataManager.favorites.contains(item!) {
+            itemsDataManager.favorites.append(item!)
+            
+        } else {
+            for (index, element) in itemsDataManager.favorites.enumerated() {
+                if element == item {
+                    itemsDataManager.favorites.remove(at: index)
+                }
+            }
+        }
+
     }
     
     @IBAction private func tryItem(_ sender: UIButton) {
