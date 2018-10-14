@@ -43,11 +43,7 @@ class CatalogController: UIViewController {
         categoriesCollectionView.register(supportNib, forCellWithReuseIdentifier: "SupportCell")
         seriesCollectionView.register(supportNib, forCellWithReuseIdentifier: "SupportCell")
         
-    }
-    
-    
-    @IBAction func dismissCatalog(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
+        configureBarButtonItems()
     }
     
 }
@@ -252,29 +248,44 @@ fileprivate extension CatalogController {
         }
     }
     
-    
-//    //
-//    //
-//    //
-//    func showController(for data: UICollectionView) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let controller = storyboard.instantiateViewController(withIdentifier: "XXX")
-//
-//    }
-    
 }
 
 
 
-extension CatalogController {
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//MARK:- Navigation Controller Bar Button Item Methods
+fileprivate extension CatalogController {
+
+    //
+    // Method for adding Bar Button Items to Navigation Controller
+    //
+    func configureBarButtonItems() {
         
-        if segue.identifier == "search" {
-            
-            let destinationVC = segue.destination as! SearchController
-            destinationVC.itemsDataManager = itemsDataManager
-        }
+        let search = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(showSearch))
+        let home = UIBarButtonItem(title: "HOME", style: .done, target: self, action: #selector(dismissController))
+        
+        navigationItem.rightBarButtonItems = [search]
+        navigationItem.leftBarButtonItems = [home]
+    }
+    
+    
+    //
+    // Method for showing Search Controller
+    //
+    @objc func showSearch() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let sc = storyboard.instantiateViewController(withIdentifier: "SearchController") as! SearchController
+        
+        sc.itemsDataManager = itemsDataManager
+        
+        show(sc, sender: self)
+    }
+    
+    
+    //
+    // Method for dismiss Catalog Controller
+    //
+    @objc func dismissController() {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

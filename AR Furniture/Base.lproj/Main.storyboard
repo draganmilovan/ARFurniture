@@ -100,7 +100,7 @@
             </objects>
             <point key="canvasLocation" x="25" y="27"/>
         </scene>
-        <!--Katalog-->
+        <!--Catalog Controller-->
         <scene sceneID="tLb-Yg-Tye">
             <objects>
                 <viewController storyboardIdentifier="CatalogController" id="8Rt-Xx-ji6" customClass="CatalogController" customModule="AR_Furniture" customModuleProvider="target" sceneMemberID="viewController">
@@ -109,10 +109,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="23G-aq-BA8">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8IS-rT-E2E" userLabel="NewItemsView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="252.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="267.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOVO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sdE-sh-3xo">
                                                 <rect key="frame" x="8" y="8" width="398" height="24"/>
@@ -121,7 +121,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RXy-0q-v8F">
-                                                <rect key="frame" x="0.0" y="40" width="414" height="212.5"/>
+                                                <rect key="frame" x="0.0" y="40" width="414" height="227.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="8" minimumInteritemSpacing="8" id="2o3-qu-Olo">
                                                     <size key="itemSize" width="150" height="150"/>
@@ -148,7 +148,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JFf-JW-rf8" userLabel="CategoryView">
-                                        <rect key="frame" x="0.0" y="260.5" width="414" height="253"/>
+                                        <rect key="frame" x="0.0" y="275.5" width="414" height="267"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KATEGORIJE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sfz-wn-G9o">
                                                 <rect key="frame" x="8" y="8" width="398" height="24"/>
@@ -157,7 +157,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XQE-Nh-ztP">
-                                                <rect key="frame" x="0.0" y="40" width="414" height="213"/>
+                                                <rect key="frame" x="0.0" y="40" width="414" height="227"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="8" minimumInteritemSpacing="8" id="Kiv-Hu-l0n">
                                                     <size key="itemSize" width="150" height="150"/>
@@ -184,7 +184,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wrq-es-1DU" userLabel="SeriesView">
-                                        <rect key="frame" x="0.0" y="521.5" width="414" height="252.5"/>
+                                        <rect key="frame" x="0.0" y="550.5" width="414" height="267.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SERIJE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4f3-fF-3wl">
                                                 <rect key="frame" x="8" y="8" width="398" height="24"/>
@@ -193,7 +193,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ncr-mS-2AP">
-                                                <rect key="frame" x="0.0" y="40" width="414" height="212.5"/>
+                                                <rect key="frame" x="0.0" y="40" width="414" height="227.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="8" minimumInteritemSpacing="8" id="hDq-XE-91s">
                                                     <size key="itemSize" width="150" height="150"/>
@@ -236,18 +236,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="n95-Ro-dQr"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Katalog" id="515-my-4TB">
-                        <barButtonItem key="leftBarButtonItem" title="HOME" id="UdE-qJ-P8F">
-                            <connections>
-                                <action selector="dismissCatalog:" destination="8Rt-Xx-ji6" id="fm7-7c-cqJ"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="AUJ-h8-FmL">
-                            <connections>
-                                <segue destination="JMz-lV-pa4" kind="show" identifier="search" id="UvL-vS-bRt"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <connections>
                         <outlet property="categoriesCollectionView" destination="XQE-Nh-ztP" id="d5P-PX-FPV"/>
                         <outlet property="categoriesLabel" destination="sfz-wn-G9o" id="3Y0-6L-hK4"/>
@@ -259,7 +247,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D0J-TG-pgs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1628" y="25.862068965517242"/>
+            <point key="canvasLocation" x="1125" y="27"/>
         </scene>
         <!--Catalog Table View Controller-->
         <scene sceneID="iec-U6-ySL">
@@ -332,7 +320,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WON-4r-gvr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2515.9420289855075" y="382.36607142857139"/>
+            <point key="canvasLocation" x="1959" y="27"/>
         </scene>
         <!--Items Collection Controller-->
         <scene sceneID="2w1-Kz-CBn">
@@ -373,7 +361,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JI6-5K-FX4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3355" y="382"/>
+            <point key="canvasLocation" x="2814" y="27"/>
         </scene>
         <!--Item Controller-->
         <scene sceneID="4Wt-t2-lsW">
@@ -444,7 +432,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rp0-lr-WzS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4183" y="383"/>
+            <point key="canvasLocation" x="3675" y="27"/>
         </scene>
         <!--Info View Controller-->
         <scene sceneID="Y0I-cu-2yF">
@@ -571,7 +559,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l5R-yf-8S4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="891" y="704"/>
+            <point key="canvasLocation" x="25" y="842"/>
         </scene>
         <!--Pretraga-->
         <scene sceneID="nV3-jQ-26j">
@@ -582,7 +570,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ng8-ZK-YvY">
-                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="uoB-Fe-W81"/>
                                 </constraints>
@@ -592,7 +580,7 @@
                                 </connections>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ReO-YF-Wc6">
-                                <rect key="frame" x="0.0" y="144" width="414" height="718"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="N8y-YU-72w">
                                     <size key="itemSize" width="175" height="157"/>
@@ -626,26 +614,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Hw-qB-oP0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1628" y="705"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="HiO-3E-ECI">
-            <objects>
-                <navigationController storyboardIdentifier="ARFNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Axn-zd-MLJ" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cRk-05-yPt">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <viewLayoutGuide key="safeArea" id="8YX-0l-eaE"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="8Rt-Xx-ji6" kind="relationship" relationship="rootViewController" id="X61-H6-oJ6"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lVR-J5-X56" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="892" y="27"/>
+            <point key="canvasLocation" x="1958" y="-696"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Wu8-mM-3fQ">
@@ -663,10 +632,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ivn-uD-qL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="25" y="704"/>
+            <point key="canvasLocation" x="-846" y="842"/>
         </scene>
     </scenes>
     <resources>
-        <image name="1" width="848" height="848"/>
+        <image name="1" width="424" height="424"/>
     </resources>
 </document>

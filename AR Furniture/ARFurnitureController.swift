@@ -55,8 +55,8 @@ class ARFurnitureController: UIViewController {
     
     @IBAction private func addItem(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let nc = storyboard.instantiateViewController(withIdentifier: "ARFNavigationController") as! UINavigationController
-        let cvc = nc.topViewController as! CatalogController
+        let cvc = storyboard.instantiateViewController(withIdentifier: "CatalogController") as! CatalogController
+        let nc = UINavigationController(rootViewController: cvc)
         
         cvc.itemsDataManager = itemsDataManager
         
