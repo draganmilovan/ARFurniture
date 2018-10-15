@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemsCollectionController: UIViewController {
+class ItemsCollectionController: UIViewController, RefreshDelegate {
 
     var itemsDataManager: ItemsDataManager?
     
@@ -17,11 +17,11 @@ class ItemsCollectionController: UIViewController {
         didSet {
             if !self.isViewLoaded { return }
 
-            itemsCollectionViewController.reloadData()
+            itemsCollectionView.reloadData()
         }
     }
     
-    @IBOutlet fileprivate weak var itemsCollectionViewController: UICollectionView!
+    @IBOutlet fileprivate weak var itemsCollectionView: UICollectionView!
     
     
     override func viewDidLoad() {
@@ -29,7 +29,7 @@ class ItemsCollectionController: UIViewController {
 
         // Register Collection View Cell
         let itemNib = UINib(nibName: "CatalogCell", bundle: nil)
-        itemsCollectionViewController.register(itemNib, forCellWithReuseIdentifier: "CatalogCell")
+        itemsCollectionView.register(itemNib, forCellWithReuseIdentifier: "CatalogCell")
         
         configureBarButtonItems()
     }
@@ -98,6 +98,10 @@ extension ItemsCollectionController: UICollectionViewDelegateFlowLayout {
         ic.item = item
         ic.title = item.name
         
+        if self.title == "Favoriti" {
+            ic.refreshDelegate = self
+        }
+        
         show(ic, sender: self)
     }
     
@@ -136,6 +140,26 @@ fileprivate extension ItemsCollectionController {
     @objc func deleteAll() {
         itemsDataManager?.favorites.removeAll()
         items?.removeAll()
+    }
+    
+}
+
+
+
+//MARK:- Refresh Delegate Method
+extension ItemsCollectionController {
+    
+    //
+    // Method reloads Collection View if Controller shows Favorites
+    //
+    func refreshUI(minus item: ItemDataModel) {
+        if self.title == "Favoriti" {
+            for (index, element) in items!.enumerated() {
+                if element == item {
+                    items?.remove(at: index)
+                }
+            }
+        }
     }
     
 }

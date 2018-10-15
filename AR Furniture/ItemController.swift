@@ -8,6 +8,12 @@
 
 import UIKit
 
+
+protocol RefreshDelegate {
+    func refreshUI(minus item: ItemDataModel)
+}
+
+
 class ItemController: UIViewController {
     
     var itemsDataManager: ItemsDataManager?
@@ -23,6 +29,8 @@ class ItemController: UIViewController {
 
     @IBOutlet fileprivate weak var itemImageView: UIImageView!
     @IBOutlet weak var itemInfoLabel: UILabel!
+    
+    var refreshDelegate: RefreshDelegate?
     
     
     override func viewDidLoad() {
@@ -47,7 +55,8 @@ class ItemController: UIViewController {
                 }
             }
         }
-
+        
+        refreshDelegate?.refreshUI(minus: item!)
     }
     
     @IBAction private func tryItem(_ sender: UIButton) {
