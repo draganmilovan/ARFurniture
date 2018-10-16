@@ -95,6 +95,7 @@ extension SearchController: UICollectionViewDelegateFlowLayout {
         let ic = storyboard.instantiateViewController(withIdentifier: "ItemController") as! ItemController
         let item = searchedItems[indexPath.item]
         
+        ic.itemsDataManager = itemsDataManager
         ic.item = item
         ic.title = item.name
 
