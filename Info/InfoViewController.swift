@@ -85,17 +85,16 @@ class InfoViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     func closestDestination (){
         
-        let storeCoordinates = infoDataManager.items.map{$0.coordinates}
+        var storeCoordinates = infoDataManager.items.map{CLLocation(latitude: $0.coordinates.lat, longitude: $0.coordinates.long)}
         
         guard  let new = locationManager.location else {return}
         
         
         
-        let loc = storeCoordinates.map{CLLocation(latitude: $0.lat, longitude: $0.long)}
         
         
         
-        guard   let closestStoreLocation = loc.min(by:
+        guard   let closestStoreLocation = storeCoordinates.min(by:
             { $0.distance(from: new ) < $1.distance(from:new) }) else {return}
         print(closestStoreLocation)
         
