@@ -59,7 +59,20 @@ class CatalogCell: UICollectionViewCell {
         
         catalogImage.image = UIImage(named: cellData.imageName)
         nameLabel.text = cellData.name
+        setTextColor()
         
+    }
+    
+    
+    //
+    // Method for setting Name Label text color
+    //
+    private func setTextColor() {
+        if let _ = Int(cellData!.imageName) {
+            return
+        } else {
+            nameLabel.textColor = UIColor.white
+        }
     }
     
 }

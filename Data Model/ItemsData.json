@@ -1,7 +1,7 @@
 
 [
       {
-         "catalogNumber":"1",
+         "catalogNumber":"100",
          "name":"Šolja",
          "seriesTag":"",
          "categoryTags":[
@@ -18,7 +18,7 @@
          ]
       },
       {
-         "catalogNumber":"2",
+         "catalogNumber":"200",
          "name":"Ćup",
          "seriesTag":"",
          "categoryTags":[
@@ -36,7 +36,7 @@
          ]
       },
       {
-         "catalogNumber":"3",
+         "catalogNumber":"300",
          "name":"Podna Lampa",
          "seriesTag":"Midnight",
          "categoryTags":[
@@ -53,7 +53,7 @@
          ]
       },
       {
-         "catalogNumber":"4",
+         "catalogNumber":"400",
          "name":"Sto",
          "seriesTag":"Midnight",
          "categoryTags":[
