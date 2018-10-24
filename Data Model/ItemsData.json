@@ -1,24 +1,40 @@
 
 [
       {
-         "catalogNumber":"100",
+         "catalogNumber":"101",
          "name":"Šolja",
          "seriesTag":"",
          "categoryTags":[
             "Razno"
          ],
          "descriptionTags":[
-            "belo",
-            "keramika",
-            "solja",
-            "kuhinja",
-            "kafa",
-            "caj",
-            "porcelan"
+            "belo bela keramika keramicka solja soljica kuhinja za kafu kafa caj porcelan porcelanska servis"
          ]
       },
       {
-         "catalogNumber":"200",
+          "catalogNumber":"102",
+          "name":"Šolja",
+          "seriesTag":"",
+          "categoryTags":[
+              "Razno"
+          ],
+          "descriptionTags":[
+              "belo bela keramika keramicka solja soljica kuhinja za kafu kafa caj porcelan porcelanska servis"
+          ]
+      },
+      {
+          "catalogNumber":"103",
+          "name":"Čajnik",
+          "seriesTag":"",
+          "categoryTags":[
+              "Razno"
+          ],
+          "descriptionTags":[
+              "belo bela beli keramika keramicki cajnik kuhinja kuhinjski za kafu kafa caj porcelan porcelanski"
+          ]
+      },
+      {
+         "catalogNumber":"201",
          "name":"Ćup",
          "seriesTag":"",
          "categoryTags":[
@@ -26,17 +42,24 @@
             "Dekoracija"
          ],
          "descriptionTags":[
-            "braon",
-            "glina",
-            "cup",
-            "kuhinja",
-            "vazna",
-            "ukras",
-            "dekor"
+            "braon glina glineni cup kuhinja kuhinjski vazna ukras ukrasni dekor dekoracija dekorativna"
          ]
       },
       {
-         "catalogNumber":"300",
+          "catalogNumber":"202",
+          "name":"Vazna",
+          "seriesTag":"Home",
+          "categoryTags":[
+              "Razno",
+              "Dekoracija"
+          ],
+          "descriptionTags":[
+              "novo",
+              "novo nova crvena crveno keramika keramicka za cvece kuhinja vazna ukras ukrasna dekor dekoracija dekorativna"
+          ]
+      },
+      {
+         "catalogNumber":"301",
          "name":"Podna Lampa",
          "seriesTag":"Midnight",
          "categoryTags":[
@@ -44,16 +67,36 @@
             "Dekoracija"
          ],
          "descriptionTags":[
-            "novo",
-            "crno",
-            "lampa",
-            "ukras",
-            "midnight",
-            "dekor"
+            "crno crna lampa ukras ukrasna midnight dekor dekoracija dekorativna"
          ]
       },
       {
-         "catalogNumber":"400",
+          "catalogNumber":"302",
+          "name":"Lampa",
+          "seriesTag":"Home",
+          "categoryTags":[
+              "Rasveta",
+              "Dekoracija"
+          ],
+          "descriptionTags":[
+              "novo",
+              "novo nova drvo drveno drvena lampa ukras ukrasna home dekor dekoracija dekorativna"
+          ]
+      },
+      {
+          "catalogNumber":"303",
+          "name":"Svećnjak",
+          "seriesTag":"",
+          "categoryTags":[
+              "Rasveta",
+              "Dekoracija"
+          ],
+          "descriptionTags":[
+              "svecnjak ukras ukrasni dekor dekoracija dekorativno dekorativan"
+          ]
+      },
+      {
+         "catalogNumber":"401",
          "name":"Sto",
          "seriesTag":"Midnight",
          "categoryTags":[
@@ -62,14 +105,57 @@
             "Baštenski Nameštaj"
          ],
          "descriptionTags":[
-            "novo",
-            "crno",
-            "sto",
-            "okruglo",
-            "kuhinja",
-            "basta",
-            "midnight"
+            "crno crni sto okruglo okrugli kuhinja kuhinjski trpezarija trpezarijski basta bastenski midnight"
          ]
+      },
+      {
+          "catalogNumber":"501",
+          "name":"Fotelja",
+          "seriesTag":"",
+          "categoryTags":[
+              "Fotelje",
+              "Dnevne Sobe"
+          ],
+          "descriptionTags":[
+              "stolica fotelja drvo drvena drveno zeleno zelena komfor komforna komforno dnevna soba"
+          ]
+      },
+      {
+          "catalogNumber":"502",
+          "name":"Stolica",
+          "seriesTag":"",
+          "categoryTags":[
+              "Stolice",
+              "Kuhinje i Trpezarije"
+          ],
+          "descriptionTags":[
+              "stolica drvo drvena drveno kuhinja kuhinjska trpezarija trpezarijska za sedenje"
+          ]
+      },
+      {
+          "catalogNumber":"503",
+          "name":"Stolica",
+          "seriesTag":"Home",
+          "categoryTags":[
+              "Stolice",
+              "Kuhinje i Trpezarije",
+              "Dnevne Sobe"
+          ],
+          "descriptionTags":[
+              "novo",
+              "novo nova home stolica plastika plasticno plasticna kuhinja kuhinjska trpezarija trpezarijska za sedenje crveno crvena metal metalna metalno"
+          ]
+      },
+      {
+          "catalogNumber":"701",
+          "name":"Televizor",
+          "seriesTag":"",
+          "categoryTags":[
+              "Razno"
+          ],
+          "descriptionTags":[
+              "televizor tehnika tv"
+          ]
       }
    ]
 

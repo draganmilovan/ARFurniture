@@ -192,7 +192,7 @@ fileprivate extension ARFurnitureController {
                                    y: thirdColumn.y,
                                    z: thirdColumn.z)
         
-        if itemMark == "4" {
+        if itemMark == "401"  {
             centerPivot(for: node)
         }
         
