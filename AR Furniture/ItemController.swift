@@ -10,7 +10,7 @@ import UIKit
 
 
 protocol RefreshDelegate {
-    func refreshUI(minus item: ItemDataModel)
+    func refreshUI(with item: ItemDataModel)
 }
 
 
@@ -63,7 +63,7 @@ class ItemController: UIViewController {
             favoritesButton.imageView?.image = UIImage(named: "Favorites")
         }
         
-        refreshDelegate?.refreshUI(minus: item!)
+        refreshDelegate?.refreshUI(with: item!)
     }
     
     @IBAction private func tryItem(_ sender: UIButton) {

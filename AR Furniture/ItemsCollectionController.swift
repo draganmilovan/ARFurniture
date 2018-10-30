@@ -154,11 +154,15 @@ extension ItemsCollectionController {
     //
     // Method reloads Collection View if Controller shows Favorites
     //
-    func refreshUI(minus item: ItemDataModel) {
+    func refreshUI(with item: ItemDataModel) {
         if self.title == "Favoriti" {
-            for (index, element) in items!.enumerated() {
-                if element == item {
-                    items?.remove(at: index)
+            if !items!.contains(item) {
+                items!.append(item)
+            } else {
+                for (index, element) in items!.enumerated() {
+                    if element == item {
+                        items!.remove(at: index)
+                    }
                 }
             }
         }
