@@ -383,13 +383,17 @@
                                     <constraint firstAttribute="width" secondItem="CM8-0C-DIJ" secondAttribute="height" multiplier="1:1" id="7hs-W9-g1o"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JLS-HV-6ef">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n9n-L2-WrB">
+                                <rect key="frame" x="162.66666666666666" y="473.33333333333331" width="50" height="49.999999999999943"/>
+                                <state key="normal" image="Favorites"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JLS-HV-6ef" userLabel="FavAction">
                                 <rect key="frame" x="162.66666666666666" y="473.33333333333331" width="50" height="49.999999999999943"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="df2-rj-lm6"/>
                                     <constraint firstAttribute="width" constant="50" id="uKl-aZ-89Y"/>
                                 </constraints>
-                                <state key="normal" image="Favorites">
+                                <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -416,20 +420,25 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="n9n-L2-WrB" firstAttribute="trailing" secondItem="JLS-HV-6ef" secondAttribute="trailing" id="5Z6-lE-I1t"/>
                             <constraint firstItem="kR2-9X-cbC" firstAttribute="trailing" secondItem="CM8-0C-DIJ" secondAttribute="trailing" id="7WI-O5-dwm"/>
                             <constraint firstItem="CM8-0C-DIJ" firstAttribute="top" secondItem="kR2-9X-cbC" secondAttribute="top" id="F4L-rk-Elw"/>
                             <constraint firstItem="CM8-0C-DIJ" firstAttribute="leading" secondItem="kR2-9X-cbC" secondAttribute="leading" id="Lt5-p7-L7f"/>
                             <constraint firstItem="eq5-kn-VfV" firstAttribute="top" secondItem="JLS-HV-6ef" secondAttribute="bottom" constant="36" id="Sn8-IM-MF7"/>
                             <constraint firstItem="940-bs-3UX" firstAttribute="leading" secondItem="kR2-9X-cbC" secondAttribute="leading" constant="8" id="Vi0-s1-aNn"/>
                             <constraint firstItem="kR2-9X-cbC" firstAttribute="trailing" secondItem="940-bs-3UX" secondAttribute="trailing" constant="8" id="aWP-m3-PNc"/>
+                            <constraint firstItem="n9n-L2-WrB" firstAttribute="bottom" secondItem="JLS-HV-6ef" secondAttribute="bottom" id="cjG-md-5Tm"/>
                             <constraint firstItem="JLS-HV-6ef" firstAttribute="top" secondItem="940-bs-3UX" secondAttribute="bottom" constant="21" id="imi-BL-ldc"/>
                             <constraint firstItem="eq5-kn-VfV" firstAttribute="centerX" secondItem="g1R-ob-8ji" secondAttribute="centerX" id="jgG-4y-Zlz"/>
                             <constraint firstItem="JLS-HV-6ef" firstAttribute="centerX" secondItem="g1R-ob-8ji" secondAttribute="centerX" id="nBL-hj-wGj"/>
                             <constraint firstItem="940-bs-3UX" firstAttribute="top" secondItem="CM8-0C-DIJ" secondAttribute="bottom" constant="8" id="rOE-k4-C8a"/>
+                            <constraint firstItem="n9n-L2-WrB" firstAttribute="top" secondItem="JLS-HV-6ef" secondAttribute="top" id="rWG-nE-vL9"/>
+                            <constraint firstItem="n9n-L2-WrB" firstAttribute="leading" secondItem="JLS-HV-6ef" secondAttribute="leading" id="xga-sp-Qap"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kR2-9X-cbC"/>
                     </view>
                     <connections>
+                        <outlet property="favoritesButton" destination="n9n-L2-WrB" id="2Iv-au-zBa"/>
                         <outlet property="itemImageView" destination="CM8-0C-DIJ" id="C2Q-Jm-gyO"/>
                         <outlet property="itemInfoLabel" destination="940-bs-3UX" id="ivC-bm-2Qs"/>
                     </connections>

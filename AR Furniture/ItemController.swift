@@ -27,6 +27,7 @@ class ItemController: UIViewController {
         }
     }
 
+    @IBOutlet fileprivate weak var favoritesButton: UIButton!
     @IBOutlet fileprivate weak var itemImageView: UIImageView!
     @IBOutlet weak var itemInfoLabel: UILabel!
     
@@ -49,6 +50,8 @@ class ItemController: UIViewController {
         
         if !itemsDataManager.favorites.contains(item!) {
             itemsDataManager.favorites.append(item!)
+            rotateFavoritesButton()
+            favoritesButton.imageView?.image = UIImage(named: "FavoritesYellow")
             
         } else {
             for (index, element) in itemsDataManager.favorites.enumerated() {
@@ -56,6 +59,8 @@ class ItemController: UIViewController {
                     itemsDataManager.favorites.remove(at: index)
                 }
             }
+            rotateFavoritesButton()
+            favoritesButton.imageView?.image = UIImage(named: "Favorites")
         }
         
         refreshDelegate?.refreshUI(minus: item!)
@@ -89,6 +94,7 @@ fileprivate extension ItemController {
     //
     func populateUI() {
         guard let item = item else { return }
+        guard let itemsDataManager = itemsDataManager else { return }
         
         if let imageName = item.catalogNumber {
             itemImageView.image = UIImage(named: imageName)
@@ -96,6 +102,26 @@ fileprivate extension ItemController {
         
         if let name = item.name {
             itemInfoLabel.text = name
+        }
+        
+        if itemsDataManager.favorites.contains(item) {
+            favoritesButton.imageView?.image = UIImage(named: "FavoritesYellow")
+        } else {
+            favoritesButton.imageView?.image = UIImage(named: "Favorites")
+        }
+    }
+    
+    
+    //
+    // Method animates rotation of Favorites Button
+    //
+    func rotateFavoritesButton() {
+        
+        favoritesButton.imageView?.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+        
+        UIView.animate(withDuration: 0.3) {
+            [unowned self] in
+            self.favoritesButton.imageView?.transform = CGAffineTransform.identity
         }
     }
     
