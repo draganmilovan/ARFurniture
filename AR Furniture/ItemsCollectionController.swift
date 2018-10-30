@@ -122,9 +122,6 @@ fileprivate extension ItemsCollectionController {
             let home = UIBarButtonItem(image: UIImage(named: "HomeButton"), style: .done, target: self, action: #selector(dismissController))
             let clean = UIBarButtonItem(title: "Delete All", style: .done, target: self, action: #selector(deleteAll))
             
-            home.tintColor = UIColor.black
-            clean.tintColor = UIColor.black
-            
             navigationItem.leftBarButtonItems = [home]
             navigationItem.rightBarButtonItems = [clean]
         }

@@ -265,9 +265,6 @@ fileprivate extension CatalogController {
         let search = UIBarButtonItem(image: UIImage(named: "Search"), style: .done, target: self, action: #selector(showSearch))
         let home = UIBarButtonItem(image: UIImage(named: "HomeButton"), style: .done, target: self, action: #selector(dismissController))
         
-        search.tintColor = UIColor.black
-        home.tintColor = UIColor.black
-        
         navigationItem.rightBarButtonItems = [search]
         navigationItem.leftBarButtonItems = [home]
     }

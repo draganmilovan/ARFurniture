@@ -278,7 +278,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="113.66666666666667"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3rh-zY-xmq">
-                                                            <rect key="frame" x="21" y="8" width="346" height="97.666666666666671"/>
+                                                            <rect key="frame" x="16" y="8" width="351" height="97.666666666666671"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -286,7 +286,7 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="3rh-zY-xmq" firstAttribute="leading" secondItem="KEE-io-CpL" secondAttribute="leading" constant="21" id="824-TA-CMb"/>
+                                                        <constraint firstItem="3rh-zY-xmq" firstAttribute="leading" secondItem="KEE-io-CpL" secondAttribute="leading" constant="16" id="824-TA-CMb"/>
                                                         <constraint firstAttribute="bottom" secondItem="3rh-zY-xmq" secondAttribute="bottom" constant="8" id="YZ5-uH-sbX"/>
                                                         <constraint firstItem="3rh-zY-xmq" firstAttribute="top" secondItem="KEE-io-CpL" secondAttribute="top" constant="8" id="epM-Rd-9qJ"/>
                                                         <constraint firstAttribute="trailing" secondItem="3rh-zY-xmq" secondAttribute="trailing" constant="8" id="p4W-iG-JRj"/>
