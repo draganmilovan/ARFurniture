@@ -43,6 +43,8 @@ class CatalogController: UIViewController {
         categoriesCollectionView.register(supportNib, forCellWithReuseIdentifier: "SupportCell")
         seriesCollectionView.register(supportNib, forCellWithReuseIdentifier: "SupportCell")
         
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+
         configureBarButtonItems()
     }
     

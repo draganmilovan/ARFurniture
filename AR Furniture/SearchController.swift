@@ -33,6 +33,8 @@ class SearchController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.black
 
         // Register Collection View Cell
         let catalogNib = UINib(nibName: "CatalogCell", bundle: nil)

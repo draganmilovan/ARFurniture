@@ -31,6 +31,8 @@ class ItemsCollectionController: UIViewController, RefreshDelegate {
         let itemNib = UINib(nibName: "CatalogCell", bundle: nil)
         itemsCollectionView.register(itemNib, forCellWithReuseIdentifier: "CatalogCell")
         
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+
         configureBarButtonItems()
     }
 
@@ -117,8 +119,11 @@ fileprivate extension ItemsCollectionController {
     //
     func configureBarButtonItems() {
         if self.title == "Favoriti" {
-            let home = UIBarButtonItem(title: "HOME", style: .done, target: self, action: #selector(dismissController))
+            let home = UIBarButtonItem(image: UIImage(named: "HomeButton"), style: .done, target: self, action: #selector(dismissController))
             let clean = UIBarButtonItem(title: "Delete All", style: .done, target: self, action: #selector(deleteAll))
+            
+            home.tintColor = UIColor.black
+            clean.tintColor = UIColor.black
             
             navigationItem.leftBarButtonItems = [home]
             navigationItem.rightBarButtonItems = [clean]
