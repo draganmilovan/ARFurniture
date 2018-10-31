@@ -226,22 +226,32 @@ extension ARFurnitureController: ARSCNViewDelegate {
         
         isPlaneDetected = true
         
+        if selectedItem != nil {
+            informUser(with: "Označi mesto gde želiš da se prikaže \(selectedItem!.name!)")
+        } else {
+            informUser(with: "Spremno Za Proširenu Stvarnost!")
+        }
+    }
+    
+}
+
+
+
+// MARK:- AR Furniture private methods
+fileprivate extension ARFurnitureController {
+    
+    //
+    // Method display message for user info
+    //
+    func informUser(with text: String) {
         DispatchQueue.main.async {
             [unowned self] in
             
-            if self.selectedItem != nil {
-                self.infoLabel.text = "Označi mesto gde želiš da se prikaže \(self.selectedItem!.name!)"
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-                    self.infoLabel.text = nil
-                })
-            } else {
-                self.infoLabel.text = "Spremno Za Proširenu Stvarnost!"
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-                    self.infoLabel.text = nil
-                })
-            }
+            self.infoLabel.text = text
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+                self.infoLabel.text = nil
+            })
         }
     }
     
@@ -262,31 +272,10 @@ fileprivate extension ARFurnitureController {
         selectedItem = item
         
         if isPlaneDetected {
-            
-            // Inform user to place item in scene
-            DispatchQueue.main.async {
-                [unowned self] in
-                
-                self.infoLabel.text = "Označi mesto gde želiš da se prikaže \(item.name!)"
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-                    self.infoLabel.text = nil
-                })
-            }
+            informUser(with: "Označi mesto gde želiš da se prikaže \(item.name!)")
         } else {
-            
-            // Inform user to move device to detect plane for AR
-            DispatchQueue.main.async {
-                [unowned self] in
-                
-                self.infoLabel.text = "Sačekajte da se detektuje površina."
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-                    self.infoLabel.text = nil
-                })
-            }
+            informUser(with: "Sačekajte da se detektuje površina.")
         }
-
     }
     
 }
