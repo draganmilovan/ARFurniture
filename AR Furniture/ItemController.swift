@@ -120,8 +120,8 @@ fileprivate extension ItemController {
         favoritesButton.imageView?.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
         
         UIView.animate(withDuration: 0.3) {
-            [unowned self] in
-            self.favoritesButton.imageView?.transform = CGAffineTransform.identity
+            [weak self] in
+            self?.favoritesButton.imageView?.transform = CGAffineTransform.identity
         }
     }
     
