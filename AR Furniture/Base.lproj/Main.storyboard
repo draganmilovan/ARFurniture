@@ -21,47 +21,47 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzL-Ei-ypv">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </arscnView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hPF-7Z-UeS">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hPF-7Z-UeS" userLabel="Info Action">
                                 <rect key="frame" x="24" y="708" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="B1i-FJ-gVU"/>
                                     <constraint firstAttribute="height" constant="50" id="kbV-iS-CrS"/>
                                 </constraints>
-                                <state key="normal" title="Info" image="Info"/>
+                                <state key="normal" image="Info"/>
                                 <connections>
                                     <action selector="showManifactureInfo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8yk-VQ-4QA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4An-Om-Dj9">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4An-Om-Dj9" userLabel="Add Action">
                                 <rect key="frame" x="162.66666666666666" y="708" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ZEE-bm-Din"/>
                                     <constraint firstAttribute="width" constant="50" id="kKb-u3-f2m"/>
                                 </constraints>
-                                <state key="normal" title="Add" image="Add"/>
+                                <state key="normal" image="Add"/>
                                 <connections>
                                     <action selector="addItem:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4hI-UW-Zhi"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Mt-XT-Ujq">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Mt-XT-Ujq" userLabel="Fav Action">
                                 <rect key="frame" x="301" y="708" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Gt0-9G-QUe"/>
                                     <constraint firstAttribute="width" constant="50" id="hMD-cN-PWf"/>
                                 </constraints>
-                                <state key="normal" title="Favorites" image="Fav"/>
+                                <state key="normal" image="Fav"/>
                                 <connections>
                                     <action selector="showFavorites:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JAT-cv-4y5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zh7-2b-Y3f">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zh7-2b-Y3f" userLabel="Delete Action">
                                 <rect key="frame" x="301" y="60" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="akC-Ns-doe"/>
                                     <constraint firstAttribute="width" constant="50" id="tAq-Cd-ILc"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="aDJ-ze-KK4"/>
-                                <state key="normal" title="Delete" image="Trash"/>
+                                <state key="normal" image="Trash"/>
                                 <connections>
                                     <action selector="removeItem:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vux-MC-u2S"/>
                                 </connections>
@@ -401,7 +401,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eq5-kn-VfV">
-                                <rect key="frame" x="148" y="559.33333333333337" width="79" height="38"/>
+                                <rect key="frame" x="100" y="559.33333333333337" width="175" height="38"/>
                                 <color key="backgroundColor" red="0.21652558299800928" green="0.55001623263875921" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="PROBAJ">
@@ -422,14 +422,15 @@
                         <constraints>
                             <constraint firstItem="n9n-L2-WrB" firstAttribute="trailing" secondItem="JLS-HV-6ef" secondAttribute="trailing" id="5Z6-lE-I1t"/>
                             <constraint firstItem="kR2-9X-cbC" firstAttribute="trailing" secondItem="CM8-0C-DIJ" secondAttribute="trailing" id="7WI-O5-dwm"/>
+                            <constraint firstItem="kR2-9X-cbC" firstAttribute="trailing" secondItem="eq5-kn-VfV" secondAttribute="trailing" constant="100" id="7rJ-gk-kuD"/>
                             <constraint firstItem="CM8-0C-DIJ" firstAttribute="top" secondItem="kR2-9X-cbC" secondAttribute="top" id="F4L-rk-Elw"/>
                             <constraint firstItem="CM8-0C-DIJ" firstAttribute="leading" secondItem="kR2-9X-cbC" secondAttribute="leading" id="Lt5-p7-L7f"/>
+                            <constraint firstItem="eq5-kn-VfV" firstAttribute="leading" secondItem="kR2-9X-cbC" secondAttribute="leading" constant="100" id="QXs-8T-HNJ"/>
                             <constraint firstItem="eq5-kn-VfV" firstAttribute="top" secondItem="JLS-HV-6ef" secondAttribute="bottom" constant="36" id="Sn8-IM-MF7"/>
                             <constraint firstItem="940-bs-3UX" firstAttribute="leading" secondItem="kR2-9X-cbC" secondAttribute="leading" constant="8" id="Vi0-s1-aNn"/>
                             <constraint firstItem="kR2-9X-cbC" firstAttribute="trailing" secondItem="940-bs-3UX" secondAttribute="trailing" constant="8" id="aWP-m3-PNc"/>
                             <constraint firstItem="n9n-L2-WrB" firstAttribute="bottom" secondItem="JLS-HV-6ef" secondAttribute="bottom" id="cjG-md-5Tm"/>
                             <constraint firstItem="JLS-HV-6ef" firstAttribute="top" secondItem="940-bs-3UX" secondAttribute="bottom" constant="21" id="imi-BL-ldc"/>
-                            <constraint firstItem="eq5-kn-VfV" firstAttribute="centerX" secondItem="g1R-ob-8ji" secondAttribute="centerX" id="jgG-4y-Zlz"/>
                             <constraint firstItem="JLS-HV-6ef" firstAttribute="centerX" secondItem="g1R-ob-8ji" secondAttribute="centerX" id="nBL-hj-wGj"/>
                             <constraint firstItem="940-bs-3UX" firstAttribute="top" secondItem="CM8-0C-DIJ" secondAttribute="bottom" constant="8" id="rOE-k4-C8a"/>
                             <constraint firstItem="n9n-L2-WrB" firstAttribute="top" secondItem="JLS-HV-6ef" secondAttribute="top" id="rWG-nE-vL9"/>
