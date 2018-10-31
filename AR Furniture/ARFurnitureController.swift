@@ -28,6 +28,10 @@ class ARFurnitureController: UIViewController {
     @IBOutlet fileprivate weak var sceneView: ARSCNView!
     @IBOutlet fileprivate weak var infoLabel: UILabel!
     @IBOutlet fileprivate weak var deleteButton: UIButton!
+    @IBOutlet fileprivate weak var infoButton: UIButton!
+    @IBOutlet fileprivate weak var addButton: UIButton!
+    @IBOutlet fileprivate weak var favButton: UIButton!
+    
     
     fileprivate let configuration = ARWorldTrackingConfiguration()
 
@@ -74,6 +78,7 @@ class ARFurnitureController: UIViewController {
     
     @IBAction private func removeItem(_ sender: UIButton) {
         selectedNode!.removeFromParentNode()
+        selectedNode = nil
         deleteButton.isHidden = true
     }
     

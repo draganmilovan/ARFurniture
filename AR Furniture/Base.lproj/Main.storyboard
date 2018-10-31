@@ -21,7 +21,7 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzL-Ei-ypv">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </arscnView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hPF-7Z-UeS" userLabel="Info Action">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hPF-7Z-UeS" userLabel="Info">
                                 <rect key="frame" x="24" y="708" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="B1i-FJ-gVU"/>
@@ -32,7 +32,7 @@
                                     <action selector="showManifactureInfo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8yk-VQ-4QA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4An-Om-Dj9" userLabel="Add Action">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4An-Om-Dj9" userLabel="Add">
                                 <rect key="frame" x="162.66666666666666" y="708" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ZEE-bm-Din"/>
@@ -43,7 +43,7 @@
                                     <action selector="addItem:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4hI-UW-Zhi"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Mt-XT-Ujq" userLabel="Fav Action">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Mt-XT-Ujq" userLabel="Fav">
                                 <rect key="frame" x="301" y="708" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Gt0-9G-QUe"/>
@@ -54,17 +54,14 @@
                                     <action selector="showFavorites:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JAT-cv-4y5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekb-ze-5vb" userLabel="Delete Button">
-                                <rect key="frame" x="301" y="60" width="50" height="50"/>
-                                <state key="normal" image="Trash"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zh7-2b-Y3f" userLabel="Delete Action">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zh7-2b-Y3f" userLabel="Delete">
                                 <rect key="frame" x="301" y="60" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="akC-Ns-doe"/>
                                     <constraint firstAttribute="width" constant="50" id="tAq-Cd-ILc"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="aDJ-ze-KK4"/>
+                                <state key="normal" image="Trash"/>
                                 <connections>
                                     <action selector="removeItem:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vux-MC-u2S"/>
                                 </connections>
@@ -78,8 +75,6 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ekb-ze-5vb" firstAttribute="leading" secondItem="zh7-2b-Y3f" secondAttribute="leading" id="45i-yc-jEu"/>
-                            <constraint firstItem="ekb-ze-5vb" firstAttribute="bottom" secondItem="zh7-2b-Y3f" secondAttribute="bottom" id="5mQ-2P-Umb"/>
                             <constraint firstItem="xzL-Ei-ypv" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7LI-WR-9Bb"/>
                             <constraint firstAttribute="bottom" secondItem="xzL-Ei-ypv" secondAttribute="bottom" id="7ui-Dk-cLU"/>
                             <constraint firstItem="xzL-Ei-ypv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="BC7-Cr-Kom"/>
@@ -88,12 +83,10 @@
                             <constraint firstItem="hPF-7Z-UeS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="Def-UF-c3j"/>
                             <constraint firstItem="XV6-wk-Q3b" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-100" id="NRH-uw-ypB"/>
                             <constraint firstAttribute="bottomMargin" secondItem="4An-Om-Dj9" secondAttribute="bottom" constant="20" id="Nd6-HD-41f"/>
-                            <constraint firstItem="ekb-ze-5vb" firstAttribute="top" secondItem="zh7-2b-Y3f" secondAttribute="top" id="Pvt-vZ-fmf"/>
                             <constraint firstItem="TD8-Ew-Moa" firstAttribute="top" secondItem="zh7-2b-Y3f" secondAttribute="top" constant="-16" id="QI4-m1-9g3"/>
                             <constraint firstAttribute="trailing" secondItem="xzL-Ei-ypv" secondAttribute="trailing" id="Vf5-Zx-0dU"/>
                             <constraint firstItem="4An-Om-Dj9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bpe-MQ-vGQ"/>
                             <constraint firstAttribute="bottomMargin" secondItem="hPF-7Z-UeS" secondAttribute="bottom" constant="20" id="gDI-ar-UC8"/>
-                            <constraint firstItem="ekb-ze-5vb" firstAttribute="trailing" secondItem="zh7-2b-Y3f" secondAttribute="trailing" id="h7f-7O-YTZ"/>
                             <constraint firstItem="XV6-wk-Q3b" firstAttribute="leading" secondItem="TD8-Ew-Moa" secondAttribute="leading" constant="20" id="sww-hY-ffv"/>
                             <constraint firstAttribute="bottomMargin" secondItem="2Mt-XT-Ujq" secondAttribute="bottom" constant="20" id="tuy-2G-SFR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2Mt-XT-Ujq" secondAttribute="trailing" constant="8" id="x2F-V6-06c"/>
@@ -101,7 +94,10 @@
                         <viewLayoutGuide key="safeArea" id="TD8-Ew-Moa"/>
                     </view>
                     <connections>
-                        <outlet property="deleteButton" destination="ekb-ze-5vb" id="BwH-TM-l40"/>
+                        <outlet property="addButton" destination="4An-Om-Dj9" id="yC5-ir-34N"/>
+                        <outlet property="deleteButton" destination="zh7-2b-Y3f" id="kRA-MR-U3m"/>
+                        <outlet property="favButton" destination="2Mt-XT-Ujq" id="3bO-ap-VaC"/>
+                        <outlet property="infoButton" destination="hPF-7Z-UeS" id="VMS-4t-lu3"/>
                         <outlet property="infoLabel" destination="XV6-wk-Q3b" id="XHo-fI-6N8"/>
                         <outlet property="sceneView" destination="xzL-Ei-ypv" id="4tV-62-knC"/>
                     </connections>
