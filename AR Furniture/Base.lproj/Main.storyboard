@@ -54,6 +54,10 @@
                                     <action selector="showFavorites:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JAT-cv-4y5"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekb-ze-5vb" userLabel="Delete Button">
+                                <rect key="frame" x="301" y="60" width="50" height="50"/>
+                                <state key="normal" image="Trash"/>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zh7-2b-Y3f" userLabel="Delete Action">
                                 <rect key="frame" x="301" y="60" width="50" height="50"/>
                                 <constraints>
@@ -61,7 +65,6 @@
                                     <constraint firstAttribute="width" constant="50" id="tAq-Cd-ILc"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="aDJ-ze-KK4"/>
-                                <state key="normal" image="Trash"/>
                                 <connections>
                                     <action selector="removeItem:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vux-MC-u2S"/>
                                 </connections>
@@ -75,6 +78,8 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="ekb-ze-5vb" firstAttribute="leading" secondItem="zh7-2b-Y3f" secondAttribute="leading" id="45i-yc-jEu"/>
+                            <constraint firstItem="ekb-ze-5vb" firstAttribute="bottom" secondItem="zh7-2b-Y3f" secondAttribute="bottom" id="5mQ-2P-Umb"/>
                             <constraint firstItem="xzL-Ei-ypv" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7LI-WR-9Bb"/>
                             <constraint firstAttribute="bottom" secondItem="xzL-Ei-ypv" secondAttribute="bottom" id="7ui-Dk-cLU"/>
                             <constraint firstItem="xzL-Ei-ypv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="BC7-Cr-Kom"/>
@@ -83,10 +88,12 @@
                             <constraint firstItem="hPF-7Z-UeS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="Def-UF-c3j"/>
                             <constraint firstItem="XV6-wk-Q3b" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-100" id="NRH-uw-ypB"/>
                             <constraint firstAttribute="bottomMargin" secondItem="4An-Om-Dj9" secondAttribute="bottom" constant="20" id="Nd6-HD-41f"/>
+                            <constraint firstItem="ekb-ze-5vb" firstAttribute="top" secondItem="zh7-2b-Y3f" secondAttribute="top" id="Pvt-vZ-fmf"/>
                             <constraint firstItem="TD8-Ew-Moa" firstAttribute="top" secondItem="zh7-2b-Y3f" secondAttribute="top" constant="-16" id="QI4-m1-9g3"/>
                             <constraint firstAttribute="trailing" secondItem="xzL-Ei-ypv" secondAttribute="trailing" id="Vf5-Zx-0dU"/>
                             <constraint firstItem="4An-Om-Dj9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bpe-MQ-vGQ"/>
                             <constraint firstAttribute="bottomMargin" secondItem="hPF-7Z-UeS" secondAttribute="bottom" constant="20" id="gDI-ar-UC8"/>
+                            <constraint firstItem="ekb-ze-5vb" firstAttribute="trailing" secondItem="zh7-2b-Y3f" secondAttribute="trailing" id="h7f-7O-YTZ"/>
                             <constraint firstItem="XV6-wk-Q3b" firstAttribute="leading" secondItem="TD8-Ew-Moa" secondAttribute="leading" constant="20" id="sww-hY-ffv"/>
                             <constraint firstAttribute="bottomMargin" secondItem="2Mt-XT-Ujq" secondAttribute="bottom" constant="20" id="tuy-2G-SFR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2Mt-XT-Ujq" secondAttribute="trailing" constant="8" id="x2F-V6-06c"/>
@@ -94,6 +101,7 @@
                         <viewLayoutGuide key="safeArea" id="TD8-Ew-Moa"/>
                     </view>
                     <connections>
+                        <outlet property="deleteButton" destination="ekb-ze-5vb" id="BwH-TM-l40"/>
                         <outlet property="infoLabel" destination="XV6-wk-Q3b" id="XHo-fI-6N8"/>
                         <outlet property="sceneView" destination="xzL-Ei-ypv" id="4tV-62-knC"/>
                     </connections>
@@ -377,18 +385,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="CM8-0C-DIJ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CM8-0C-DIJ">
                                 <rect key="frame" x="0.0" y="44" width="375" height="375"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="CM8-0C-DIJ" secondAttribute="height" multiplier="1:1" id="7hs-W9-g1o"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n9n-L2-WrB">
-                                <rect key="frame" x="162.66666666666666" y="473.33333333333331" width="50" height="49.999999999999943"/>
+                                <rect key="frame" x="162.66666666666666" y="448" width="50" height="50"/>
                                 <state key="normal" image="Favorites"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JLS-HV-6ef" userLabel="FavAction">
-                                <rect key="frame" x="162.66666666666666" y="473.33333333333331" width="50" height="49.999999999999943"/>
+                                <rect key="frame" x="162.66666666666666" y="448" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="df2-rj-lm6"/>
                                     <constraint firstAttribute="width" constant="50" id="uKl-aZ-89Y"/>
@@ -401,7 +409,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eq5-kn-VfV">
-                                <rect key="frame" x="100" y="559.33333333333337" width="175" height="38"/>
+                                <rect key="frame" x="100" y="534" width="175" height="38"/>
                                 <color key="backgroundColor" red="0.21652558299800928" green="0.55001623263875921" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="PROBAJ">
@@ -411,8 +419,8 @@
                                     <action selector="tryItem:" destination="wgh-k2-n03" eventType="touchUpInside" id="Kdl-hv-waF"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100000$" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="940-bs-3UX">
-                                <rect key="frame" x="8" y="427" width="359" height="25.333333333333314"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="940-bs-3UX">
+                                <rect key="frame" x="8" y="427" width="359" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -651,7 +659,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1" width="424" height="424"/>
         <image name="Add" width="100" height="100"/>
         <image name="Fav" width="100" height="100"/>
         <image name="Favorites" width="100" height="100"/>
