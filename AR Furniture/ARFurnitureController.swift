@@ -219,7 +219,6 @@ fileprivate extension ARFurnitureController {
         
         selectedNode = node
         selectedItem = nil
-        deleteButton.isHidden = false
     }
     
     
@@ -261,7 +260,6 @@ extension ARFurnitureController: ARSCNViewDelegate {
         guard anchor is ARPlaneAnchor else { return }
         
         isPlaneDetected = true
-
     }
     
 }
