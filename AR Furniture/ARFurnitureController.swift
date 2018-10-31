@@ -13,10 +13,21 @@ class ARFurnitureController: UIViewController {
     
     var itemsDataManager: ItemsDataManager?
     fileprivate var selectedItem: ItemDataModel?
-    fileprivate var isPlaneDetected = false
+    fileprivate var isPlaneDetected = false {
+        didSet {
+            planeDetectionMessage()
+        }
+    }
+    fileprivate var selectedNode: SCNNode? {
+        didSet {
+            deleteButton.isHidden = false
+        }
+    }
+
     
     @IBOutlet fileprivate weak var sceneView: ARSCNView!
     @IBOutlet fileprivate weak var infoLabel: UILabel!
+    @IBOutlet fileprivate weak var deleteButton: UIButton!
     
     fileprivate let configuration = ARWorldTrackingConfiguration()
 
@@ -24,17 +35,14 @@ class ARFurnitureController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configuration.planeDetection = .horizontal
-        sceneView.session.run(configuration)
-        sceneView.delegate = self
-        sceneView.autoenablesDefaultLighting = true
-        sceneView.debugOptions = [SCNDebugOptions.showFeaturePoints]
+        deleteButton.isHidden = true
+        
+        configureScene()
+        registerGestureRecognzers()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReceived(notification:)),
                                                name: Notification.Name("tryItem"),
                                                object: nil)
-        
-        registerGestureRecognzers()
         
     }
     
@@ -65,7 +73,8 @@ class ARFurnitureController: UIViewController {
     }
     
     @IBAction private func removeItem(_ sender: UIButton) {
-        print("DEL Button Touched!")
+        selectedNode!.removeFromParentNode()
+        deleteButton.isHidden = true
     }
     
     @IBAction private func showFavorites(_ sender: UIButton) {
@@ -114,11 +123,21 @@ fileprivate extension ARFurnitureController {
     @objc func tapped(sender: UITapGestureRecognizer) {
         guard let sceneView = sender.view as? ARSCNView else { return }
         let tapLocation = sender.location(in: sceneView)
-        let hitTest = sceneView.hitTest(tapLocation, types: .existingPlaneUsingExtent)
         
-        if !hitTest.isEmpty {
-            showItem(hitTestResult: hitTest.first!)
+        // If Plane is tapped
+        let planeHitTest = sceneView.hitTest(tapLocation, types: .existingPlaneUsingExtent)
+        
+        if !planeHitTest.isEmpty {
+            showItem(hitTestResult: planeHitTest.first!)
         } else { print("Missing hitTest!") }
+        
+        // If Node is tapped
+        let nodeHitTest = sceneView.hitTest(tapLocation)
+        
+        if !nodeHitTest.isEmpty {
+            let node = nodeHitTest.first?.node
+            selectedNode = node
+        }
     }
     
     
@@ -198,6 +217,9 @@ fileprivate extension ARFurnitureController {
         
         sceneView.scene.rootNode.addChildNode(node)
         
+        selectedNode = node
+        selectedItem = nil
+        deleteButton.isHidden = false
     }
     
     
@@ -214,6 +236,20 @@ fileprivate extension ARFurnitureController {
             min.z + (max.z - min.z)/2)
     }
     
+    
+    //
+    // Method configures ARSCNView
+    //
+    func configureScene() {
+        
+        configuration.planeDetection = .horizontal
+        sceneView.session.run(configuration)
+        sceneView.delegate = self
+        sceneView.autoenablesDefaultLighting = true
+        sceneView.debugOptions = [SCNDebugOptions.showFeaturePoints]
+        
+    }
+    
 }
 
 
@@ -225,12 +261,7 @@ extension ARFurnitureController: ARSCNViewDelegate {
         guard anchor is ARPlaneAnchor else { return }
         
         isPlaneDetected = true
-        
-        if selectedItem != nil {
-            informUser(with: "Označi mesto gde želiš da se prikaže \(selectedItem!.name!)")
-        } else {
-            informUser(with: "Spremno Za Proširenu Stvarnost!")
-        }
+
     }
     
 }
@@ -252,6 +283,18 @@ fileprivate extension ARFurnitureController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
                 self.infoLabel.text = nil
             })
+        }
+    }
+    
+    
+    //
+    // Method inform user about plane detection
+    //
+    func planeDetectionMessage() {
+        if selectedItem != nil {
+            informUser(with: "Označi mesto gde želiš da se prikaže \(selectedItem!.name!)")
+        } else {
+            informUser(with: "Spremno Za Proširenu Stvarnost!")
         }
     }
     
