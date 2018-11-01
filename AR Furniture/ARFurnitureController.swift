@@ -313,6 +313,8 @@ fileprivate extension ARFurnitureController {
     //
     func hideUI() {
         
+        hideStatusBar = true
+
         UIView.animate(withDuration: 0.25, animations: {
             [unowned self] in
             
@@ -321,7 +323,6 @@ fileprivate extension ARFurnitureController {
             self.favButton.alpha = 0
             self.deleteButton.alpha = 0
             
-            self.hideStatusBar = true
             self.setNeedsStatusBarAppearanceUpdate()
         })
         
@@ -333,6 +334,8 @@ fileprivate extension ARFurnitureController {
     //
     func showUI() {
         
+        hideStatusBar = false
+
         UIView.animate(withDuration: 0.25, animations: {
             [unowned self] in
             
@@ -346,7 +349,6 @@ fileprivate extension ARFurnitureController {
                 self.deleteButton.alpha = 0
             }
             
-            self.hideStatusBar = false
             self.setNeedsStatusBarAppearanceUpdate()
         })
     }
