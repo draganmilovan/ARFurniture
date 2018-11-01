@@ -13,6 +13,7 @@ class ARFurnitureController: UIViewController {
     
     var itemsDataManager: ItemsDataManager?
     
+    fileprivate var hideStatusBar: Bool = false
     fileprivate var selectedItem: ItemDataModel?
     fileprivate var activeNodes: [SCNNode] = []
     fileprivate var selectedNode: SCNNode?
@@ -30,6 +31,13 @@ class ARFurnitureController: UIViewController {
     @IBOutlet fileprivate weak var favButton: UIButton!
     
     fileprivate let configuration = ARWorldTrackingConfiguration()
+    
+    override var prefersStatusBarHidden: Bool {
+        return hideStatusBar
+    }
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return UIStatusBarAnimation.fade
+    }
 
     
     override func viewDidLoad() {
@@ -132,9 +140,9 @@ fileprivate extension ARFurnitureController {
         // Hide or show buttons if scene contains node
         if activeNodes.count > 0 {
             if addButton.alpha == 0 {
-                showButtons()
+                showUI()
             } else {
-                hideButtons()
+                hideUI()
             }
         }
         
@@ -233,7 +241,7 @@ fileprivate extension ARFurnitureController {
         selectedNode = node
         activeNodes.append(node)
         selectedItem = nil
-        hideButtons()
+        hideUI()
     }
     
     
@@ -301,9 +309,9 @@ fileprivate extension ARFurnitureController {
     
     
     //
-    // Method hide buttons
+    // Method hide buttons and Status Bar
     //
-    func hideButtons() {
+    func hideUI() {
         
         UIView.animate(withDuration: 0.25, animations: {
             [unowned self] in
@@ -312,14 +320,18 @@ fileprivate extension ARFurnitureController {
             self.addButton.alpha = 0
             self.favButton.alpha = 0
             self.deleteButton.alpha = 0
+            
+            self.hideStatusBar = true
+            self.setNeedsStatusBarAppearanceUpdate()
         })
+        
     }
     
     
     //
-    // Method show buttons
+    // Method show buttons and Status Bar
     //
-    func showButtons() {
+    func showUI() {
         
         UIView.animate(withDuration: 0.25, animations: {
             [unowned self] in
@@ -333,6 +345,9 @@ fileprivate extension ARFurnitureController {
             } else {
                 self.deleteButton.alpha = 0
             }
+            
+            self.hideStatusBar = false
+            self.setNeedsStatusBarAppearanceUpdate()
         })
     }
     
