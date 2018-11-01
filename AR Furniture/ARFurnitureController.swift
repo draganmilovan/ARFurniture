@@ -12,18 +12,15 @@ import ARKit
 class ARFurnitureController: UIViewController {
     
     var itemsDataManager: ItemsDataManager?
+    
     fileprivate var selectedItem: ItemDataModel?
+    fileprivate var activeNodes: [SCNNode] = []
+    fileprivate var selectedNode: SCNNode?
     fileprivate var isPlaneDetected = false {
         didSet {
             planeDetectionMessage()
         }
     }
-    fileprivate var selectedNode: SCNNode? {
-        didSet {
-            deleteButton.isHidden = false
-        }
-    }
-
     
     @IBOutlet fileprivate weak var sceneView: ARSCNView!
     @IBOutlet fileprivate weak var infoLabel: UILabel!
@@ -32,14 +29,13 @@ class ARFurnitureController: UIViewController {
     @IBOutlet fileprivate weak var addButton: UIButton!
     @IBOutlet fileprivate weak var favButton: UIButton!
     
-    
     fileprivate let configuration = ARWorldTrackingConfiguration()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        deleteButton.isHidden = true
+        deleteButton.alpha = 0
         
         configureScene()
         registerGestureRecognzers()
@@ -77,9 +73,15 @@ class ARFurnitureController: UIViewController {
     }
     
     @IBAction private func removeItem(_ sender: UIButton) {
-        selectedNode!.removeFromParentNode()
-        selectedNode = nil
-        deleteButton.isHidden = true
+        
+        for (index, element) in activeNodes.enumerated() {
+            if element == selectedNode {
+                activeNodes.remove(at: index)
+                selectedNode?.removeFromParentNode()
+                selectedNode = nil
+            }
+        }
+        deleteButton.alpha = 0
     }
     
     @IBAction private func showFavorites(_ sender: UIButton) {
@@ -126,6 +128,16 @@ fileprivate extension ARFurnitureController {
     // Method for handle tap gesture
     //
     @objc func tapped(sender: UITapGestureRecognizer) {
+        
+        // Hide or show buttons if scene contains node
+        if activeNodes.count > 0 {
+            if addButton.alpha == 0 {
+                showButtons()
+            } else {
+                hideButtons()
+            }
+        }
+        
         guard let sceneView = sender.view as? ARSCNView else { return }
         let tapLocation = sender.location(in: sceneView)
         
@@ -140,8 +152,10 @@ fileprivate extension ARFurnitureController {
         let nodeHitTest = sceneView.hitTest(tapLocation)
         
         if !nodeHitTest.isEmpty {
-            let node = nodeHitTest.first?.node
-            selectedNode = node
+            guard let node = nodeHitTest.first?.node else { return }
+            if activeNodes.contains(node) {
+                selectedNode = node
+            }
         }
     }
     
@@ -199,15 +213,9 @@ fileprivate extension ARFurnitureController {
     // Method for adding Models to the Scene
     //
     func showItem(hitTestResult: ARHitTestResult) {
-        guard let itemMark = selectedItem?.catalogNumber else {
-            print("Missing selectedItem!")
-            return }
-        guard let scene = SCNScene(named: "ModelsCatalog.scnassets/\(itemMark).scn") else {
-            print("Missing scene!")
-            return }
-        guard let node = scene.rootNode.childNode(withName: itemMark, recursively: false) else {
-            print("Missing node!")
-            return }
+        guard let itemMark = selectedItem?.catalogNumber else { return }
+        guard let scene = SCNScene(named: "ModelsCatalog.scnassets/\(itemMark).scn") else { return }
+        guard let node = scene.rootNode.childNode(withName: itemMark, recursively: false) else { return }
         
         let transform = hitTestResult.worldTransform
         let thirdColumn = transform.columns.3
@@ -223,7 +231,9 @@ fileprivate extension ARFurnitureController {
         sceneView.scene.rootNode.addChildNode(node)
         
         selectedNode = node
+        activeNodes.append(node)
         selectedItem = nil
+        hideButtons()
     }
     
     
@@ -287,6 +297,43 @@ fileprivate extension ARFurnitureController {
                 self.infoLabel.text = nil
             })
         }
+    }
+    
+    
+    //
+    // Method hide buttons
+    //
+    func hideButtons() {
+        
+        UIView.animate(withDuration: 0.25, animations: {
+            [unowned self] in
+            
+            self.infoButton.alpha = 0
+            self.addButton.alpha = 0
+            self.favButton.alpha = 0
+            self.deleteButton.alpha = 0
+        })
+    }
+    
+    
+    //
+    // Method show buttons
+    //
+    func showButtons() {
+        
+        UIView.animate(withDuration: 0.25, animations: {
+            [unowned self] in
+            
+            self.infoButton.alpha = 1
+            self.addButton.alpha = 1
+            self.favButton.alpha = 1
+            
+            if self.selectedNode != nil {
+                self.deleteButton.alpha = 1
+            } else {
+                self.deleteButton.alpha = 0
+            }
+        })
     }
     
     
