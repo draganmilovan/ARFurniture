@@ -279,10 +279,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KEE-io-CpL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="113.66666666666667"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="768" height="113.66666666666667"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3rh-zY-xmq">
-                                                            <rect key="frame" x="16" y="8" width="390" height="97.666666666666671"/>
+                                                            <rect key="frame" x="16" y="8" width="744" height="97.666666666666671"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
