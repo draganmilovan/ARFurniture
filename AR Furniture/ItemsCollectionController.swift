@@ -120,7 +120,7 @@ fileprivate extension ItemsCollectionController {
     func configureBarButtonItems() {
         if self.title == "Favoriti" {
             let home = UIBarButtonItem(image: UIImage(named: "HomeButton"), style: .done, target: self, action: #selector(dismissController))
-            let clean = UIBarButtonItem(title: "Delete All", style: .done, target: self, action: #selector(deleteAll))
+            let clean = UIBarButtonItem(title: "Obriši Sve", style: .done, target: self, action: #selector(deleteAll))
             
             navigationItem.leftBarButtonItems = [home]
             navigationItem.rightBarButtonItems = [clean]
