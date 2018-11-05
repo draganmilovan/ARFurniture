@@ -120,7 +120,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="236.66666666666666"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOVO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sdE-sh-3xo">
-                                                <rect key="frame" x="8" y="8" width="359" height="24"/>
+                                                <rect key="frame" x="16" y="8" width="351" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -149,7 +149,7 @@
                                             <constraint firstItem="RXy-0q-v8F" firstAttribute="top" secondItem="sdE-sh-3xo" secondAttribute="bottom" constant="8" id="Rh5-Xl-i01"/>
                                             <constraint firstItem="sdE-sh-3xo" firstAttribute="top" secondItem="8IS-rT-E2E" secondAttribute="top" constant="8" id="RlL-0T-SOu"/>
                                             <constraint firstItem="RXy-0q-v8F" firstAttribute="leading" secondItem="8IS-rT-E2E" secondAttribute="leading" id="dqd-mM-dDu"/>
-                                            <constraint firstItem="sdE-sh-3xo" firstAttribute="leading" secondItem="8IS-rT-E2E" secondAttribute="leading" constant="8" id="vcB-vZ-mL0"/>
+                                            <constraint firstItem="sdE-sh-3xo" firstAttribute="leading" secondItem="8IS-rT-E2E" secondAttribute="leading" constant="16" id="vcB-vZ-mL0"/>
                                         </constraints>
                                         <viewLayoutGuide key="safeArea" id="cBk-pm-5W9"/>
                                     </view>
@@ -157,7 +157,7 @@
                                         <rect key="frame" x="0.0" y="244.66666666666669" width="375" height="236.66666666666669"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KATEGORIJE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sfz-wn-G9o">
-                                                <rect key="frame" x="8" y="8" width="359" height="24"/>
+                                                <rect key="frame" x="16" y="8" width="351" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -180,7 +180,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="sfz-wn-G9o" firstAttribute="leading" secondItem="JFf-JW-rf8" secondAttribute="leading" constant="8" id="0OX-Yw-UpJ"/>
+                                            <constraint firstItem="sfz-wn-G9o" firstAttribute="leading" secondItem="JFf-JW-rf8" secondAttribute="leading" constant="16" id="0OX-Yw-UpJ"/>
                                             <constraint firstItem="sfz-wn-G9o" firstAttribute="top" secondItem="JFf-JW-rf8" secondAttribute="top" constant="8" id="2TE-5e-DQU"/>
                                             <constraint firstItem="XQE-Nh-ztP" firstAttribute="top" secondItem="sfz-wn-G9o" secondAttribute="bottom" constant="8" id="9kp-jx-iNR"/>
                                             <constraint firstAttribute="trailing" secondItem="sfz-wn-G9o" secondAttribute="trailing" constant="8" id="brj-eU-Veg"/>
@@ -194,7 +194,7 @@
                                         <rect key="frame" x="0.0" y="489.33333333333343" width="375" height="236.66666666666669"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SERIJE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4f3-fF-3wl">
-                                                <rect key="frame" x="8" y="8" width="359" height="24"/>
+                                                <rect key="frame" x="16" y="8" width="351" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -219,7 +219,7 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Ncr-mS-2AP" secondAttribute="trailing" id="9xw-3x-ecP"/>
                                             <constraint firstAttribute="trailing" secondItem="4f3-fF-3wl" secondAttribute="trailing" constant="8" id="WY3-cO-sKb"/>
-                                            <constraint firstItem="4f3-fF-3wl" firstAttribute="leading" secondItem="Wrq-es-1DU" secondAttribute="leading" constant="8" id="WYs-dT-i8y"/>
+                                            <constraint firstItem="4f3-fF-3wl" firstAttribute="leading" secondItem="Wrq-es-1DU" secondAttribute="leading" constant="16" id="WYs-dT-i8y"/>
                                             <constraint firstItem="Ncr-mS-2AP" firstAttribute="leading" secondItem="Wrq-es-1DU" secondAttribute="leading" id="eKi-nQ-htm"/>
                                             <constraint firstAttribute="bottom" secondItem="Ncr-mS-2AP" secondAttribute="bottom" id="gI7-qp-4L4"/>
                                             <constraint firstItem="Ncr-mS-2AP" firstAttribute="top" secondItem="4f3-fF-3wl" secondAttribute="bottom" constant="8" id="mPL-f1-TJz"/>
