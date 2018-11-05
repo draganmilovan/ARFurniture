@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Dekoracija.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Dekoracija.png",
       "scale" : "2x"
     },
     {

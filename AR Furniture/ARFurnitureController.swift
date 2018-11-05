@@ -234,6 +234,10 @@ fileprivate extension ARFurnitureController {
         
         if itemMark == "401" {
             centerPivot(for: node)
+        } else if itemMark == "501" {
+            centerPivot(for: node)
+        } else if itemMark == "502" {
+            centerPivot(for: node)
         }
         
         sceneView.scene.rootNode.addChildNode(node)

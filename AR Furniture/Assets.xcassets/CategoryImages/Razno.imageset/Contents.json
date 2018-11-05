@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Razno.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Razno.png",
       "scale" : "2x"
     },
     {
