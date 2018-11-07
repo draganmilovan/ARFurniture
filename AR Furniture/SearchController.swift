@@ -126,9 +126,8 @@ extension SearchController: UISearchBarDelegate {
 
         searchedItems.removeAll()
         
-        if searchText.count == 0 {
+        if searchText.count == 0 || searchText == " " {
             searchTerm = nil
-            //searchedItems.removeAll()
             searchResultCollectionView.reloadData()
             return
         }
@@ -155,10 +154,6 @@ extension SearchController: UISearchBarDelegate {
         }
         
         searchResultCollectionView.reloadData()
-        
-        if searchedItems.count != 0 {
-            scrollToTop()
-        }
     }
     
 }
