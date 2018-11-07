@@ -57,14 +57,12 @@ class ARFurnitureController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Run the view's session
         sceneView.session.run(configuration)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        // Pause the view's session
         sceneView.session.pause()
     }
     
@@ -119,7 +117,7 @@ class ARFurnitureController: UIViewController {
 fileprivate extension ARFurnitureController {
     
     //
-    // Method for gesture recognition
+    // Method enables gesture recognition
     //
     func registerGestureRecognzers() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
@@ -165,8 +163,7 @@ fileprivate extension ARFurnitureController {
         
         if !planeHitTest.isEmpty {
             showItem(hitTestResult: planeHitTest.first!)
-        } else { print("Missing hitTest!") }
-        
+        }
     }
     
     
@@ -252,7 +249,7 @@ fileprivate extension ARFurnitureController {
     
     
     //
-    // Method return True if Node tapped and set Selected Node property
+    // Method handles case when user tap Node in Scene
     //
     func didTapNode(at location: CGPoint) {
         let nodeHitTest = sceneView.hitTest(location)
@@ -349,7 +346,6 @@ fileprivate extension ARFurnitureController {
             
             self.setNeedsStatusBarAppearanceUpdate()
         })
-        
     }
     
     
