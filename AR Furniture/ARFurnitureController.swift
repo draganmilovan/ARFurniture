@@ -301,7 +301,9 @@ extension ARFurnitureController: ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         guard anchor is ARPlaneAnchor else { return }
         
-        isPlaneDetected = true
+        if !isPlaneDetected {
+            isPlaneDetected = true
+        }
     }
     
 }
@@ -378,7 +380,7 @@ fileprivate extension ARFurnitureController {
     //
     func planeDetectionMessage() {
         if selectedItem != nil {
-            informUser(with: "Označi mesto gde želiš da se prikaže \(selectedItem!.name!)")
+            informUser(with: "Označite mesto gde želite da se prikaže \(selectedItem!.name!)")
         } else {
             informUser(with: "Spremno Za Proširenu Stvarnost!")
         }
@@ -401,7 +403,7 @@ fileprivate extension ARFurnitureController {
         selectedItem = item
         
         if isPlaneDetected {
-            informUser(with: "Označi mesto gde želiš da se prikaže \(item.name!)")
+            informUser(with: "Označite mesto gde želite da se prikaže \(item.name!)")
         } else {
             informUser(with: "Sačekajte da se detektuje površina.")
         }
