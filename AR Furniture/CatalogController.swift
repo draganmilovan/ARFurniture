@@ -99,17 +99,17 @@ extension CatalogController: UICollectionViewDataSource {
 //Mark:- Collection View Flow Layout Protocol Methods
 extension CatalogController: UICollectionViewDelegateFlowLayout {
     
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    
-            let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-            let availableHeight = collectionView.bounds.size.height
-    
-            let availableItemHeight = availableHeight - flowLayout.sectionInset.top - flowLayout.sectionInset.bottom
-    
-            let itemWidth = availableItemHeight
-    
-            return CGSize(width: itemWidth, height: itemWidth)
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+        let availableHeight = collectionView.bounds.size.height
+        
+        let availableItemHeight = availableHeight - flowLayout.sectionInset.top - flowLayout.sectionInset.bottom
+        
+        let itemWidth = availableItemHeight
+        
+        return CGSize(width: itemWidth, height: itemWidth)
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let itemsDataManager = itemsDataManager else {

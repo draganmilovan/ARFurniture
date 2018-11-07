@@ -25,7 +25,6 @@ final class ItemsDataManager {
     var favorites: [ItemDataModel] = [] {
         didSet {
             saveFavorites()
-            print(favorites)
         }
     }
     
