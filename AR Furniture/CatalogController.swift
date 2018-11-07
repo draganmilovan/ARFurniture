@@ -31,20 +31,10 @@ class CatalogController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Register Collection View Cells
-        let catalogNib = UINib(nibName: "CatalogCell", bundle: nil)
-        newItemsCollectionView.register(catalogNib, forCellWithReuseIdentifier: "CatalogCell")
-        categoriesCollectionView.register(catalogNib, forCellWithReuseIdentifier: "CatalogCell")
-        seriesCollectionView.register(catalogNib, forCellWithReuseIdentifier: "CatalogCell")
-        
-        let supportNib = UINib(nibName: "SupportCell", bundle: nil)
-        newItemsCollectionView.register(supportNib, forCellWithReuseIdentifier: "SupportCell")
-        categoriesCollectionView.register(supportNib, forCellWithReuseIdentifier: "SupportCell")
-        seriesCollectionView.register(supportNib, forCellWithReuseIdentifier: "SupportCell")
         
         self.navigationController?.navigationBar.tintColor = UIColor.black
 
+        registerCollectionViewsCells()
         configureBarButtonItems()
     }
     
@@ -194,6 +184,23 @@ extension CatalogController: UICollectionViewDelegateFlowLayout {
 
 //MARK:- Collection View private methods
 fileprivate extension CatalogController {
+    
+    //
+    // Method register two Cells from Nibs to all Collection Views
+    //
+    func registerCollectionViewsCells() {
+        
+        let catalogNib = UINib(nibName: "CatalogCell", bundle: nil)
+        newItemsCollectionView.register(catalogNib, forCellWithReuseIdentifier: "CatalogCell")
+        categoriesCollectionView.register(catalogNib, forCellWithReuseIdentifier: "CatalogCell")
+        seriesCollectionView.register(catalogNib, forCellWithReuseIdentifier: "CatalogCell")
+        
+        let supportNib = UINib(nibName: "SupportCell", bundle: nil)
+        newItemsCollectionView.register(supportNib, forCellWithReuseIdentifier: "SupportCell")
+        categoriesCollectionView.register(supportNib, forCellWithReuseIdentifier: "SupportCell")
+        seriesCollectionView.register(supportNib, forCellWithReuseIdentifier: "SupportCell")
+        
+    }
     
     //
     // Method return max number five when counting array items
