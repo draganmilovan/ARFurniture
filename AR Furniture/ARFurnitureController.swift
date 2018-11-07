@@ -143,12 +143,20 @@ fileprivate extension ARFurnitureController {
         // Hide or show buttons if scene contains node,
         // If Node is tapped Method
         if activeNodes.count > 0 {
+            didTapNode(at: tapLocation)
+            
             if addButton.alpha == 0 {
                 showUI()
-            } else if didTapNode(at: tapLocation) {
-                showUI()
             } else {
-                hideUI()
+                if selectedNode == nil {
+                    hideUI()
+                } else {
+                    if deleteButton.alpha > 0 {
+                        hideUI()
+                    } else {
+                        showUI()
+                    }
+                }
             }
         }
         
@@ -246,20 +254,15 @@ fileprivate extension ARFurnitureController {
     //
     // Method return True if Node tapped and set Selected Node property
     //
-    func didTapNode(at location: CGPoint) -> Bool {
+    func didTapNode(at location: CGPoint) {
         let nodeHitTest = sceneView.hitTest(location)
         
         if !nodeHitTest.isEmpty {
-            guard let node = nodeHitTest.first?.node else {
-                return false
-            }
+            guard let node = nodeHitTest.first?.node else { return }
             
             if activeNodes.contains(node) {
                 selectedNode = node
             }
-            return true
-        } else {
-            return false
         }
     }
     
