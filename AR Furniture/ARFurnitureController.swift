@@ -137,17 +137,20 @@ fileprivate extension ARFurnitureController {
     //
     @objc func tapped(sender: UITapGestureRecognizer) {
         
-        // Hide or show buttons if scene contains node
+        guard let sceneView = sender.view as? ARSCNView else { return }
+        let tapLocation = sender.location(in: sceneView)
+        
+        // Hide or show buttons if scene contains node,
+        // If Node is tapped Method
         if activeNodes.count > 0 {
             if addButton.alpha == 0 {
+                showUI()
+            } else if didTapNode(at: tapLocation) {
                 showUI()
             } else {
                 hideUI()
             }
         }
-        
-        guard let sceneView = sender.view as? ARSCNView else { return }
-        let tapLocation = sender.location(in: sceneView)
         
         // If Plane is tapped
         let planeHitTest = sceneView.hitTest(tapLocation, types: .existingPlaneUsingExtent)
@@ -156,15 +159,6 @@ fileprivate extension ARFurnitureController {
             showItem(hitTestResult: planeHitTest.first!)
         } else { print("Missing hitTest!") }
         
-        // If Node is tapped
-        let nodeHitTest = sceneView.hitTest(tapLocation)
-        
-        if !nodeHitTest.isEmpty {
-            guard let node = nodeHitTest.first?.node else { return }
-            if activeNodes.contains(node) {
-                selectedNode = node
-            }
-        }
     }
     
     
@@ -246,6 +240,27 @@ fileprivate extension ARFurnitureController {
         activeNodes.append(node)
         selectedItem = nil
         hideUI()
+    }
+    
+    
+    //
+    // Method return True if Node tapped and set Selected Node property
+    //
+    func didTapNode(at location: CGPoint) -> Bool {
+        let nodeHitTest = sceneView.hitTest(location)
+        
+        if !nodeHitTest.isEmpty {
+            guard let node = nodeHitTest.first?.node else {
+                return false
+            }
+            
+            if activeNodes.contains(node) {
+                selectedNode = node
+            }
+            return true
+        } else {
+            return false
+        }
     }
     
     
