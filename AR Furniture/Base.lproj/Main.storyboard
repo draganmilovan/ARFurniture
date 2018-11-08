@@ -65,12 +65,23 @@
                                     <action selector="removeItem:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vux-MC-u2S"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XV6-wk-Q3b">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XV6-wk-Q3b">
                                 <rect key="frame" x="20" y="306" width="335" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="textColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMf-WP-2Li" userLabel="Restart">
+                                <rect key="frame" x="24" y="48" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="TcW-oJ-pBS"/>
+                                    <constraint firstAttribute="height" constant="50" id="a9O-ch-2yb"/>
+                                </constraints>
+                                <state key="normal" image="Restart"/>
+                                <connections>
+                                    <action selector="restartSession:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KpR-Od-Jhm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -82,12 +93,14 @@
                             <constraint firstItem="hPF-7Z-UeS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="Def-UF-c3j"/>
                             <constraint firstItem="XV6-wk-Q3b" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-100" id="NRH-uw-ypB"/>
                             <constraint firstAttribute="bottomMargin" secondItem="4An-Om-Dj9" secondAttribute="bottom" constant="20" id="Nd6-HD-41f"/>
+                            <constraint firstItem="AMf-WP-2Li" firstAttribute="leading" secondItem="hPF-7Z-UeS" secondAttribute="leading" id="T9d-km-rVJ"/>
                             <constraint firstAttribute="trailing" secondItem="xzL-Ei-ypv" secondAttribute="trailing" id="Vf5-Zx-0dU"/>
                             <constraint firstItem="4An-Om-Dj9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bpe-MQ-vGQ"/>
                             <constraint firstAttribute="bottomMargin" secondItem="hPF-7Z-UeS" secondAttribute="bottom" constant="20" id="gDI-ar-UC8"/>
                             <constraint firstItem="zh7-2b-Y3f" firstAttribute="top" secondItem="xzL-Ei-ypv" secondAttribute="top" constant="48" id="qRa-P4-gSJ"/>
                             <constraint firstItem="XV6-wk-Q3b" firstAttribute="leading" secondItem="TD8-Ew-Moa" secondAttribute="leading" constant="20" id="sww-hY-ffv"/>
                             <constraint firstAttribute="bottomMargin" secondItem="2Mt-XT-Ujq" secondAttribute="bottom" constant="20" id="tuy-2G-SFR"/>
+                            <constraint firstItem="AMf-WP-2Li" firstAttribute="top" secondItem="xzL-Ei-ypv" secondAttribute="top" constant="48" id="vyh-EF-Ck7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2Mt-XT-Ujq" secondAttribute="trailing" constant="8" id="x2F-V6-06c"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TD8-Ew-Moa"/>
@@ -98,6 +111,7 @@
                         <outlet property="favButton" destination="2Mt-XT-Ujq" id="3bO-ap-VaC"/>
                         <outlet property="infoButton" destination="hPF-7Z-UeS" id="VMS-4t-lu3"/>
                         <outlet property="infoLabel" destination="XV6-wk-Q3b" id="XHo-fI-6N8"/>
+                        <outlet property="restartButton" destination="AMf-WP-2Li" id="0Tn-aD-TQa"/>
                         <outlet property="sceneView" destination="xzL-Ei-ypv" id="4tV-62-knC"/>
                     </connections>
                 </viewController>
@@ -661,6 +675,7 @@
         <image name="Favorites" width="100" height="100"/>
         <image name="HomeButton" width="80" height="80"/>
         <image name="Info" width="100" height="100"/>
+        <image name="Restart" width="100" height="100"/>
         <image name="Trash" width="100" height="100"/>
     </resources>
 </document>

@@ -29,6 +29,7 @@ class ARFurnitureController: UIViewController {
     @IBOutlet fileprivate weak var infoButton: UIButton!
     @IBOutlet fileprivate weak var addButton: UIButton!
     @IBOutlet fileprivate weak var favButton: UIButton!
+    @IBOutlet fileprivate weak var restartButton: UIButton!
     
     fileprivate let configuration = ARWorldTrackingConfiguration()
     
@@ -76,6 +77,10 @@ class ARFurnitureController: UIViewController {
         cvc.title = "Katalog"
         
         show(nc, sender: self)
+    }
+    
+    @IBAction private func restartSession(_ sender: UIButton) {
+        
     }
     
     @IBAction private func removeItem(_ sender: UIButton) {
