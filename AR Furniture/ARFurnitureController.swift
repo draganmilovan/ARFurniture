@@ -19,6 +19,7 @@ class ARFurnitureController: UIViewController {
     fileprivate var selectedNode: SCNNode?
     fileprivate var isPlaneDetected = false {
         didSet {
+            showUI()
             planeDetectionMessage()
         }
     }
@@ -45,6 +46,7 @@ class ARFurnitureController: UIViewController {
         super.viewDidLoad()
         
         deleteButton.alpha = 0
+        restartButton.alpha = 0
         
         configureScene()
         registerGestureRecognzers()
@@ -81,6 +83,17 @@ class ARFurnitureController: UIViewController {
     
     @IBAction private func restartSession(_ sender: UIButton) {
         
+        activeNodes.map {
+            $0.removeFromParentNode()
+        }
+        activeNodes.removeAll()
+        selectedNode = nil
+        isPlaneDetected = false
+        
+        sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+        
+        restartButton.alpha = 0
+        deleteButton.alpha = 0
     }
     
     @IBAction private func removeItem(_ sender: UIButton) {
@@ -348,6 +361,7 @@ fileprivate extension ARFurnitureController {
             self.addButton.alpha = 0
             self.favButton.alpha = 0
             self.deleteButton.alpha = 0
+            self.restartButton.alpha = 0
             
             self.setNeedsStatusBarAppearanceUpdate()
         })
@@ -368,6 +382,12 @@ fileprivate extension ARFurnitureController {
             self.addButton.alpha = 1
             self.favButton.alpha = 1
             
+            if self.isPlaneDetected {
+                self.restartButton.alpha = 1
+            } else {
+                self.restartButton.alpha = 0
+            }
+            
             if self.selectedNode != nil {
                 self.deleteButton.alpha = 1
             } else {
@@ -383,10 +403,12 @@ fileprivate extension ARFurnitureController {
     // Method inform user about plane detection
     //
     func planeDetectionMessage() {
-        if selectedItem != nil {
+        if selectedItem != nil, isPlaneDetected {
             informUser(with: "Označite mesto gde želite da se prikaže \(selectedItem!.name!)")
         } else {
-            informUser(with: "Spremno Za Proširenu Stvarnost!")
+            if isPlaneDetected {
+                informUser(with: "Spremno Za Proširenu Stvarnost!")
+            }
         }
     }
     
