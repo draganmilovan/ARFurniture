@@ -83,7 +83,7 @@ class ARFurnitureController: UIViewController {
     
     @IBAction private func restartSession(_ sender: UIButton) {
         
-        activeNodes.map {
+        let _ = activeNodes.map {
             $0.removeFromParentNode()
         }
         activeNodes.removeAll()

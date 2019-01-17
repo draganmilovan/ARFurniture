@@ -47,9 +47,12 @@ class ItemController: UIViewController {
         guard let itemsDataManager = itemsDataManager else {
             fatalError("Missing Items Data Manager")
         }
+        guard let item = item else {
+            fatalError("Missing Item")
+        }
         
-        if !itemsDataManager.favorites.contains(item!) {
-            itemsDataManager.favorites.append(item!)
+        if !itemsDataManager.favorites.contains(item) {
+            itemsDataManager.favorites.append(item)
             rotateFavoritesButton()
             favoritesButton.imageView?.image = UIImage(named: "FavoritesYellow")
             
@@ -63,7 +66,7 @@ class ItemController: UIViewController {
             favoritesButton.imageView?.image = UIImage(named: "Favorites")
         }
         
-        refreshDelegate?.refreshUI(with: item!)
+        refreshDelegate?.refreshUI(with: item)
     }
     
     @IBAction private func tryItem(_ sender: UIButton) {

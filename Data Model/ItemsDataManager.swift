@@ -73,7 +73,7 @@ fileprivate extension ItemsDataManager {
             $0.categoryTags!
         }
 
-        ctgs.compactMap {
+        let _ = ctgs.compactMap {
             if !categories.contains($0), $0 != "" {
                 categories.append($0)
             }
@@ -90,7 +90,7 @@ fileprivate extension ItemsDataManager {
     func populateSeries() {
         guard let items = items else { return }
 
-        items.compactMap {
+        let _ = items.compactMap {
             if !series.contains($0.seriesTag!), $0.seriesTag != "" {
                 series.append($0.seriesTag!)
             }
